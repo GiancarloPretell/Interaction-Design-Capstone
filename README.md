@@ -32,9 +32,9 @@ The site is built with a mobile-first approach and adapts to both mobile and des
 No installation or dependencies are required.
 
 ## Project Structure
-'index.html'
-'styles.css'
-'script.js'
+- index.html
+- styles.css
+- script.js
 
 ## Notes
 
