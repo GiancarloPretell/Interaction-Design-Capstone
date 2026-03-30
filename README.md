@@ -33,7 +33,9 @@ No installation or dependencies are required.
 
 ## Project Structure
 index.html
+
 styles.css
+
 script.js
 
 ## Notes
