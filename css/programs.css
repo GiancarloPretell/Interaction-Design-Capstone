@@ -1,0 +1,308 @@
+/* Programs Page */
+.programs-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.programs-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+body.dark-mode .programs-header h1 { color: var(--text); }
+
+.programs-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* Programs grid + sidebar */
+.programs-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 28px;
+  align-items: start;
+}
+
+.program-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.program-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.program-card .prog-icon {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.program-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .program-card h3 { color: var(--text); }
+
+.program-card p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* Our Approach section */
+.approach-section {
+  margin-top: 32px;
+}
+
+.approach-section h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .approach-section h2 { color: var(--text); }
+
+.approach-section > p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.approach-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.approach-item-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.approach-item strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+body.dark-mode .approach-item strong { color: var(--text); }
+
+.approach-item span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Admissions Support Sidebar */
+.support-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.support-card h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+body.dark-mode .support-card h3 { color: var(--text); }
+
+.support-card-inner {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.support-card-inner .icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.support-card-inner p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .programs-layout { grid-template-columns: 1fr; }
+  .program-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .programs-header h1 { font-size: 1.6rem; }
+  .approach-grid { grid-template-columns: 1fr; }
+}
+
+/* Program Detail Page */
+.program-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 28px;
+  align-items: start;
+}
+
+.program-detail-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.program-detail-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.program-detail-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .program-detail-header h1 { color: var(--text); }
+
+.program-detail-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 500px;
+}
+
+.program-detail-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  background: #c8d8ec;
+}
+
+.program-overview h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+body.dark-mode .program-overview h2 { color: var(--text); }
+
+.program-overview p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.program-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.program-feature {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.program-feature-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.program-feature strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+body.dark-mode .program-feature strong { color: var(--text); }
+
+.program-feature span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Program Details Sidebar */
+.program-details-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.program-details-card h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+body.dark-mode .program-details-card h3 { color: var(--text); }
+
+.program-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+.program-details-table td {
+  padding: 5px 0;
+  font-size: 0.83rem;
+  vertical-align: top;
+}
+
+.program-details-table td:first-child {
+  color: var(--text-light);
+  width: 42%;
+  font-weight: 500;
+}
+
+.program-details-table td:last-child {
+  color: var(--text-muted);
+}
+
+.program-cross-disc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 900px) {
+  .program-detail-layout { grid-template-columns: 1fr; }
+  .program-features { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,132 @@
+/* FAQ Page */
+.faq-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.faq-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.faq-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .faq-header h1 { color: var(--text); }
+
+.faq-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 500px;
+}
+
+.faq-breadcrumb {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.faq-breadcrumb a {
+  font-size: 0.82rem;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.popular-questions-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+body.dark-mode .popular-questions-title { color: var(--text); }
+
+/* Accordion */
+.accordion-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--navy);
+  user-select: none;
+}
+
+body.dark-mode .accordion-header { color: var(--text); }
+
+.accordion-header:hover { background: var(--bg); }
+
+.accordion-toggle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  transition: transform 0.25s ease;
+}
+
+.accordion-item.open .accordion-toggle { transform: rotate(45deg); }
+
+.accordion-body {
+  padding: 0 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.accordion-item.open .accordion-body { padding: 0 16px 14px; }
+
+/* Sidebar */
+.faq-sidebar-section {
+  margin-bottom: 20px;
+}
+
+.faq-sidebar-section h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+body.dark-mode .faq-sidebar-section h4 { color: var(--text); }
+
+.faq-sidebar-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.faq-sidebar-section ul li {
+  font-size: 0.83rem;
+  padding: 3px 0 3px 12px;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.faq-sidebar-section ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}
+
+.faq-sidebar-section p {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}

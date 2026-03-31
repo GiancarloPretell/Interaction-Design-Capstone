@@ -1,0 +1,137 @@
+/* Deadlines Page */
+.deadlines-header {
+  margin-bottom: 28px;
+}
+
+.deadlines-header .page-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.deadlines-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+body.dark-mode .deadlines-header h1 { color: var(--text); }
+
+.deadlines-header .tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.deadlines-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.key-dates-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+body.dark-mode .key-dates-title { color: var(--text); }
+
+/* Timeline */
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+.timeline-dot.yellow { background: #F59E0B; box-shadow: 0 0 0 2px #F59E0B; }
+.timeline-dot.blue { background: var(--blue); box-shadow: 0 0 0 2px var(--blue); }
+.timeline-dot.gray { background: #9CA3AF; box-shadow: 0 0 0 2px #9CA3AF; }
+
+.timeline-item h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+body.dark-mode .timeline-item h3 { color: var(--text); }
+
+.timeline-item .date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.timeline-item .desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Deadline sidebar */
+.deadline-summary {
+  font-size: 0.85rem;
+}
+
+.deadline-summary table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.deadline-summary td {
+  padding: 5px 0;
+  color: var(--text-muted);
+}
+
+.deadline-summary td:first-child {
+  color: var(--text-light);
+  font-size: 0.78rem;
+  width: 45%;
+}
+
+.next-step-box {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.next-step-box strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--navy);
+}
+
+body.dark-mode .next-step-box strong { color: var(--text); }

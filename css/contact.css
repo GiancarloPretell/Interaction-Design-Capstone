@@ -1,0 +1,73 @@
+/* Contact Page */
+.contact-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.contact-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+body.dark-mode .contact-header h1 { color: var(--text); }
+
+.contact-header p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.contact-card-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.contact-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .contact-card h3 { color: var(--text); }
+
+.contact-card .contact-value {
+  font-size: 0.9rem;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.contact-card .contact-address {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 700px) {
+  .contact-cards { grid-template-columns: 1fr; }
+  .contact-header h1 { font-size: 1.8rem; }
+}

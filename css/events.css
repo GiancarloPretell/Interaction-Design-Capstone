@@ -1,0 +1,136 @@
+/* Events Page */
+.events-header {
+  margin-bottom: 24px;
+}
+
+.events-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+body.dark-mode .events-header h1 { color: var(--text); }
+
+.events-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+}
+
+.upcoming-events-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+body.dark-mode .upcoming-events-title { color: var(--text); }
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  padding: 6px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter-tab.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+.filter-tab:hover:not(.active) { background: var(--bg); }
+
+/* Event cards */
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+
+.event-date-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 52px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.event-date-badge .month {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.event-date-badge .day {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.event-info { flex: 1; }
+
+.event-info h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+body.dark-mode .event-info h3 { color: var(--text); }
+
+.event-info .event-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.event-info .event-desc {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Event Highlights Sidebar */
+.event-highlights ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 14px;
+}
+
+.event-highlights ul li {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  padding: 3px 0 3px 14px;
+  position: relative;
+}
+
+.event-highlights ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+}

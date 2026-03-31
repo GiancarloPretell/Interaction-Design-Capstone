@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News — Yale School of Art</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .news-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .news-header h1 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    body.dark-mode .news-header h1 { color: var(--text); }
+    .news-header p { font-size: 0.9rem; color: var(--text-muted); }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: box-shadow var(--transition);
+    }
+
+    .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+
+    .news-card-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #c8d8ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+
+    .news-card-image.dark-blue { background: linear-gradient(135deg, #1B2A4A, #2a4a8a); }
+    .news-card-image.warm { background: linear-gradient(135deg, #c8a87a, #a88060); }
+    .news-card-image.cool { background: linear-gradient(135deg, #6888a8, #485878); }
+
+    .news-card-body { padding: 16px; }
+
+    .news-card-body h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    body.dark-mode .news-card-body h3 { color: var(--text); }
+
+    .news-card-body p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .news-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="HomeFrame.html" class="nav-logo">
+        <span class="logo-y">Y</span>
+        <span class="logo-sep">|</span>
+        <span class="logo-name">Yale School of Art</span>
+      </a>
+      <div class="nav-links">
+        <a href="ProgramsFrame.html" class="nav-btn">Programs</a>
+        <a href="ApplyFrame.html" class="nav-btn">Apply</a>
+        <a href="EventsFrame.html" class="nav-btn">Events</a>
+        <a href="NewsFrame.html" class="nav-btn">News</a>
+        <a href="ContactFrame.html" class="nav-btn">Contact Us</a>
+      </div>
+      <button class="dark-toggle" id="darkToggle">☾</button>
+      <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <button class="mobile-menu-close" id="mobileMenuClose">&#x2715;</button>
+    </div>
+    <a href="HomeFrame.html">Home</a>
+    <a href="ProgramsFrame.html">Programs</a>
+    <a href="ApplyFrame.html">Apply</a>
+    <a href="EventsFrame.html">Events</a>
+    <a href="NewsFrame.html">News</a>
+    <a href="ContactFrame.html">Contact Us</a>
+  </div>
+
+  <main class="main-content">
+    <div class="news-header">
+      <h1>News</h1>
+      <p>Latest updates from Yale School of Art</p>
+    </div>
+
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-card-image cool">Spring Exhibition</div>
+        <div class="news-card-body">
+          <h3>Spring Exhibition Opens</h3>
+          <p>A new collection of student and faculty work is now on display.</p>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-image warm">Student Showcase</div>
+        <div class="news-card-body">
+          <h3>Student Showcase 2026</h3>
+          <p>Featuring emerging artists across multiple disciplines.</p>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-image dark-blue" style="font-size:0.75rem;padding:12px;text-align:center;">
+          "Art Therapy and Creative Aging: Advancing Health and Well-being"
+        </div>
+        <div class="news-card-body">
+          <h3>Guest Artist Lecture</h3>
+          <p>Join visiting artists for an interactive session.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="logo-y">Y</span>
+        <span style="font-size:0.85rem;margin-left:6px;">Yale School of Art</span>
+      </div>
+      <div class="footer-contact">
+        admissions@yale.edu <span>|</span> 203-432-2606
+      </div>
+      <div class="footer-links">
+        <a href="ContactFrame.html">Campus Visit</a>
+        <a href="FAQFrame.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/darkmode.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

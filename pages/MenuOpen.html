@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — Yale School of Art</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    /* Show the mobile overlay as the main page content for this frame */
+    body { background: #fff; }
+
+    .menu-frame {
+      max-width: 390px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .menu-overlay {
+      background: #808080;
+    }
+
+    .menu-overlay-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .menu-overlay-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 4px 8px;
+    }
+
+    .menu-overlay a {
+      display: block;
+      padding: 14px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .menu-overlay a:hover { background: rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body>
+  <div class="menu-frame">
+    <div class="menu-overlay">
+      <div class="menu-overlay-header">
+        <button class="menu-overlay-close" onclick="history.back()">&#9776;</button>
+      </div>
+      <a href="HomeFrame.html">Home</a>
+      <a href="ProgramsFrame.html">Programs</a>
+      <a href="ApplyFrame.html">Apply</a>
+      <a href="EventsFrame.html">Events</a>
+      <a href="NewsFrame.html">News</a>
+      <a href="ContactFrame.html">Contact Us</a>
+    </div>
+  </div>
+</body>
+</html>

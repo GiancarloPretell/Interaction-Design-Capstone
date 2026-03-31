@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Requirements — Yale School of Art</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .req-header h1 {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    body.dark-mode .req-header h1 { color: var(--text); }
+    .req-header p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .req-section-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    body.dark-mode .req-section-title { color: var(--text); }
+
+    .req-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .req-item-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    .req-item-text { flex: 1; }
+    .req-item-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    body.dark-mode .req-item-text strong { color: var(--text); }
+    .req-item-text span { font-size: 0.82rem; color: var(--text-muted); }
+
+    .deadline-banner {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-top: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .deadline-banner-icon { font-size: 2rem; flex-shrink: 0; }
+
+    .deadline-banner h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    body.dark-mode .deadline-banner h3 { color: var(--text); }
+    .deadline-banner p { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* Sidebar */
+    .helpful-tips ul { list-style: none; padding: 0; }
+    .helpful-tips ul li {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      padding: 4px 0 4px 14px;
+      position: relative;
+    }
+    .helpful-tips ul li::before { content: '•'; position: absolute; left: 0; color: var(--blue); }
+
+    .contact-admissions-box { margin-top: 12px; }
+    .contact-admissions-box .icon-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .contact-admissions-box .icon-row span:first-child { font-size: 1.1rem; }
+    .contact-admissions-box .icon-row p { font-size: 0.82rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="HomeFrame.html" class="nav-logo">
+        <span class="logo-y">Y</span>
+        <span class="logo-sep">|</span>
+        <span class="logo-name">Yale School of Art</span>
+      </a>
+      <div class="nav-links">
+        <a href="ProgramsFrame.html" class="nav-btn">Programs</a>
+        <a href="ApplyFrame.html" class="nav-btn">Apply</a>
+        <a href="EventsFrame.html" class="nav-btn">Events</a>
+        <a href="NewsFrame.html" class="nav-btn">News</a>
+        <a href="ContactFrame.html" class="nav-btn">Contact Us</a>
+      </div>
+      <button class="dark-toggle" id="darkToggle">☾</button>
+      <button class="hamburger" id="hamburgerBtn">&#9776;</button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <button class="mobile-menu-close" id="mobileMenuClose">&#x2715;</button>
+    </div>
+    <a href="HomeFrame.html">Home</a>
+    <a href="ProgramsFrame.html">Programs</a>
+    <a href="ApplyFrame.html">Apply</a>
+    <a href="EventsFrame.html">Events</a>
+    <a href="NewsFrame.html">News</a>
+    <a href="ContactFrame.html">Contact Us</a>
+  </div>
+
+  <main class="main-content">
+    <div class="two-col">
+      <div>
+        <div class="req-header">
+          <h1>Portfolio Requirements</h1>
+          <p>Prepare your MFA application portfolio for the Yale School of Art with these guidelines, format specifications, and tips for effective submission.</p>
+        </div>
+
+        <div class="req-section-title">Portfolio Submission Guidelines</div>
+
+        <div class="req-item">
+          <div class="req-item-icon">🔵</div>
+          <div class="req-item-text">
+            <strong>Digital Portfolio Only</strong>
+            <span>Submit 15–20 recent works</span>
+          </div>
+        </div>
+
+        <div class="req-item">
+          <div class="req-item-icon">📋</div>
+          <div class="req-item-text">
+            <span>Accepted Media Formats: JPEG / PDF / MOV / PID</span>
+          </div>
+          <a href="ApplicationFormFrame.html" class="btn-primary" style="padding:9px 16px;font-size:0.82rem;white-space:nowrap;">Start Application</a>
+        </div>
+
+        <div class="deadline-banner">
+          <div class="deadline-banner-icon">📅</div>
+          <div>
+            <h3>Fall 2025 MFA Application Deadlines</h3>
+            <p>Keep track of the key dates for applying to the MFA program.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="sidebar-card helpful-tips">
+          <h3>Helpful Tips</h3>
+          <ul>
+            <li>Select Your Best Work</li>
+            <li>Showcase Artistic Growth</li>
+            <li>Demonstrate your development and progress over time.</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card contact-admissions-box">
+          <h3>Contact Admissions</h3>
+          <div class="icon-row">
+            <span>✉️</span>
+            <p>Have questions? We're here to help.</p>
+          </div>
+          <a href="ContactFrame.html" class="btn-secondary" style="display:block;text-align:center;padding:9px;font-size:0.85rem;">Send a Message</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="logo-y">Y</span>
+        <span style="font-size:0.85rem;margin-left:6px;">Yale School of Art</span>
+      </div>
+      <div class="footer-contact">
+        admissions@yale.edu <span>|</span> 203-432-2606
+      </div>
+      <div class="footer-links">
+        <a href="ContactFrame.html">Campus Visit</a>
+        <a href="FAQFrame.html">FAQ</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/darkmode.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>
