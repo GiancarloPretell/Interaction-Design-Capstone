@@ -161,11 +161,20 @@ body.dark-mode .support-card h3 { color: var(--text); }
 }
 
 /* Program Detail Page */
-.program-detail-layout {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 28px;
-  align-items: start;
+.program-detail-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  border-radius: 33px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.program-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 28px;
 }
 
 .program-detail-header {

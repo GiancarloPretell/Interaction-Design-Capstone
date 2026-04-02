@@ -1,79 +1,103 @@
-/* Event Detail Page (Lectures, Open House, Workshops) */
+/* ============================================================
+   Event Detail Page Styles
+   Used for:
+   - Guest Lectures
+   - Open House
+   - Workshops
+   ============================================================ */
+
+/* ---------- Main two-column event layout ---------- */
 .event-detail-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 1fr 330px;
   gap: 28px;
   align-items: start;
 }
 
+/* ---------- Event header section ---------- */
 .event-detail-header {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
+/* Icon next to the title */
 .event-detail-icon {
-  font-size: 2.4rem;
+  font-size: 2rem;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
+/* Main event title */
 .event-detail-header h1 {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.1rem;
   color: var(--navy);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  line-height: 1.05;
 }
 
-body.dark-mode .event-detail-header h1 { color: var(--text); }
+body.dark-mode .event-detail-header h1 {
+  color: var(--text);
+}
 
+/* Event subtitle / description under title */
 .event-detail-header p {
   font-size: 0.9rem;
   color: var(--text-muted);
-  max-width: 520px;
+  max-width: 620px;
+  line-height: 1.5;
 }
 
+/* ---------- Hero image area ---------- */
 .event-detail-image {
   width: 100%;
-  height: 220px;
-  border-radius: var(--radius);
-  object-fit: cover;
-  margin-bottom: 20px;
-  background: #c8d8ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
+  margin: 16px 0 22px;
+  border-radius: 28px;
+  overflow: hidden;
 }
 
+/* Main photo inside the rounded image block */
+.event-detail-image img,
+.event-detail-photo {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* ---------- About section ---------- */
 .event-about h2 {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-body.dark-mode .event-about h2 { color: var(--text); }
+body.dark-mode .event-about h2 {
+  color: var(--text);
+}
 
 .event-about p {
   font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
 }
 
+/* ---------- Bottom detail items grid ---------- */
 .event-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 16px;
+  gap: 18px;
+  margin-top: 20px;
 }
 
 .event-detail-item {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: flex-start;
 }
 
@@ -87,45 +111,53 @@ body.dark-mode .event-about h2 { color: var(--text); }
   display: block;
   font-size: 0.85rem;
   color: var(--navy);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
-body.dark-mode .event-detail-item strong { color: var(--text); }
+body.dark-mode .event-detail-item strong {
+  color: var(--text);
+}
 
 .event-detail-item span {
   font-size: 0.8rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
-/* Details sidebar */
+/* ---------- Sidebar card ---------- */
 .event-info-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
+  border-radius: 14px;
+  padding: 20px;
   box-shadow: var(--shadow);
 }
 
+/* Sidebar heading */
 .event-info-card h3 {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 12px;
 }
 
-body.dark-mode .event-info-card h3 { color: var(--text); }
+body.dark-mode .event-info-card h3 {
+  color: var(--text);
+}
 
+/* Event type pill */
 .event-type-badge {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 6px 14px;
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
+/* ---------- Event details table ---------- */
 .event-info-table {
   width: 100%;
   border-collapse: collapse;
@@ -133,31 +165,87 @@ body.dark-mode .event-info-card h3 { color: var(--text); }
 }
 
 .event-info-table td {
-  padding: 5px 0;
-  font-size: 0.83rem;
+  padding: 7px 0;
+  font-size: 0.82rem;
   vertical-align: top;
 }
 
+/* Left labels: Date, Time, Location */
 .event-info-table td:first-child {
   color: var(--text-light);
-  width: 38%;
-  font-weight: 500;
+  width: 90px;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-right: 16px;
 }
 
+/* Right values */
 .event-info-table td:last-child {
   color: var(--text-muted);
+  line-height: 1.45;
 }
 
+/* Divider description text */
 .event-sidebar-desc {
   font-size: 0.82rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 14px;
-  padding-top: 10px;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  padding-top: 14px;
   border-top: 1px solid var(--border);
 }
 
+/* Full width reserve button inside the card */
+.event-info-card .btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+/* ---------- Tablet ---------- */
 @media (max-width: 900px) {
-  .event-detail-layout { grid-template-columns: 1fr; }
-  .event-details-grid { grid-template-columns: 1fr; }
+  .event-detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .event-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-detail-image img,
+  .event-detail-photo {
+    height: 280px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .event-detail-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .event-detail-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .event-detail-image {
+    border-radius: 20px;
+  }
+
+  .event-detail-image img,
+  .event-detail-photo {
+    height: 220px;
+  }
+
+  .event-info-card {
+    padding: 18px;
+  }
+
+  .event-info-table td:first-child {
+    width: 80px;
+    padding-right: 12px;
+  }
 }
