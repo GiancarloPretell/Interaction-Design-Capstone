@@ -69,37 +69,36 @@ You can also view the deployed version here:
 ---
 
 ## Folder Structure
+```
 /Interaction-Design-Capstone
 │
 ├── css/
-│ └── Additional styling files for layout and responsiveness
+│   └── Additional styling files for layout and responsiveness
 │
 ├── images/
-│ └── All images and visual assets used in the website
+│   └── All images and visual assets used in the website
 │
 ├── js/
-│ └── JavaScript files for interactivity (menu toggle, etc.)
+│   └── JavaScript files for interactivity (menu toggle, etc.)
 │
 ├── pages/
-│ └── Additional HTML pages linked from the navigation (sub-pages of the site)
+│   └── Additional HTML pages linked from the navigation (sub-pages of the site)
 │
 ├── index.html
-│ └── Main landing page of the website
+│   └── Main landing page of the website
 │
 ├── style.css
-│ └── Main stylesheet for global styles and layout
+│   └── Main stylesheet for global styles and layout
 │
 ├── script.js
-│ └── Main JavaScript file controlling interactions like the hamburger menu
+│   └── Main JavaScript file controlling interactions like the hamburger menu
 │
 ├── README.md
-│ └── Project documentation and setup instructions
+│   └── Project documentation and setup instructions
 │
 ├── Figma Frames.zip
-│ └── Screenshots/reference designs from the original Figma prototype
-
-
----
+│   └── Screenshots/reference designs from the original Figma prototype
+```
 
 ## Design Notes
 - The layout closely follows the Figma design
