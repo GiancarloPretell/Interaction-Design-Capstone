@@ -38,15 +38,18 @@ body.dark-mode .home-hero h1 { color: var(--text); }
 
 .search-input-row input {
   flex: 1;
+  min-width: 0;
   border: none;
   outline: none;
   padding: 10px 14px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background: transparent;
   color: var(--text);
+  text-overflow: ellipsis;
 }
 
 .search-input-row input::placeholder { color: var(--text-light); }
+.search-input-row input:focus::placeholder { color: transparent; }
 
 .search-input-row button {
   background: var(--blue);

@@ -48,7 +48,6 @@
     if (searchBtn) {
       searchBtn.addEventListener('click', () => {
         const q = input.value.trim();
-        if (q) console.log('Searching for:', q);
       });
     }
 

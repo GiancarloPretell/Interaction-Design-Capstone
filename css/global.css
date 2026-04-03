@@ -26,13 +26,13 @@
 
 /* ---------- Dark Mode Variables ---------- */
 body.dark-mode {
-  --bg: #808080;
-  --bg-card: #6e6e6e;
-  --border: #5a5a5a;
+  --bg: #1a1a1a;
+  --bg-card: #2a2a2a;
+  --border: #3d3d3d;
   --text: #f0f0f0;
-  --text-muted: #ccc;
-  --text-light: #aaa;
-  --shadow: 0 1px 4px rgba(0,0,0,0.3);
+  --text-muted: #b0b0b0;
+  --text-light: #787878;
+  --shadow: 0 1px 6px rgba(0,0,0,0.4);
 }
 
 /* ---------- Reset ---------- */
@@ -196,10 +196,11 @@ body.dark-mode .nav-btn:hover {
 /* Dark mode toggle button */
 .dark-toggle {
   background: none;
-  border: none;
+  border: 1px solid var(--border);
   cursor: pointer;
   font-size: 1.2rem;
-  padding: 6px 8px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   color: var(--text);
   transition: background var(--transition);
@@ -207,8 +208,10 @@ body.dark-mode .nav-btn:hover {
   flex-shrink: 0;
 }
 
-.dark-toggle:hover {
-  background: var(--border);
+@media (hover: hover) {
+  .dark-toggle:hover {
+    background: var(--border);
+  }
 }
 
 /* Hamburger menu (mobile only) */
@@ -231,7 +234,7 @@ body.dark-mode .nav-btn:hover {
   left: 0;
   right: 0;
   z-index: 200;
-  background: #ffffff;
+  background: var(--bg-card);
   flex-direction: column;
 }
 
@@ -243,14 +246,14 @@ body.dark-mode .nav-btn:hover {
   display: flex;
   justify-content: flex-end;
   padding: 12px 16px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid var(--border);
 }
 
 .mobile-menu-close {
   background: none;
   border: none;
   font-size: 1.4rem;
-  color: #000000;
+  color: var(--text);
   cursor: pointer;
   padding: 10px 18px;
   margin-left: auto;
@@ -259,8 +262,8 @@ body.dark-mode .nav-btn:hover {
 .mobile-menu a {
   display: block;
   padding: 14px 24px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-  color: #000000;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
   font-size: 1rem;
   font-weight: 500;
   text-align: center;
@@ -452,10 +455,6 @@ body.dark-mode .btn-secondary {
   cursor: pointer;
 }
 
-.form-select.open {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 7l5-5 5 5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-}
-
 .error-msg {
   color: var(--red);
   font-size: 0.75rem;
@@ -568,10 +567,10 @@ body.dark-mode .sidebar-card h3 {
     display: none;
   }
 
-  .dark-toggle {
-    display: none;
+  .hamburger {
+    display: block;
+    margin-left: -90px;
   }
-
   .hamburger {
     display: block;
   }

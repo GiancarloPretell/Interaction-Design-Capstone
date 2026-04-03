@@ -7,7 +7,7 @@
 
     // Update all toggle buttons
     document.querySelectorAll('.dark-toggle').forEach(btn => {
-      btn.textContent = dark ? '☀' : '☾';
+      btn.textContent = dark ? ' ☀ ' : ' ☾ ';
     });
   }
 

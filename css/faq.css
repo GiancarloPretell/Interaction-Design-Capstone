@@ -27,18 +27,6 @@ body.dark-mode .faq-header h1 { color: var(--text); }
   max-width: 500px;
 }
 
-.faq-breadcrumb {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.faq-breadcrumb a {
-  font-size: 0.82rem;
-  color: var(--blue);
-  text-decoration: none;
-}
-
 .popular-questions-title {
   font-size: 1.05rem;
   font-weight: 700;
