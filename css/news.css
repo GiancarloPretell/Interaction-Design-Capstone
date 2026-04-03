@@ -1,0 +1,120 @@
+/* ---------- Header ---------- */
+.news-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.news-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+body.dark-mode .news-header h1 {
+  color: var(--text);
+}
+
+.news-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Grid ---------- */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  /* 🔥 THIS FIXES THE BORDER STRETCH ISSUE */
+  align-items: start;
+}
+
+/* ---------- Card ---------- */
+.news-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover */
+.news-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Active card */
+.news-card.active {
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ---------- Image ---------- */
+.news-card-image img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.news-card-image {
+  width: 100%;
+  height: 160px;
+  background: #c8d8ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Body ---------- */
+.news-card-body {
+  padding: 16px;
+}
+
+/* Title */
+.news-card-body h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+body.dark-mode .news-card-body h3 {
+  color: var(--text);
+}
+
+/* Short text */
+.news-card-body p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ---------- Expandable Content ---------- */
+.news-extra {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+}
+
+.news-card.active .news-extra {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
