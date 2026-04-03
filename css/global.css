@@ -78,7 +78,7 @@ img {
   transition: background var(--transition);
 }
 
-/* Navbar container controls overall width and alignment */
+/* Navbar container */
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -108,7 +108,7 @@ body.dark-mode .nav-logo {
   color: var(--text);
 }
 
-/* The Yale "Y" */
+/* Yale "Y" */
 .logo-y {
   font-family: var(--font-serif);
   font-size: 1.35rem;
@@ -123,14 +123,14 @@ body.dark-mode .logo-y {
   color: var(--text);
 }
 
-/* Separator line between Y and school name */
+/* Vertical separator */
 .logo-sep {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1;
 }
 
-/* Text: Yale School of Art */
+/* Site name */
 .logo-name {
   font-size: 0.92rem;
   font-weight: 600;
@@ -145,7 +145,7 @@ body.dark-mode .logo-y {
   margin-left: auto;
 }
 
-/* Rounded nav buttons */
+/* Nav buttons */
 .nav-btn {
   display: inline-block;
   padding: 8px 16px;
@@ -262,7 +262,7 @@ body.dark-mode .nav-btn:hover {
   width: 100%;
 }
 
-/* Optional desktop scaling to keep the site closer to your current look */
+/* Optional desktop scaling */
 @media (min-width: 769px) {
   .main-content {
     zoom: 1.25;

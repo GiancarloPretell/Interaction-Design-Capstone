@@ -51,14 +51,16 @@ body.dark-mode .event-detail-header h1 {
 }
 
 /* ---------- Hero image area ---------- */
+/* Rounded image wrapper */
 .event-detail-image {
   width: 100%;
   margin: 16px 0 22px;
   border-radius: 28px;
   overflow: hidden;
+  background: transparent;
 }
 
-/* Main photo inside the rounded image block */
+/* Main photo */
 .event-detail-image img,
 .event-detail-photo {
   width: 100%;
@@ -195,7 +197,7 @@ body.dark-mode .event-info-card h3 {
   border-top: 1px solid var(--border);
 }
 
-/* Full width reserve button inside the card */
+/* Full-width reserve button */
 .event-info-card .btn-primary {
   display: block;
   width: 100%;
@@ -233,8 +235,11 @@ body.dark-mode .event-info-card h3 {
 
   .event-detail-image {
     border-radius: 20px;
+    margin: 16px 0 20px;
   }
 
+  /* IMPORTANT:
+     On mobile, let the image size feel more natural */
   .event-detail-image img,
   .event-detail-photo {
     height: 220px;
