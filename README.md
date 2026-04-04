@@ -34,8 +34,6 @@ You can also view the deployed version here:
 ## Project Features
 
 ### Mobile-First Design
-- Built starting from smaller screens (~375px)
-- Media queries used to scale up to desktop (~1280px)
 - Text is readable without zoom
 - Buttons are large enough to tap
 - No horizontal scrolling on mobile
@@ -87,33 +85,14 @@ You can also view the deployed version here:
 ├── index.html
 │   └── Main landing page of the website
 │
-├── style.css
-│   └── Main stylesheet for global styles and layout
-│
-├── script.js
-│   └── Main JavaScript file controlling interactions like the hamburger menu
-│
 ├── README.md
 │   └── Project documentation and setup instructions
-│
-├── Figma Frames.zip
-│   └── Screenshots/reference designs from the original Figma prototype
 ```
 
 ## Design Notes
 - The layout closely follows the Figma design
 - Consistent fonts, colors, and spacing across all screen sizes
 - Responsive behavior keeps the design unified between mobile and desktop
-
----
-
-## Checklist (Completed Before Submission)
-- [x] Mobile-first layout implemented  
-- [x] Hamburger menu works on mobile (~375px)  
-- [x] Desktop navigation is visible (~1280px)  
-- [x] No horizontal overflow on mobile  
-- [x] All links between pages work  
-- [x] Consistent styling across screen sizes  
 
 ---
 

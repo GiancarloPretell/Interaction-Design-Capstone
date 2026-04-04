@@ -52,13 +52,9 @@ html {
     display: none;
   }
 
-  /* Hide scrollbar for Firefox */
+  /* Hide scrollbar for Firefox and IE/old Edge*/
   html, body {
     scrollbar-width: none;
-  }
-
-  /* Hide scrollbar for IE/old Edge */
-  html, body {
     -ms-overflow-style: none;
   }
 }
@@ -205,6 +201,7 @@ body.dark-mode .nav-btn:hover {
   color: var(--text);
   transition: background var(--transition);
   margin-left: 4px;
+  padding: 0px 0px 3px 1px;
   flex-shrink: 0;
 }
 
@@ -255,7 +252,7 @@ body.dark-mode .nav-btn:hover {
   font-size: 1.4rem;
   color: var(--text);
   cursor: pointer;
-  padding: 10px 18px;
+  padding: 9px 17px;
   margin-left: auto;
 }
 
@@ -270,7 +267,7 @@ body.dark-mode .nav-btn:hover {
 }
 
 .mobile-menu a:hover {
-  background: rgba(255,255,255,0.1);
+  background: var(--border);
 }
 
 /* ---------- Main Content ---------- */
@@ -282,7 +279,7 @@ body.dark-mode .nav-btn:hover {
   width: 100%;
 }
 
-/* Optional desktop scaling */
+/* Desktop scaling */
 @media (min-width: 769px) {
   .main-content {
     zoom: 1.25;
@@ -570,9 +567,6 @@ body.dark-mode .sidebar-card h3 {
   .hamburger {
     display: block;
     margin-left: -90px;
-  }
-  .hamburger {
-    display: block;
   }
 
   .main-content {
