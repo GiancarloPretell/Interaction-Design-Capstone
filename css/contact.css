@@ -11,7 +11,6 @@
    in global.css, such as --font-serif, --navy, --text, --bg-card, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    CONTACT PAGE HEADER
    --------------------------------------------------------------------------
@@ -20,27 +19,28 @@
    -------------------------------------------------------------------------- */
 
 .contact-header {
-  text-align: center;   /* Center-aligns both the heading and paragraph */
-  margin-bottom: 36px;  /* Generous space below header before the cards */
+  text-align: center; /* Center-aligns both the heading and paragraph */
+  margin-bottom: 36px; /* Generous space below header before the cards */
 }
 
 .contact-header h1 {
-  font-family: var(--font-serif);  /* Elegant serif font for the main title */
-  font-size: 2.4rem;               /* Large, prominent heading size */
-  color: var(--navy);              /* Yale navy blue for brand consistency */
-  margin-bottom: 10px;             /* Space between title and subtitle */
+  font-family: var(--font-serif); /* Elegant serif font for the main title */
+  font-size: 2.4rem; /* Large, prominent heading size */
+  color: var(--navy); /* Yale navy blue for brand consistency */
+  margin-bottom: 10px; /* Space between title and subtitle */
 }
 
 /* Dark mode override: switches heading to general text color for readability */
-body.dark-mode .contact-header h1 { color: var(--text); }
-
-.contact-header p {
-  font-size: 0.95rem;     /* Slightly smaller than body text */
-  color: var(--text-muted);
-  max-width: 500px;       /* Prevents the text from stretching too wide */
-  margin: 0 auto;         /* Centers the paragraph within the header */
+body.dark-mode .contact-header h1 {
+  color: var(--text);
 }
 
+.contact-header p {
+  font-size: 0.95rem; /* Slightly smaller than body text */
+  color: var(--text-muted);
+  max-width: 500px; /* Prevents the text from stretching too wide */
+  margin: 0 auto; /* Centers the paragraph within the header */
+}
 
 /* --------------------------------------------------------------------------
    CONTACT CARDS GRID
@@ -51,12 +51,11 @@ body.dark-mode .contact-header h1 { color: var(--text); }
 
 .contact-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 equal-width columns */
-  gap: 20px;                              /* Space between cards */
-  max-width: 900px;                       /* Caps the grid width for readability */
-  margin: 0 auto;                         /* Centers the grid on the page */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+  gap: 20px; /* Space between cards */
+  max-width: 900px; /* Caps the grid width for readability */
+  margin: 0 auto; /* Centers the grid on the page */
 }
-
 
 /* --------------------------------------------------------------------------
    INDIVIDUAL CONTACT CARD
@@ -67,49 +66,50 @@ body.dark-mode .contact-header h1 { color: var(--text); }
    -------------------------------------------------------------------------- */
 
 .contact-card {
-  background: var(--bg-card);        /* White (or dark) card background */
-  border: 1px solid var(--border);   /* Subtle outline for definition */
-  border-radius: var(--radius);      /* Rounded corners matching site standard */
-  padding: 28px 20px;                /* Generous vertical padding, narrower horizontal */
-  text-align: center;                /* Centers all card content */
-  box-shadow: var(--shadow);         /* Light shadow for elevation/depth */
+  background: var(--bg-card); /* White (or dark) card background */
+  border: 1px solid var(--border); /* Subtle outline for definition */
+  border-radius: var(--radius); /* Rounded corners matching site standard */
+  padding: 28px 20px; /* Generous vertical padding, narrower horizontal */
+  text-align: center; /* Centers all card content */
+  box-shadow: var(--shadow); /* Light shadow for elevation/depth */
 }
 
 /* Emoji or icon displayed above the card title */
 .contact-card-icon {
-  font-size: 2rem;      /* Large icon for visual impact */
-  margin-bottom: 12px;  /* Space between icon and card title */
+  font-size: 2rem; /* Large icon for visual impact */
+  margin-bottom: 12px; /* Space between icon and card title */
 }
 
 /* Card title (e.g. "Phone", "Email", "Visit Us") */
 .contact-card h3 {
-  font-size: 1rem;       /* Standard body size for the label */
-  font-weight: 700;      /* Bold for hierarchy */
-  color: var(--navy);    /* Yale navy */
-  margin-bottom: 6px;    /* Tight spacing before the value */
+  font-size: 1rem; /* Standard body size for the label */
+  font-weight: 700; /* Bold for hierarchy */
+  color: var(--navy); /* Yale navy */
+  margin-bottom: 6px; /* Tight spacing before the value */
 }
 
 /* Dark mode override for card title */
-body.dark-mode .contact-card h3 { color: var(--text); }
+body.dark-mode .contact-card h3 {
+  color: var(--text);
+}
 
 /* The actual contact value — phone number, email address, etc. */
 .contact-card .contact-value {
   font-size: 0.9rem;
-  color: var(--blue);       /* Blue to signal it's a clickable link */
-  font-weight: 600;         /* Semi-bold for emphasis */
-  text-decoration: none;    /* No underline by default */
-  display: block;           /* Block so it sits on its own line */
-  margin-bottom: 16px;      /* Space before additional info below */
+  color: var(--blue); /* Blue to signal it's a clickable link */
+  font-weight: 600; /* Semi-bold for emphasis */
+  text-decoration: none; /* No underline by default */
+  display: block; /* Block so it sits on its own line */
+  margin-bottom: 16px; /* Space before additional info below */
 }
 
 /* Multi-line address text for location cards */
 .contact-card .contact-address {
   font-size: 0.85rem;
   color: var(--text-muted);
-  line-height: 1.6;    /* Generous line spacing for multi-line addresses */
+  line-height: 1.6; /* Generous line spacing for multi-line addresses */
   margin-bottom: 16px;
 }
-
 
 /* --------------------------------------------------------------------------
    RESPONSIVE / MOBILE STYLES
@@ -120,8 +120,12 @@ body.dark-mode .contact-card h3 { color: var(--text); }
 
 @media (max-width: 700px) {
   /* Stack cards vertically instead of side-by-side */
-  .contact-cards { grid-template-columns: 1fr; }
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
 
   /* Smaller heading on mobile */
-  .contact-header h1 { font-size: 1.8rem; }
+  .contact-header h1 {
+    font-size: 1.8rem;
+  }
 }

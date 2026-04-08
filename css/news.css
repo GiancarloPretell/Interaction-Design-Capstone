@@ -12,7 +12,6 @@
    --font-serif, --navy, --blue, --text-muted, --bg-card, --border, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    NEWS PAGE HEADER
    --------------------------------------------------------------------------
@@ -21,15 +20,15 @@
    -------------------------------------------------------------------------- */
 
 .news-header {
-  text-align: center;    /* Centers the heading and description */
-  margin-bottom: 32px;   /* Space between header and the card grid below */
+  text-align: center; /* Centers the heading and description */
+  margin-bottom: 32px; /* Space between header and the card grid below */
 }
 
 .news-header h1 {
-  font-family: var(--font-serif);  /* Elegant serif font for the heading */
-  font-size: 2.4rem;               /* Large, prominent title */
-  color: var(--navy);              /* Yale navy blue */
-  margin-bottom: 6px;              /* Tight gap before the description */
+  font-family: var(--font-serif); /* Elegant serif font for the heading */
+  font-size: 2.4rem; /* Large, prominent title */
+  color: var(--navy); /* Yale navy blue */
+  margin-bottom: 6px; /* Tight gap before the description */
 }
 
 /* Dark mode override for the news page title */
@@ -43,7 +42,6 @@ body.dark-mode .news-header h1 {
   color: var(--text-muted);
 }
 
-
 /* --------------------------------------------------------------------------
    NEWS GRID
    --------------------------------------------------------------------------
@@ -54,14 +52,13 @@ body.dark-mode .news-header h1 {
 
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 equal-width columns */
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
   gap: 20px;
 
   /* align-items: start prevents cards from stretching vertically
      to match tallest sibling — important for variable-height expandable cards */
   align-items: start;
 }
-
 
 /* --------------------------------------------------------------------------
    NEWS CARD
@@ -75,26 +72,27 @@ body.dark-mode .news-header h1 {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;        /* Clips the image to the card's border-radius */
+  overflow: hidden; /* Clips the image to the card's border-radius */
   box-shadow: var(--shadow);
-  cursor: pointer;         /* Indicates the card is clickable */
+  cursor: pointer; /* Indicates the card is clickable */
   display: flex;
-  flex-direction: column;  /* Stacks image on top of card body text */
+  flex-direction: column; /* Stacks image on top of card body text */
 
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 /* Slightly deeper shadow on hover for interactivity feedback */
 .news-card:hover {
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* Active state: card scales up and gets a stronger shadow to indicate selection */
 .news-card.active {
   transform: scale(1.01);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
-
 
 /* --------------------------------------------------------------------------
    CARD IMAGE
@@ -106,20 +104,19 @@ body.dark-mode .news-header h1 {
 /* Image tag inside the image wrapper */
 .news-card-image img {
   width: 100%;
-  height: 160px;        /* Fixed height for consistent card layout */
-  object-fit: cover;    /* Crops the image to fill the area without distorting */
+  height: 160px; /* Fixed height for consistent card layout */
+  object-fit: cover; /* Crops the image to fill the area without distorting */
 }
 
 /* Fallback placeholder shown when no image is available */
 .news-card-image {
   width: 100%;
   height: 160px;
-  background: #c8d8ec;  /* Light blue placeholder background */
+  background: #c8d8ec; /* Light blue placeholder background */
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 
 /* --------------------------------------------------------------------------
    CARD BODY
@@ -129,7 +126,7 @@ body.dark-mode .news-header h1 {
    -------------------------------------------------------------------------- */
 
 .news-card-body {
-  padding: 16px;  /* Inner padding around the text content */
+  padding: 16px; /* Inner padding around the text content */
 }
 
 /* Article title */
@@ -138,7 +135,7 @@ body.dark-mode .news-header h1 {
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 8px;
-  line-height: 1.3;   /* Tighter line height for multi-line titles */
+  line-height: 1.3; /* Tighter line height for multi-line titles */
 }
 
 /* Dark mode override for article titles */
@@ -153,7 +150,6 @@ body.dark-mode .news-card-body h3 {
   line-height: 1.5;
 }
 
-
 /* --------------------------------------------------------------------------
    EXPANDABLE CONTENT
    --------------------------------------------------------------------------
@@ -165,20 +161,22 @@ body.dark-mode .news-card-body h3 {
 /* Hidden by default — zero height, invisible, no top margin */
 .news-extra {
   max-height: 0;
-  overflow: hidden;  /* Hides content that exceeds the max-height */
+  overflow: hidden; /* Hides content that exceeds the max-height */
   opacity: 0;
   margin-top: 0;
 
-  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    margin-top 0.25s ease;
 }
 
 /* Revealed when card is active — animates to full height and full opacity */
 .news-card.active .news-extra {
-  max-height: 500px;  /* Large enough to accommodate any article length */
+  max-height: 500px; /* Large enough to accommodate any article length */
   opacity: 1;
-  margin-top: 12px;   /* Space between teaser and expanded content */
+  margin-top: 12px; /* Space between teaser and expanded content */
 }
-
 
 /* --------------------------------------------------------------------------
    RESPONSIVE / MOBILE STYLES

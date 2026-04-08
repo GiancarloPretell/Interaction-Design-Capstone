@@ -20,13 +20,12 @@
  */
 const cards = document.querySelectorAll(".news-card");
 
-cards.forEach(card => {
+cards.forEach((card) => {
   card.addEventListener("click", () => {
-
     const isActive = card.classList.contains("active");
 
     // Collapse all cards before applying new state
-    cards.forEach(c => {
+    cards.forEach((c) => {
       c.classList.remove("active", "expanded");
     });
 

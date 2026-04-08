@@ -12,7 +12,6 @@
    --font-serif, --navy, --blue, --text-muted, --bg-card, --border, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    EVENTS PAGE HEADER
    --------------------------------------------------------------------------
@@ -21,24 +20,26 @@
    -------------------------------------------------------------------------- */
 
 .events-header {
-  margin-bottom: 24px;  /* Space below header before the filter tabs */
+  margin-bottom: 24px; /* Space below header before the filter tabs */
 }
 
 .events-header h1 {
-  font-family: var(--font-serif);  /* Serif font for the main heading */
-  font-size: 2.2rem;               /* Large, prominent title */
-  color: var(--navy);              /* Yale navy blue */
-  margin-bottom: 8px;              /* Gap between title and description */
+  font-family: var(--font-serif); /* Serif font for the main heading */
+  font-size: 2.2rem; /* Large, prominent title */
+  color: var(--navy); /* Yale navy blue */
+  margin-bottom: 8px; /* Gap between title and description */
 }
 
 /* Dark mode override for the page title */
-body.dark-mode .events-header h1 { color: var(--text); }
+body.dark-mode .events-header h1 {
+  color: var(--text);
+}
 
 /* Short description below the main heading */
 .events-header p {
   font-size: 0.9rem;
   color: var(--text-muted);
-  max-width: 600px;  /* Prevents the text from stretching too wide */
+  max-width: 600px; /* Prevents the text from stretching too wide */
 }
 
 /* Section label above the list of event cards */
@@ -46,12 +47,13 @@ body.dark-mode .events-header h1 { color: var(--text); }
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 14px;  /* Gap before the event cards begin */
+  margin-bottom: 14px; /* Gap before the event cards begin */
 }
 
 /* Dark mode override for the section label */
-body.dark-mode .upcoming-events-title { color: var(--text); }
-
+body.dark-mode .upcoming-events-title {
+  color: var(--text);
+}
 
 /* --------------------------------------------------------------------------
    FILTER TABS
@@ -61,21 +63,23 @@ body.dark-mode .upcoming-events-title { color: var(--text); }
    -------------------------------------------------------------------------- */
 
 .filter-tabs {
-  display: flex;       /* Horizontal row of tabs */
-  gap: 8px;            /* Space between each tab pill */
+  display: flex; /* Horizontal row of tabs */
+  gap: 8px; /* Space between each tab pill */
   margin-bottom: 20px; /* Space below tabs before the event list */
-  flex-wrap: wrap;     /* Allows tabs to wrap on small screens */
+  flex-wrap: wrap; /* Allows tabs to wrap on small screens */
 }
 
 .filter-tab {
-  padding: 6px 16px;                /* Compact pill padding */
+  padding: 6px 16px; /* Compact pill padding */
   border: 1px solid var(--border);
-  border-radius: 20px;              /* Fully rounded pill shape */
+  border-radius: 20px; /* Fully rounded pill shape */
   font-size: 0.8rem;
   cursor: pointer;
   background: var(--bg-card);
   color: var(--text);
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 /* Active state: filled blue background with white text */
@@ -86,8 +90,9 @@ body.dark-mode .upcoming-events-title { color: var(--text); }
 }
 
 /* Subtle hover state for inactive tabs */
-.filter-tab:hover:not(.active) { background: var(--bg); }
-
+.filter-tab:hover:not(.active) {
+  background: var(--bg);
+}
 
 /* --------------------------------------------------------------------------
    EVENT CARDS
@@ -102,19 +107,19 @@ body.dark-mode .upcoming-events-title { color: var(--text); }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 16px 18px;
-  display: flex;           /* Horizontal layout: badge | info */
+  display: flex; /* Horizontal layout: badge | info */
   align-items: center;
-  gap: 16px;               /* Space between date badge and event info */
-  margin-bottom: 12px;     /* Stack cards with space between them */
+  gap: 16px; /* Space between date badge and event info */
+  margin-bottom: 12px; /* Stack cards with space between them */
   box-shadow: var(--shadow);
 }
 
 /* Colored date block on the left side of each event card */
 .event-date-badge {
   display: flex;
-  flex-direction: column;   /* Month on top, day number below */
+  flex-direction: column; /* Month on top, day number below */
   align-items: center;
-  min-width: 52px;          /* Fixed width to keep all badges the same size */
+  min-width: 52px; /* Fixed width to keep all badges the same size */
   background: var(--blue);
   color: #fff;
   border-radius: 8px;
@@ -134,11 +139,13 @@ body.dark-mode .upcoming-events-title { color: var(--text); }
 .event-date-badge .day {
   font-size: 1.4rem;
   font-weight: 700;
-  line-height: 1;   /* Removes extra space above/below the number */
+  line-height: 1; /* Removes extra space above/below the number */
 }
 
 /* Event info container fills remaining card width */
-.event-info { flex: 1; }
+.event-info {
+  flex: 1;
+}
 
 /* Event title */
 .event-info h3 {
@@ -149,7 +156,9 @@ body.dark-mode .upcoming-events-title { color: var(--text); }
 }
 
 /* Dark mode override for event title */
-body.dark-mode .event-info h3 { color: var(--text); }
+body.dark-mode .event-info h3 {
+  color: var(--text);
+}
 
 /* Event meta (e.g. "April 14 · 2:00 PM · Green Hall") */
 .event-info .event-meta {
@@ -161,9 +170,8 @@ body.dark-mode .event-info h3 { color: var(--text); }
 /* Short teaser description of the event */
 .event-info .event-desc {
   font-size: 0.8rem;
-  color: var(--text-light);  /* Lighter than muted — least important info */
+  color: var(--text-light); /* Lighter than muted — least important info */
 }
-
 
 /* --------------------------------------------------------------------------
    EVENT HIGHLIGHTS SIDEBAR
@@ -173,7 +181,7 @@ body.dark-mode .event-info h3 { color: var(--text); }
    -------------------------------------------------------------------------- */
 
 .event-highlights ul {
-  list-style: none;   /* Remove default bullets; custom bullets used below */
+  list-style: none; /* Remove default bullets; custom bullets used below */
   padding: 0;
   margin-bottom: 14px;
 }
@@ -182,13 +190,13 @@ body.dark-mode .event-info h3 { color: var(--text); }
 .event-highlights ul li {
   font-size: 0.83rem;
   color: var(--text-muted);
-  padding: 3px 0 3px 14px;   /* Left indent to make room for the custom bullet */
-  position: relative;         /* Needed for absolute positioning of ::before */
+  padding: 3px 0 3px 14px; /* Left indent to make room for the custom bullet */
+  position: relative; /* Needed for absolute positioning of ::before */
 }
 
 /* Custom blue bullet using a pseudo-element */
 .event-highlights ul li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--blue);

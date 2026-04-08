@@ -11,7 +11,6 @@
    --font-serif, --navy, --blue, --text-muted, --bg-card, --border, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    DEADLINES PAGE HEADER
    --------------------------------------------------------------------------
@@ -20,33 +19,35 @@
    -------------------------------------------------------------------------- */
 
 .deadlines-header {
-  margin-bottom: 28px;  /* Space below the header before timeline content */
+  margin-bottom: 28px; /* Space below the header before timeline content */
 }
 
 /* Large decorative emoji/icon above the title */
 .deadlines-header .page-icon {
-  font-size: 2.5rem;    /* Oversized for visual emphasis */
-  margin-bottom: 10px;  /* Gap between icon and tag label */
+  font-size: 2.5rem; /* Oversized for visual emphasis */
+  margin-bottom: 10px; /* Gap between icon and tag label */
 }
 
 .deadlines-header h1 {
-  font-family: var(--font-serif);  /* Serif font for elegance */
-  font-size: 2.2rem;               /* Large heading */
-  color: var(--navy);              /* Yale navy blue */
-  margin-bottom: 4px;              /* Tight spacing before the description text */
+  font-family: var(--font-serif); /* Serif font for elegance */
+  font-size: 2.2rem; /* Large heading */
+  color: var(--navy); /* Yale navy blue */
+  margin-bottom: 4px; /* Tight spacing before the description text */
 }
 
 /* Dark mode override for the main heading */
-body.dark-mode .deadlines-header h1 { color: var(--text); }
+body.dark-mode .deadlines-header h1 {
+  color: var(--text);
+}
 
 /* Small uppercase label displayed above the title (e.g. "Admissions · 2025") */
 .deadlines-header .tag {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-muted);
-  text-transform: uppercase;     /* All-caps for label style */
-  letter-spacing: 0.05em;        /* Wide letter spacing for readability at small size */
-  margin-bottom: 6px;            /* Space between tag and title */
+  text-transform: uppercase; /* All-caps for label style */
+  letter-spacing: 0.05em; /* Wide letter spacing for readability at small size */
+  margin-bottom: 6px; /* Space between tag and title */
 }
 
 /* Short description text below the heading */
@@ -60,12 +61,13 @@ body.dark-mode .deadlines-header h1 { color: var(--text); }
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 20px;  /* Space before the timeline list begins */
+  margin-bottom: 20px; /* Space before the timeline list begins */
 }
 
 /* Dark mode override for section sub-heading */
-body.dark-mode .key-dates-title { color: var(--text); }
-
+body.dark-mode .key-dates-title {
+  color: var(--text);
+}
 
 /* --------------------------------------------------------------------------
    TIMELINE
@@ -76,70 +78,80 @@ body.dark-mode .key-dates-title { color: var(--text); }
    -------------------------------------------------------------------------- */
 
 .timeline {
-  list-style: none;         /* Remove default bullet points */
-  position: relative;       /* Establishes positioning context for the ::before line */
-  padding-left: 32px;       /* Indent items to make room for the vertical line and dots */
+  list-style: none; /* Remove default bullet points */
+  position: relative; /* Establishes positioning context for the ::before line */
+  padding-left: 32px; /* Indent items to make room for the vertical line and dots */
 }
 
 /* The continuous vertical line running through all timeline items */
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
-  left: 10px;               /* Aligns the line with the center of the dot */
-  top: 12px;                /* Starts slightly inset from the very top */
-  bottom: 12px;             /* Ends slightly inset from the very bottom */
-  width: 2px;               /* Thin vertical line */
+  left: 10px; /* Aligns the line with the center of the dot */
+  top: 12px; /* Starts slightly inset from the very top */
+  bottom: 12px; /* Ends slightly inset from the very bottom */
+  width: 2px; /* Thin vertical line */
   background: var(--border);
 }
 
 /* Each individual timeline event */
 .timeline-item {
-  position: relative;    /* Needed for absolute positioning of the dot */
-  margin-bottom: 28px;   /* Vertical space between timeline events */
+  position: relative; /* Needed for absolute positioning of the dot */
+  margin-bottom: 28px; /* Vertical space between timeline events */
 }
 
 /* Circular dot indicator positioned on the timeline line */
 .timeline-dot {
   position: absolute;
-  left: -24px;              /* Pulls dot back into the left gutter, centered on the line */
-  top: 6px;                 /* Vertically aligns with the first line of the item text */
+  left: -24px; /* Pulls dot back into the left gutter, centered on the line */
+  top: 6px; /* Vertically aligns with the first line of the item text */
   width: 14px;
   height: 14px;
-  border-radius: 50%;       /* Makes it a circle */
-  background: var(--blue);  /* Default dot color: blue */
-  border: 2px solid var(--bg-card);  /* White ring between dot and outer ring */
+  border-radius: 50%; /* Makes it a circle */
+  background: var(--blue); /* Default dot color: blue */
+  border: 2px solid var(--bg-card); /* White ring between dot and outer ring */
   box-shadow: 0 0 0 2px var(--blue); /* Outer ring matches dot color */
 }
 
 /* Color variants for timeline dots to indicate urgency/status */
-.timeline-dot.yellow { background: #F59E0B; box-shadow: 0 0 0 2px #F59E0B; }  /* Upcoming/warning */
-.timeline-dot.blue   { background: var(--blue); box-shadow: 0 0 0 2px var(--blue); }  /* Active/default */
-.timeline-dot.gray   { background: #9CA3AF; box-shadow: 0 0 0 2px #9CA3AF; }   /* Past/inactive */
+.timeline-dot.yellow {
+  background: #f59e0b;
+  box-shadow: 0 0 0 2px #f59e0b;
+} /* Upcoming/warning */
+.timeline-dot.blue {
+  background: var(--blue);
+  box-shadow: 0 0 0 2px var(--blue);
+} /* Active/default */
+.timeline-dot.gray {
+  background: #9ca3af;
+  box-shadow: 0 0 0 2px #9ca3af;
+} /* Past/inactive */
 
 /* Timeline event title (e.g. "Application Opens") */
 .timeline-item h3 {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 2px;  /* Tight gap before the date */
+  margin-bottom: 2px; /* Tight gap before the date */
 }
 
 /* Dark mode override for event title */
-body.dark-mode .timeline-item h3 { color: var(--text); }
+body.dark-mode .timeline-item h3 {
+  color: var(--text);
+}
 
 /* The date string for the event */
 .timeline-item .date {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 2px;  /* Small gap before the description */
+  margin-bottom: 2px; /* Small gap before the description */
 }
 
 /* Short description of what the milestone means */
 .timeline-item .desc {
   font-size: 0.8rem;
-  color: var(--text-light);  /* Lighter than muted — least important info */
+  color: var(--text-light); /* Lighter than muted — least important info */
 }
-
 
 /* --------------------------------------------------------------------------
    DEADLINE SUMMARY SIDEBAR
@@ -150,33 +162,33 @@ body.dark-mode .timeline-item h3 { color: var(--text); }
    -------------------------------------------------------------------------- */
 
 .deadline-summary {
-  font-size: 0.85rem;  /* Small text for the compact sidebar table */
+  font-size: 0.85rem; /* Small text for the compact sidebar table */
 }
 
 /* Full-width table for the deadline rows */
 .deadline-summary table {
   width: 100%;
-  border-collapse: collapse;  /* Removes spacing between table cells */
+  border-collapse: collapse; /* Removes spacing between table cells */
 }
 
 /* Each table row cell */
 .deadline-summary td {
-  padding: 5px 0;          /* Minimal vertical padding for compact rows */
+  padding: 5px 0; /* Minimal vertical padding for compact rows */
   color: var(--text-muted);
 }
 
 /* Left column: the date label (e.g. "Nov 1") */
 .deadline-summary td:first-child {
-  color: var(--text-light);   /* Lighter color — secondary info */
-  font-size: 0.78rem;         /* Slightly smaller than the deadline name */
-  width: 45%;                 /* Fixed width for the date column */
+  color: var(--text-light); /* Lighter color — secondary info */
+  font-size: 0.78rem; /* Slightly smaller than the deadline name */
+  width: 45%; /* Fixed width for the date column */
 }
 
 /* "Next Steps" callout box at the bottom of the sidebar */
 .next-step-box {
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid var(--border);  /* Visual separator from the table above */
+  border-top: 1px solid var(--border); /* Visual separator from the table above */
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.5;
@@ -184,10 +196,12 @@ body.dark-mode .timeline-item h3 { color: var(--text); }
 
 /* Bold heading inside the next-step box (e.g. "Your Next Step:") */
 .next-step-box strong {
-  display: block;        /* Forces the heading onto its own line */
-  margin-bottom: 4px;    /* Small gap before the callout text */
+  display: block; /* Forces the heading onto its own line */
+  margin-bottom: 4px; /* Small gap before the callout text */
   color: var(--navy);
 }
 
 /* Dark mode override for the next-step heading */
-body.dark-mode .next-step-box strong { color: var(--text); }
+body.dark-mode .next-step-box strong {
+  color: var(--text);
+}

@@ -15,24 +15,24 @@
  */
 (function () {
   function init() {
-    const tabs  = document.querySelectorAll('.filter-tab');
-    const cards = document.querySelectorAll('.event-card');
-    if (!tabs.length) return;  // Exit early if no filter tabs exist on the page
+    const tabs = document.querySelectorAll(".filter-tab");
+    const cards = document.querySelectorAll(".event-card");
+    if (!tabs.length) return; // Exit early if no filter tabs exist on the page
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
         // Remove .active from all tabs, then mark the clicked tab as active
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
 
-        const filter = tab.dataset.filter;  // The category to filter by (e.g. "lecture")
+        const filter = tab.dataset.filter; // The category to filter by (e.g. "lecture")
 
-        cards.forEach(card => {
+        cards.forEach((card) => {
           // Show the card if filter is "all" or if the card's type matches the filter
-          if (filter === 'all' || card.dataset.type === filter) {
-            card.style.display = '';       // Restore default display (inherits from CSS)
+          if (filter === "all" || card.dataset.type === filter) {
+            card.style.display = ""; // Restore default display (inherits from CSS)
           } else {
-            card.style.display = 'none';   // Hide cards that don't match the active filter
+            card.style.display = "none"; // Hide cards that don't match the active filter
           }
         });
       });
@@ -40,8 +40,8 @@
   }
 
   // Run init after the DOM is fully parsed; if already parsed, run immediately
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }

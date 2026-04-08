@@ -15,7 +15,6 @@
    in global.css, such as --font-serif, --navy, --text, --bg-card, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — PAGE HEADER
    --------------------------------------------------------------------------
@@ -28,7 +27,7 @@
 }
 
 .programs-header h1 {
-  font-family: var(--font-serif);  /* Serif for the main display heading */
+  font-family: var(--font-serif); /* Serif for the main display heading */
   font-size: 2.2rem;
   color: var(--navy);
   margin-bottom: 8px;
@@ -43,9 +42,8 @@ body.dark-mode .programs-header h1 {
   font-size: 0.9rem;
   color: var(--text-muted);
   max-width: 580px;
-  margin: 0 auto;  /* Centers the subtitle paragraph under the heading */
+  margin: 0 auto; /* Centers the subtitle paragraph under the heading */
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — LAYOUT
@@ -55,11 +53,10 @@ body.dark-mode .programs-header h1 {
    -------------------------------------------------------------------------- */
 .programs-layout {
   display: grid;
-  grid-template-columns: 1fr 260px;  /* Main content + narrow sidebar */
+  grid-template-columns: 1fr 260px; /* Main content + narrow sidebar */
   gap: 28px;
   align-items: start;
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — PROGRAM CARDS GRID
@@ -68,7 +65,7 @@ body.dark-mode .programs-header h1 {
    -------------------------------------------------------------------------- */
 .program-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two equal-width program cards per row */
+  grid-template-columns: 1fr 1fr; /* Two equal-width program cards per row */
   gap: 18px;
 }
 
@@ -107,7 +104,6 @@ body.dark-mode .program-card h3 {
   line-height: 1.5;
   margin-bottom: 12px;
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — OUR APPROACH SECTION
@@ -157,12 +153,12 @@ body.dark-mode .approach-section h2 {
 .approach-item-icon {
   font-size: 1.2rem;
   flex-shrink: 0;
-  margin-top: 2px;  /* Optical alignment with the first line of text */
+  margin-top: 2px; /* Optical alignment with the first line of text */
 }
 
 /* Bold label above the description (e.g. "Studio Practice") */
 .approach-item strong {
-  display: block;  /* Forces the label onto its own line above the description */
+  display: block; /* Forces the label onto its own line above the description */
   font-size: 0.85rem;
   color: var(--navy);
   margin-bottom: 2px;
@@ -178,7 +174,6 @@ body.dark-mode .approach-item strong {
   font-size: 0.8rem;
   color: var(--text-muted);
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — ADMISSIONS SUPPORT SIDEBAR
@@ -227,7 +222,6 @@ body.dark-mode .support-card h3 {
   line-height: 1.5;
 }
 
-
 /* --------------------------------------------------------------------------
    PROGRAMS LISTING — RESPONSIVE
    -------------------------------------------------------------------------- */
@@ -239,7 +233,7 @@ body.dark-mode .support-card h3 {
   }
 
   .program-cards {
-    grid-template-columns: 1fr;  /* Stack program cards vertically on tablet */
+    grid-template-columns: 1fr; /* Stack program cards vertically on tablet */
   }
 }
 
@@ -250,10 +244,9 @@ body.dark-mode .support-card h3 {
   }
 
   .approach-grid {
-    grid-template-columns: 1fr;  /* Approach items stack vertically on mobile */
+    grid-template-columns: 1fr; /* Approach items stack vertically on mobile */
   }
 }
-
 
 /* ==========================================================================
    PROGRAM DETAIL PAGE STYLES
@@ -268,17 +261,15 @@ body.dark-mode .support-card h3 {
    table and an Apply button).
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — MAIN TWO-COLUMN LAYOUT
    -------------------------------------------------------------------------- */
 .program-detail-layout {
   display: grid;
-  grid-template-columns: 1fr 330px;  /* Wide content column + fixed sidebar */
+  grid-template-columns: 1fr 330px; /* Wide content column + fixed sidebar */
   gap: 28px;
-  align-items: start;  /* Sidebar stays at the top rather than stretching */
+  align-items: start; /* Sidebar stays at the top rather than stretching */
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — HEADER SECTION
@@ -297,7 +288,7 @@ body.dark-mode .support-card h3 {
 .program-detail-icon {
   font-size: 2rem;
   flex-shrink: 0;
-  margin-top: 2px;  /* Optical alignment with the first line of the heading */
+  margin-top: 2px; /* Optical alignment with the first line of the heading */
 }
 
 /* Main program name heading */
@@ -306,7 +297,7 @@ body.dark-mode .support-card h3 {
   font-size: 2.1rem;
   color: var(--navy);
   margin-bottom: 4px;
-  line-height: 1.05;  /* Tight leading for large display text */
+  line-height: 1.05; /* Tight leading for large display text */
 }
 
 /* Dark mode override for the program heading */
@@ -322,7 +313,6 @@ body.dark-mode .program-detail-header h1 {
   line-height: 1.5;
 }
 
-
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — HERO IMAGE
    --------------------------------------------------------------------------
@@ -335,7 +325,7 @@ body.dark-mode .program-detail-header h1 {
   width: 100%;
   margin: 16px 0 22px;
   border-radius: 28px;
-  overflow: hidden;   /* Clips the image's square corners to the wrapper's radius */
+  overflow: hidden; /* Clips the image's square corners to the wrapper's radius */
   background: transparent;
 }
 
@@ -343,11 +333,10 @@ body.dark-mode .program-detail-header h1 {
 .program-detail-image img {
   width: 100%;
   height: 300px;
-  object-fit: cover;  /* Crops to fill without distorting aspect ratio */
+  object-fit: cover; /* Crops to fill without distorting aspect ratio */
   display: block;
-  border-radius: 0;   /* No inner radius — clipping is done by the wrapper */
+  border-radius: 0; /* No inner radius — clipping is done by the wrapper */
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — OVERVIEW SECTION
@@ -370,10 +359,9 @@ body.dark-mode .program-overview h2 {
 .program-overview p {
   font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.7;     /* Generous line spacing for comfortable reading */
+  line-height: 1.7; /* Generous line spacing for comfortable reading */
   margin-bottom: 18px;
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — FEATURES GRID
@@ -399,12 +387,12 @@ body.dark-mode .program-overview h2 {
 .program-feature-icon {
   font-size: 1rem;
   flex-shrink: 0;
-  margin-top: 2px;  /* Aligns icon optically with the first line of the label */
+  margin-top: 2px; /* Aligns icon optically with the first line of the label */
 }
 
 /* Bold feature label (e.g. "Studio Access") */
 .program-feature strong {
-  display: block;  /* Forces label onto its own line above the description */
+  display: block; /* Forces label onto its own line above the description */
   font-size: 0.85rem;
   color: var(--navy);
   margin-bottom: 4px;
@@ -421,7 +409,6 @@ body.dark-mode .program-feature strong {
   color: var(--text-muted);
   line-height: 1.5;
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — SIDEBAR CARD
@@ -451,7 +438,6 @@ body.dark-mode .program-details-card h3 {
   color: var(--text);
 }
 
-
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — DETAILS TABLE
    --------------------------------------------------------------------------
@@ -473,7 +459,7 @@ body.dark-mode .program-details-card h3 {
 /* Left column: row labels (e.g. "Degree", "Duration") */
 .program-details-table td:first-child {
   color: var(--text-light);
-  width: 95px;         /* Fixed width keeps values aligned across all rows */
+  width: 95px; /* Fixed width keeps values aligned across all rows */
   font-weight: 600;
   white-space: nowrap; /* Prevents labels from wrapping to a second line */
   padding-right: 16px;
@@ -492,7 +478,7 @@ body.dark-mode .program-details-card h3 {
   line-height: 1.55;
   margin-bottom: 16px;
   padding-top: 14px;
-  border-top: 1px solid var(--border);  /* Visual separator above the note */
+  border-top: 1px solid var(--border); /* Visual separator above the note */
 }
 
 /* Full-width Apply button at the bottom of the sidebar */
@@ -504,7 +490,6 @@ body.dark-mode .program-details-card h3 {
   border-radius: 12px;
 }
 
-
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — RESPONSIVE (TABLET, max 900px)
    --------------------------------------------------------------------------
@@ -513,18 +498,17 @@ body.dark-mode .program-details-card h3 {
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .program-detail-layout {
-    grid-template-columns: 1fr;  /* Single column: content above, sidebar below */
+    grid-template-columns: 1fr; /* Single column: content above, sidebar below */
   }
 
   .program-features {
-    grid-template-columns: 1fr;  /* Stack feature items vertically on tablet */
+    grid-template-columns: 1fr; /* Stack feature items vertically on tablet */
   }
 
   .program-detail-image img {
-    height: 280px;  /* Slightly shorter hero image on tablet */
+    height: 280px; /* Slightly shorter hero image on tablet */
   }
 }
-
 
 /* --------------------------------------------------------------------------
    PROGRAM DETAIL — RESPONSIVE (MOBILE, max 600px)
@@ -557,7 +541,7 @@ body.dark-mode .program-details-card h3 {
   .program-detail-header p {
     font-size: 0.95rem;
     line-height: 1.45;
-    max-width: 100%;  /* Allow full width on narrow screens */
+    max-width: 100%; /* Allow full width on narrow screens */
   }
 
   /* Let the image height be natural (auto) rather than fixed on mobile */
@@ -566,7 +550,7 @@ body.dark-mode .program-details-card h3 {
     height: auto;
     min-height: 0;
     margin: 16px 0 20px;
-    border-radius: 20px;  /* Slightly tighter corners on mobile */
+    border-radius: 20px; /* Slightly tighter corners on mobile */
     overflow: hidden;
     background: transparent;
   }
@@ -589,11 +573,11 @@ body.dark-mode .program-details-card h3 {
   }
 
   .program-details-card {
-    padding: 18px;  /* Slightly reduced padding on small screens */
+    padding: 18px; /* Slightly reduced padding on small screens */
   }
 
   .program-details-table td:first-child {
-    width: 85px;         /* Narrower label column on mobile */
+    width: 85px; /* Narrower label column on mobile */
     padding-right: 12px;
   }
 }

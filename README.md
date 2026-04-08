@@ -1,6 +1,7 @@
 # Assignment 10: Responsive Implementation
 
 ## Project Overview
+
 This project is a responsive implementation of our Figma prototype for the Interaction Design Capstone. The goal was to recreate the design using HTML, CSS, and JavaScript while keeping it as close as possible to the original prototype.
 
 The main focus of this assignment was building a mobile-first layout and ensuring the site works smoothly across both mobile and desktop screen sizes.
@@ -11,12 +12,12 @@ The main focus of this assignment was building a mobile-first layout and ensurin
 
 1. Download or clone the repository: git clone https://github.com/GiancarloPretell/Interaction-Design-Capstone.git
 
-2. Open the project folder:   cd Interaction-Design-Capstone
-
+2. Open the project folder: cd Interaction-Design-Capstone
 
 3. Run the project:
+
 - Open `index.html` in your browser (Chrome recommended)
-OR
+  OR
 - Use VS Code:
   - Install "Live Server"
   - Right click `index.html`
@@ -25,6 +26,7 @@ OR
 ---
 
 ## Live Website (GitHub Pages)
+
 You can also view the deployed version here:
 
 👉 https://giancarlopretell.github.io/Interaction-Design-Capstone/
@@ -34,6 +36,7 @@ You can also view the deployed version here:
 ## Project Features
 
 ### Mobile-First Design
+
 - Text is readable without zoom
 - Buttons are large enough to tap
 - No horizontal scrolling on mobile
@@ -41,6 +44,7 @@ You can also view the deployed version here:
 ---
 
 ### Responsive Navigation
+
 - **Mobile:**
 - Hamburger menu is implemented
 - Menu opens and closes on click
@@ -52,6 +56,7 @@ You can also view the deployed version here:
 ---
 
 ### Responsive Testing
+
 - Tested using Chrome DevTools:
 - Mobile (~375px)
 - Desktop (~1280px)
@@ -60,6 +65,7 @@ You can also view the deployed version here:
 ---
 
 ## Technologies Used
+
 - HTML5
 - CSS3 (Flexbox, Media Queries)
 - JavaScript (for hamburger menu + interactions)
@@ -67,6 +73,7 @@ You can also view the deployed version here:
 ---
 
 ## Folder Structure
+
 ```
 /Interaction-Design-Capstone
 │
@@ -90,6 +97,7 @@ You can also view the deployed version here:
 ```
 
 ## Design Notes
+
 - The layout closely follows the Figma design
 - Consistent fonts, colors, and spacing across all screen sizes
 - Responsive behavior keeps the design unified between mobile and desktop
@@ -97,4 +105,5 @@ You can also view the deployed version here:
 ---
 
 ## Repository Link
+
 https://github.com/GiancarloPretell/Interaction-Design-Capstone

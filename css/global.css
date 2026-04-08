@@ -15,7 +15,6 @@
    on the custom properties defined here and should be loaded after this file.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    CSS CUSTOM PROPERTIES (DESIGN TOKENS)
    --------------------------------------------------------------------------
@@ -24,38 +23,39 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Brand colors */
-  --navy: #1B2A4A;          /* Yale navy — used for headings and the navbar logo */
-  --blue: #1E5FAD;          /* Primary action color — buttons, links, focus rings */
-  --blue-hover: #174d91;    /* Darker blue for hover states on primary buttons */
+  --navy: #1b2a4a; /* Yale navy — used for headings and the navbar logo */
+  --blue: #1e5fad; /* Primary action color — buttons, links, focus rings */
+  --blue-hover: #174d91; /* Darker blue for hover states on primary buttons */
 
   /* Surface & border colors */
-  --bg: #E8F0F8;            /* Page background — a subtle cool blue-gray */
-  --bg-card: #FFFFFF;       /* Card and panel backgrounds */
-  --border: #C8D8EC;        /* Borders, dividers, and input outlines */
+  --bg: #e8f0f8; /* Page background — a subtle cool blue-gray */
+  --bg-card: #ffffff; /* Card and panel backgrounds */
+  --border: #c8d8ec; /* Borders, dividers, and input outlines */
 
   /* Text colors */
-  --text: #1a1a1a;          /* Primary body text */
-  --text-muted: #555;       /* Secondary / supporting text */
-  --text-light: #888;       /* Tertiary text: placeholders, labels, timestamps */
+  --text: #1a1a1a; /* Primary body text */
+  --text-muted: #555; /* Secondary / supporting text */
+  --text-light: #888; /* Tertiary text: placeholders, labels, timestamps */
 
   /* Semantic colors */
-  --green: #22C55E;         /* Success states (e.g. "Portal Open" badge) */
-  --red: #DC2626;           /* Error states, required-field indicators */
+  --green: #22c55e; /* Success states (e.g. "Portal Open" badge) */
+  --red: #dc2626; /* Error states, required-field indicators */
 
   /* Footer */
-  --footer-bg: #1B2A4A;     /* Dark navy background matching the brand */
-  --footer-text: #FFFFFF;
+  --footer-bg: #1b2a4a; /* Dark navy background matching the brand */
+  --footer-text: #ffffff;
 
   /* Typography */
-  --font-serif: Georgia, 'Times New Roman', serif;                                     /* Used for display headings */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; /* Used for body text and UI */
+  --font-serif:
+    Georgia, "Times New Roman", serif; /* Used for display headings */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; /* Used for body text and UI */
 
   /* Shared decoration */
-  --radius: 8px;                         /* Standard border-radius for cards, inputs, buttons */
-  --shadow: 0 1px 4px rgba(0,0,0,0.08); /* Subtle elevation shadow for cards */
-  --transition: 0.2s ease;              /* Default transition speed for interactive elements */
+  --radius: 8px; /* Standard border-radius for cards, inputs, buttons */
+  --shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* Subtle elevation shadow for cards */
+  --transition: 0.2s ease; /* Default transition speed for interactive elements */
 }
-
 
 /* --------------------------------------------------------------------------
    DARK MODE VARIABLE OVERRIDES
@@ -71,23 +71,24 @@ body.dark-mode {
   --text: #f0f0f0;
   --text-muted: #b0b0b0;
   --text-light: #787878;
-  --shadow: 0 1px 6px rgba(0,0,0,0.4);  /* Stronger shadow needed on dark backgrounds */
+  --shadow: 0 1px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow needed on dark backgrounds */
 }
-
 
 /* --------------------------------------------------------------------------
    CSS RESET
    --------------------------------------------------------------------------
    A minimal reset to remove inconsistent browser defaults.
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
-  box-sizing: border-box;  /* Include padding and border in element dimensions */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Include padding and border in element dimensions */
   margin: 0;
   padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
 /* Hide the scrollbar on mobile without disabling scrolling itself */
@@ -98,7 +99,8 @@ html {
   }
 
   /* Firefox and IE / old Edge */
-  html, body {
+  html,
+  body {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -109,13 +111,15 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  display: flex;              /* Enables sticky footer: content grows, footer stays at bottom */
+  display: flex; /* Enables sticky footer: content grows, footer stays at bottom */
   flex-direction: column;
-  transition: background var(--transition), color var(--transition);  /* Smooth dark mode switch */
+  transition:
+    background var(--transition),
+    color var(--transition); /* Smooth dark mode switch */
 }
 
 a {
-  color: inherit;      /* Links inherit the surrounding text color by default */
+  color: inherit; /* Links inherit the surrounding text color by default */
   text-decoration: none;
 }
 
@@ -126,7 +130,6 @@ img {
   border-radius: var(--radius);
 }
 
-
 /* --------------------------------------------------------------------------
    NAVBAR
    --------------------------------------------------------------------------
@@ -136,9 +139,9 @@ img {
 .navbar {
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
-  position: sticky;  /* Stays pinned to the top as the user scrolls */
+  position: sticky; /* Stays pinned to the top as the user scrolls */
   top: 0;
-  z-index: 100;      /* Sits above all page content but below the mobile menu (z: 200) */
+  z-index: 100; /* Sits above all page content but below the mobile menu (z: 200) */
   transition: background var(--transition);
 }
 
@@ -163,7 +166,7 @@ img {
   font-weight: 600;
   color: var(--navy);
   text-decoration: none;
-  white-space: nowrap;  /* Prevents the logo from wrapping onto two lines */
+  white-space: nowrap; /* Prevents the logo from wrapping onto two lines */
   flex-shrink: 0;
   line-height: 1;
 }
@@ -181,7 +184,9 @@ body.dark-mode .nav-logo {
   color: var(--navy);
   line-height: 1;
   display: inline-block;
-  transform: translateY(-1px);  /* Optical alignment with the sans-serif text beside it */
+  transform: translateY(
+    -1px
+  ); /* Optical alignment with the sans-serif text beside it */
 }
 
 /* Dark mode override for the "Y" */
@@ -208,7 +213,7 @@ body.dark-mode .logo-y {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: auto;  /* Pushes links to the far right of the navbar */
+  margin-left: auto; /* Pushes links to the far right of the navbar */
 }
 
 /* Individual nav link buttons (pill-shaped) */
@@ -216,13 +221,16 @@ body.dark-mode .logo-y {
   display: inline-block;
   padding: 8px 16px;
   border: 1px solid var(--border);
-  border-radius: 999px;  /* Fully rounded pill */
+  border-radius: 999px; /* Fully rounded pill */
   font-size: 0.95rem;
   font-family: var(--font-sans);
   color: var(--text);
   background: transparent;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition);
   text-decoration: none;
   white-space: nowrap;
   line-height: 1.2;
@@ -255,7 +263,7 @@ body.dark-mode .nav-btn:hover {
   color: var(--text);
   transition: background var(--transition);
   margin-left: 4px;
-  padding: 0px 0px 3px 1px;  /* Fine-tuned padding to visually center the icon */
+  padding: 0px 0px 3px 1px; /* Fine-tuned padding to visually center the icon */
   flex-shrink: 0;
 }
 
@@ -275,9 +283,8 @@ body.dark-mode .nav-btn:hover {
   cursor: pointer;
   color: var(--text);
   padding: 4px 8px;
-  margin-left: auto;  /* Pushes the hamburger to the far right on mobile */
+  margin-left: auto; /* Pushes the hamburger to the far right on mobile */
 }
-
 
 /* --------------------------------------------------------------------------
    MOBILE MENU OVERLAY
@@ -286,12 +293,12 @@ body.dark-mode .nav-btn:hover {
    the navigation links. Controlled by mobile-menu.js via the .open class.
    -------------------------------------------------------------------------- */
 .mobile-menu {
-  display: none;        /* Hidden by default; shown via .open class */
+  display: none; /* Hidden by default; shown via .open class */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 200;         /* Above the sticky navbar (z: 100) */
+  z-index: 200; /* Above the sticky navbar (z: 100) */
   background: var(--bg-card);
   flex-direction: column;
 }
@@ -335,7 +342,6 @@ body.dark-mode .nav-btn:hover {
   background: var(--border);
 }
 
-
 /* --------------------------------------------------------------------------
    MAIN CONTENT AREA
    --------------------------------------------------------------------------
@@ -343,7 +349,7 @@ body.dark-mode .nav-btn:hover {
    adds consistent padding. Zoomed up slightly on desktop for readability.
    -------------------------------------------------------------------------- */
 .main-content {
-  flex: 1;           /* Grows to fill the space between navbar and footer */
+  flex: 1; /* Grows to fill the space between navbar and footer */
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;
@@ -356,7 +362,6 @@ body.dark-mode .nav-btn:hover {
     zoom: 1.25;
   }
 }
-
 
 /* --------------------------------------------------------------------------
    FOOTER
@@ -376,7 +381,7 @@ body.dark-mode .nav-btn:hover {
   display: flex;
   align-items: center;
   gap: 24px;
-  flex-wrap: wrap;  /* Wraps to multiple rows on very narrow screens */
+  flex-wrap: wrap; /* Wraps to multiple rows on very narrow screens */
 }
 
 /* Yale logo group in the footer (white version) */
@@ -392,15 +397,15 @@ body.dark-mode .nav-btn:hover {
 .footer-logo .logo-y {
   color: #fff;
   font-size: 1.5rem;
-  transform: none;   /* No vertical nudge needed in the footer context */
+  transform: none; /* No vertical nudge needed in the footer context */
 }
 
 /* Centered contact info (address, phone, email) */
 .footer-contact {
-  flex: 1;           /* Takes available space between logo and footer links */
+  flex: 1; /* Takes available space between logo and footer links */
   text-align: center;
   font-size: 1.2rem;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Separator dots between contact details */
@@ -418,14 +423,13 @@ body.dark-mode .nav-btn:hover {
 
 .footer-links a {
   font-size: 1.2rem;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
 }
 
 .footer-links a:hover {
   color: #fff;
 }
-
 
 /* --------------------------------------------------------------------------
    BUTTONS
@@ -480,7 +484,6 @@ body.dark-mode .btn-secondary {
   border-color: #666;
 }
 
-
 /* --------------------------------------------------------------------------
    CARDS
    --------------------------------------------------------------------------
@@ -495,7 +498,6 @@ body.dark-mode .btn-secondary {
   transition: background var(--transition);
   box-shadow: var(--shadow);
 }
-
 
 /* --------------------------------------------------------------------------
    FORM ELEMENTS
@@ -537,8 +539,10 @@ body.dark-mode .btn-secondary {
   color: var(--text);
   background: var(--bg-card);
   outline: none;
-  transition: border-color var(--transition), background var(--transition);
-  appearance: none;           /* Remove native browser styling (especially on Safari) */
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+  appearance: none; /* Remove native browser styling (especially on Safari) */
   -webkit-appearance: none;
 }
 
@@ -553,7 +557,7 @@ body.dark-mode .btn-secondary {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(30,95,173,0.1);
+  box-shadow: 0 0 0 3px rgba(30, 95, 173, 0.1);
 }
 
 /* Custom dropdown arrow icon for select elements (replaces native arrow) */
@@ -561,7 +565,7 @@ body.dark-mode .btn-secondary {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
-  padding-right: 36px;  /* Extra right padding so text doesn't overlap the arrow */
+  padding-right: 36px; /* Extra right padding so text doesn't overlap the arrow */
   cursor: pointer;
 }
 
@@ -570,7 +574,7 @@ body.dark-mode .btn-secondary {
   color: var(--red);
   font-size: 0.75rem;
   margin-top: 4px;
-  display: none;  /* Shown by adding .field-error to the parent .form-group */
+  display: none; /* Shown by adding .field-error to the parent .form-group */
 }
 
 /* Red border on invalid fields — applied by form-validation.js */
@@ -589,9 +593,8 @@ body.dark-mode .btn-secondary {
   color: var(--red);
   font-size: 0.75rem;
   margin-left: 6px;
-  font-weight: 400;  /* Normal weight so it reads as a hint, not a heading */
+  font-weight: 400; /* Normal weight so it reads as a hint, not a heading */
 }
-
 
 /* --------------------------------------------------------------------------
    PAGE HEADER
@@ -618,9 +621,8 @@ body.dark-mode .page-header h1 {
 .page-header p {
   font-size: 0.95rem;
   color: var(--text-muted);
-  max-width: 600px;  /* Keeps subtitle text at a comfortable reading width */
+  max-width: 600px; /* Keeps subtitle text at a comfortable reading width */
 }
-
 
 /* --------------------------------------------------------------------------
    TWO-COLUMN LAYOUT
@@ -630,11 +632,10 @@ body.dark-mode .page-header h1 {
    -------------------------------------------------------------------------- */
 .two-col {
   display: grid;
-  grid-template-columns: 1fr 300px;  /* Wide main area + fixed-width sidebar */
+  grid-template-columns: 1fr 300px; /* Wide main area + fixed-width sidebar */
   gap: 28px;
   align-items: start;
 }
-
 
 /* --------------------------------------------------------------------------
    SIDEBAR
@@ -687,12 +688,11 @@ body.dark-mode .sidebar-card h3 {
 
 /* Custom blue bullet using a CSS pseudo-element */
 .sidebar-card ul li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--blue);
 }
-
 
 /* --------------------------------------------------------------------------
    STATUS BADGE
@@ -705,7 +705,6 @@ body.dark-mode .sidebar-card h3 {
   font-weight: 600;
   font-size: 0.85rem;
 }
-
 
 /* --------------------------------------------------------------------------
    RESPONSIVE — MOBILE (max 768px)
@@ -723,15 +722,15 @@ body.dark-mode .sidebar-card h3 {
   /* Show the hamburger icon that opens the mobile menu overlay */
   .hamburger {
     display: block;
-    margin-left: -90px;  /* Fine-tuned offset to align with the right edge of the navbar */
+    margin-left: -90px; /* Fine-tuned offset to align with the right edge of the navbar */
   }
 
   .main-content {
-    padding: 20px 16px;  /* Tighter horizontal padding on small screens */
+    padding: 20px 16px; /* Tighter horizontal padding on small screens */
   }
 
   .page-header h1 {
-    font-size: 1.6rem;   /* Smaller heading so it doesn't overflow on narrow screens */
+    font-size: 1.6rem; /* Smaller heading so it doesn't overflow on narrow screens */
   }
 
   /* Stack the two-column layout into a single column */
@@ -747,10 +746,10 @@ body.dark-mode .sidebar-card h3 {
   }
 
   .footer-links {
-    margin-left: 0;  /* Remove the auto left-margin used on desktop */
+    margin-left: 0; /* Remove the auto left-margin used on desktop */
   }
 
   .footer-contact {
-    flex: none;  /* Don't allow the contact area to stretch on mobile */
+    flex: none; /* Don't allow the contact area to stretch on mobile */
   }
 }

@@ -11,7 +11,6 @@
    --font-serif, --navy, --blue, --text-muted, --bg-card, --border, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    FAQ PAGE HEADER
    --------------------------------------------------------------------------
@@ -21,33 +20,35 @@
 
 .faq-header {
   display: flex;
-  align-items: flex-start;  /* Aligns icon to the top of the text block */
-  gap: 16px;                /* Space between icon and text */
-  margin-bottom: 28px;      /* Space below header before accordion content */
+  align-items: flex-start; /* Aligns icon to the top of the text block */
+  gap: 16px; /* Space between icon and text */
+  margin-bottom: 28px; /* Space below header before accordion content */
 }
 
 /* Large decorative icon displayed next to the page title */
 .faq-icon {
-  font-size: 2.5rem;    /* Oversized for visual weight */
-  flex-shrink: 0;       /* Prevents the icon from shrinking in flex layout */
-  margin-top: 4px;      /* Nudges icon down to optically align with title */
+  font-size: 2.5rem; /* Oversized for visual weight */
+  flex-shrink: 0; /* Prevents the icon from shrinking in flex layout */
+  margin-top: 4px; /* Nudges icon down to optically align with title */
 }
 
 .faq-header h1 {
-  font-family: var(--font-serif);  /* Elegant serif font */
-  font-size: 2.2rem;               /* Large heading */
-  color: var(--navy);              /* Yale navy blue */
-  margin-bottom: 6px;              /* Gap between heading and description */
+  font-family: var(--font-serif); /* Elegant serif font */
+  font-size: 2.2rem; /* Large heading */
+  color: var(--navy); /* Yale navy blue */
+  margin-bottom: 6px; /* Gap between heading and description */
 }
 
 /* Dark mode override for FAQ page title */
-body.dark-mode .faq-header h1 { color: var(--text); }
+body.dark-mode .faq-header h1 {
+  color: var(--text);
+}
 
 /* Short description of the FAQ section below the heading */
 .faq-header p {
   font-size: 0.9rem;
   color: var(--text-muted);
-  max-width: 500px;  /* Prevents text from stretching too wide */
+  max-width: 500px; /* Prevents text from stretching too wide */
 }
 
 /* Section sub-heading above the list of popular questions */
@@ -55,12 +56,13 @@ body.dark-mode .faq-header h1 { color: var(--text); }
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 14px;  /* Gap before the accordion items */
+  margin-bottom: 14px; /* Gap before the accordion items */
 }
 
 /* Dark mode override for the section sub-heading */
-body.dark-mode .popular-questions-title { color: var(--text); }
-
+body.dark-mode .popular-questions-title {
+  color: var(--text);
+}
 
 /* --------------------------------------------------------------------------
    ACCORDION
@@ -75,51 +77,58 @@ body.dark-mode .popular-questions-title { color: var(--text); }
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  margin-bottom: 8px;      /* Space between accordion items */
+  margin-bottom: 8px; /* Space between accordion items */
   box-shadow: var(--shadow);
-  overflow: hidden;        /* Clips the body content during collapse animation */
+  overflow: hidden; /* Clips the body content during collapse animation */
 }
 
 /* Clickable question row */
 .accordion-header {
   display: flex;
-  justify-content: space-between;  /* Question text on left, toggle icon on right */
+  justify-content: space-between; /* Question text on left, toggle icon on right */
   align-items: center;
   padding: 14px 16px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--navy);
-  user-select: none;  /* Prevents text from being selected on rapid clicks */
+  user-select: none; /* Prevents text from being selected on rapid clicks */
 }
 
 /* Dark mode override for accordion header text */
-body.dark-mode .accordion-header { color: var(--text); }
+body.dark-mode .accordion-header {
+  color: var(--text);
+}
 
 /* Subtle background change on hover for interactivity feedback */
-.accordion-header:hover { background: var(--bg); }
+.accordion-header:hover {
+  background: var(--bg);
+}
 
 /* The "+" / "×" toggle icon on the right of the header */
 .accordion-toggle {
   font-size: 1.1rem;
   color: var(--text-muted);
-  transition: transform 0.25s ease;  /* Smooth rotation animation */
+  transition: transform 0.25s ease; /* Smooth rotation animation */
 }
 
 /* Rotates the toggle icon 45° when accordion is open (turns "+" into "×") */
-.accordion-item.open .accordion-toggle { transform: rotate(45deg); }
+.accordion-item.open .accordion-toggle {
+  transform: rotate(45deg);
+}
 
 /* Answer body — hidden by default, revealed when item is opened */
 .accordion-body {
-  padding: 0 16px;     /* Zero top/bottom padding when collapsed */
+  padding: 0 16px; /* Zero top/bottom padding when collapsed */
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.6;
 }
 
 /* Adds bottom padding when the accordion is open to space answer from next item */
-.accordion-item.open .accordion-body { padding: 0 16px 14px; }
-
+.accordion-item.open .accordion-body {
+  padding: 0 16px 14px;
+}
 
 /* --------------------------------------------------------------------------
    FAQ SIDEBAR
@@ -139,11 +148,13 @@ body.dark-mode .accordion-header { color: var(--text); }
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 8px;  /* Gap between heading and list/text below */
+  margin-bottom: 8px; /* Gap between heading and list/text below */
 }
 
 /* Dark mode override for sidebar headings */
-body.dark-mode .faq-sidebar-section h4 { color: var(--text); }
+body.dark-mode .faq-sidebar-section h4 {
+  color: var(--text);
+}
 
 /* Remove default browser list styling */
 .faq-sidebar-section ul {
@@ -154,14 +165,14 @@ body.dark-mode .faq-sidebar-section h4 { color: var(--text); }
 /* Each list item with a custom blue bullet */
 .faq-sidebar-section ul li {
   font-size: 0.83rem;
-  padding: 3px 0 3px 12px;  /* Left indent for the custom bullet */
-  position: relative;         /* Needed for absolute positioning of ::before */
+  padding: 3px 0 3px 12px; /* Left indent for the custom bullet */
+  position: relative; /* Needed for absolute positioning of ::before */
   color: var(--text-muted);
 }
 
 /* Custom blue bullet using a pseudo-element */
 .faq-sidebar-section ul li::before {
-  content: '•';
+  content: "•";
   position: absolute;
   left: 0;
   color: var(--blue);

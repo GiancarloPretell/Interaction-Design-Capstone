@@ -26,18 +26,20 @@
     let valid = true;
 
     // Clear any previous error state before re-validating
-    form.querySelectorAll('.field-error').forEach(el => el.classList.remove('field-error'));
-    form.querySelectorAll('.label-error').forEach(el => el.remove());
+    form
+      .querySelectorAll(".field-error")
+      .forEach((el) => el.classList.remove("field-error"));
+    form.querySelectorAll(".label-error").forEach((el) => el.remove());
 
-    form.querySelectorAll('[required]').forEach(field => {
+    form.querySelectorAll("[required]").forEach((field) => {
       const val = field.value.trim();
       if (!val) {
         // Empty required field
         markError(field);
         valid = false;
-      } else if (field.type === 'email' && !isValidEmail(val)) {
+      } else if (field.type === "email" && !isValidEmail(val)) {
         // Non-empty email field that doesn't match the email pattern
-        markError(field, 'Please enter a valid email');
+        markError(field, "Please enter a valid email");
         valid = false;
       }
     });
@@ -52,17 +54,17 @@
    * @param {string} [message] - custom error message; defaults to a generic prompt
    */
   function markError(field, message) {
-    const group = field.closest('.form-group');
+    const group = field.closest(".form-group");
     if (!group) return;
 
-    group.classList.add('field-error');  // Triggers red border styling via global.css
+    group.classList.add("field-error"); // Triggers red border styling via global.css
 
     // Add an inline error message next to the label (only once per field)
-    const label = group.querySelector('.form-label');
-    if (label && !label.querySelector('.label-error')) {
-      const errSpan = document.createElement('span');
-      errSpan.className = 'label-error';
-      errSpan.textContent = message || '← This field needs to be complete';
+    const label = group.querySelector(".form-label");
+    if (label && !label.querySelector(".label-error")) {
+      const errSpan = document.createElement("span");
+      errSpan.className = "label-error";
+      errSpan.textContent = message || "← This field needs to be complete";
       label.appendChild(errSpan);
     }
   }
@@ -78,28 +80,27 @@
   }
 
   function init() {
-    document.querySelectorAll('form[data-validate]').forEach(form => {
-
+    document.querySelectorAll("form[data-validate]").forEach((form) => {
       // On submit: validate the whole form; redirect on success
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();  // Always prevent native submission
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Always prevent native submission
         if (validateForm(this)) {
           const redirect = this.dataset.redirect;
           if (redirect) {
-            window.location.href = redirect;  // Navigate to success/confirmation page
+            window.location.href = redirect; // Navigate to success/confirmation page
           }
         }
       });
 
       // Live validation on blur: clears error state once a field is corrected
-      form.querySelectorAll('[required]').forEach(field => {
-        field.addEventListener('blur', function () {
-          const group = this.closest('.form-group');
+      form.querySelectorAll("[required]").forEach((field) => {
+        field.addEventListener("blur", function () {
+          const group = this.closest(".form-group");
           if (!group) return;
           if (this.value.trim()) {
             // Field now has a value — remove the error state
-            group.classList.remove('field-error');
-            group.querySelectorAll('.label-error').forEach(el => el.remove());
+            group.classList.remove("field-error");
+            group.querySelectorAll(".label-error").forEach((el) => el.remove());
           }
         });
       });
@@ -107,8 +108,8 @@
   }
 
   // Run init after the DOM is fully parsed; if already parsed, run immediately
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }

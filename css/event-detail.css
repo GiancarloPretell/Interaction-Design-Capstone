@@ -14,7 +14,6 @@
    in global.css, such as --font-serif, --navy, --text, --bg-card, etc.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    MAIN TWO-COLUMN EVENT LAYOUT
    --------------------------------------------------------------------------
@@ -23,11 +22,10 @@
    -------------------------------------------------------------------------- */
 .event-detail-layout {
   display: grid;
-  grid-template-columns: 1fr 330px;  /* Wide content column + fixed-width sidebar */
+  grid-template-columns: 1fr 330px; /* Wide content column + fixed-width sidebar */
   gap: 28px;
-  align-items: start;  /* Sidebar stays at the top rather than stretching to full height */
+  align-items: start; /* Sidebar stays at the top rather than stretching to full height */
 }
-
 
 /* --------------------------------------------------------------------------
    EVENT HEADER SECTION
@@ -45,17 +43,17 @@
 /* Emoji icon displayed to the left of the event title */
 .event-detail-icon {
   font-size: 2rem;
-  flex-shrink: 0;   /* Prevents the icon from shrinking when the title is long */
-  margin-top: 2px;  /* Nudges icon down to align with the first line of text */
+  flex-shrink: 0; /* Prevents the icon from shrinking when the title is long */
+  margin-top: 2px; /* Nudges icon down to align with the first line of text */
 }
 
 /* Main event title */
 .event-detail-header h1 {
-  font-family: var(--font-serif);  /* Elegant serif for high-impact headings */
+  font-family: var(--font-serif); /* Elegant serif for high-impact headings */
   font-size: 2.1rem;
   color: var(--navy);
   margin-bottom: 4px;
-  line-height: 1.05;  /* Tight leading for large display text */
+  line-height: 1.05; /* Tight leading for large display text */
 }
 
 /* Dark mode override: use general text color instead of navy */
@@ -71,7 +69,6 @@ body.dark-mode .event-detail-header h1 {
   line-height: 1.5;
 }
 
-
 /* --------------------------------------------------------------------------
    HERO IMAGE AREA
    --------------------------------------------------------------------------
@@ -85,7 +82,7 @@ body.dark-mode .event-detail-header h1 {
   width: 100%;
   margin: 16px 0 22px;
   border-radius: 28px;
-  overflow: hidden;   /* Clips the square img corners to the wrapper's radius */
+  overflow: hidden; /* Clips the square img corners to the wrapper's radius */
   background: transparent;
 }
 
@@ -94,11 +91,10 @@ body.dark-mode .event-detail-header h1 {
 .event-detail-photo {
   width: 100%;
   height: 300px;
-  object-fit: cover;  /* Crops to fill the fixed height without distortion */
+  object-fit: cover; /* Crops to fill the fixed height without distortion */
   display: block;
-  border-radius: 0;   /* Inner radius is 0; clipping handled by the wrapper */
+  border-radius: 0; /* Inner radius is 0; clipping handled by the wrapper */
 }
-
 
 /* --------------------------------------------------------------------------
    ABOUT SECTION
@@ -121,10 +117,9 @@ body.dark-mode .event-about h2 {
 .event-about p {
   font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.7;     /* Generous line spacing for readability in body text */
+  line-height: 1.7; /* Generous line spacing for readability in body text */
   margin-bottom: 18px;
 }
-
 
 /* --------------------------------------------------------------------------
    BOTTOM DETAIL ITEMS GRID
@@ -134,7 +129,7 @@ body.dark-mode .event-about h2 {
    -------------------------------------------------------------------------- */
 .event-details-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* Two equal columns of detail items */
+  grid-template-columns: 1fr 1fr; /* Two equal columns of detail items */
   gap: 18px;
   margin-top: 20px;
 }
@@ -150,12 +145,12 @@ body.dark-mode .event-about h2 {
 .event-detail-item-icon {
   font-size: 1rem;
   flex-shrink: 0;
-  margin-top: 2px;  /* Aligns icon with the first line of the label text */
+  margin-top: 2px; /* Aligns icon with the first line of the label text */
 }
 
 /* Label (e.g. "Format", "Cost") displayed above the value */
 .event-detail-item strong {
-  display: block;  /* Forces the label onto its own line above the value */
+  display: block; /* Forces the label onto its own line above the value */
   font-size: 0.85rem;
   color: var(--navy);
   margin-bottom: 4px;
@@ -172,7 +167,6 @@ body.dark-mode .event-detail-item strong {
   color: var(--text-muted);
   line-height: 1.5;
 }
-
 
 /* --------------------------------------------------------------------------
    SIDEBAR INFO CARD
@@ -206,13 +200,12 @@ body.dark-mode .event-info-card h3 {
   display: inline-block;
   padding: 6px 14px;
   border: 1px solid var(--border);
-  border-radius: 999px;   /* Fully rounded pill shape */
+  border-radius: 999px; /* Fully rounded pill shape */
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 16px;
 }
-
 
 /* --------------------------------------------------------------------------
    EVENT DETAILS TABLE
@@ -235,7 +228,7 @@ body.dark-mode .event-info-card h3 {
 /* Left column: labels (Date, Time, Location) */
 .event-info-table td:first-child {
   color: var(--text-light);
-  width: 90px;         /* Fixed width keeps values aligned regardless of label length */
+  width: 90px; /* Fixed width keeps values aligned regardless of label length */
   font-weight: 600;
   white-space: nowrap; /* Prevents labels from wrapping to a second line */
   padding-right: 16px;
@@ -254,7 +247,7 @@ body.dark-mode .event-info-card h3 {
   line-height: 1.55;
   margin-bottom: 16px;
   padding-top: 14px;
-  border-top: 1px solid var(--border);  /* Visual separator above description */
+  border-top: 1px solid var(--border); /* Visual separator above description */
 }
 
 /* Reserve / RSVP button — spans the full sidebar width */
@@ -266,7 +259,6 @@ body.dark-mode .event-info-card h3 {
   border-radius: 12px;
 }
 
-
 /* --------------------------------------------------------------------------
    RESPONSIVE — TABLET (max 900px)
    --------------------------------------------------------------------------
@@ -275,19 +267,18 @@ body.dark-mode .event-info-card h3 {
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .event-detail-layout {
-    grid-template-columns: 1fr;  /* Stack content and sidebar vertically */
+    grid-template-columns: 1fr; /* Stack content and sidebar vertically */
   }
 
   .event-details-grid {
-    grid-template-columns: 1fr;  /* Stack detail items into a single column */
+    grid-template-columns: 1fr; /* Stack detail items into a single column */
   }
 
   .event-detail-image img,
   .event-detail-photo {
-    height: 280px;  /* Slightly shorter hero image on tablet */
+    height: 280px; /* Slightly shorter hero image on tablet */
   }
 }
-
 
 /* --------------------------------------------------------------------------
    RESPONSIVE — MOBILE (max 600px)
@@ -297,16 +288,16 @@ body.dark-mode .event-info-card h3 {
    -------------------------------------------------------------------------- */
 @media (max-width: 600px) {
   .event-detail-header {
-    flex-direction: column;  /* Stack icon above the title text on mobile */
+    flex-direction: column; /* Stack icon above the title text on mobile */
     gap: 10px;
   }
 
   .event-detail-header h1 {
-    font-size: 1.65rem;  /* Smaller heading to fit narrow screens */
+    font-size: 1.65rem; /* Smaller heading to fit narrow screens */
   }
 
   .event-detail-image {
-    border-radius: 20px;   /* Slightly tighter corner radius on mobile */
+    border-radius: 20px; /* Slightly tighter corner radius on mobile */
     margin: 16px 0 20px;
   }
 
@@ -317,11 +308,11 @@ body.dark-mode .event-info-card h3 {
   }
 
   .event-info-card {
-    padding: 18px;  /* Slightly reduced padding inside the sidebar card */
+    padding: 18px; /* Slightly reduced padding inside the sidebar card */
   }
 
   .event-info-table td:first-child {
-    width: 80px;         /* Narrower label column on small screens */
+    width: 80px; /* Narrower label column on small screens */
     padding-right: 12px;
   }
 }

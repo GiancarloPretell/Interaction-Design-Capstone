@@ -10,7 +10,6 @@
    are defined in global.css and shared across all forms on the site.
    ========================================================================== */
 
-
 /* --------------------------------------------------------------------------
    FORM PAGE HEADER
    --------------------------------------------------------------------------
@@ -18,25 +17,26 @@
    containing the form title and a short subtitle/description.
    -------------------------------------------------------------------------- */
 .form-page-header {
-  margin-bottom: 4px;  /* Minimal gap — the subtitle below provides most of the spacing */
+  margin-bottom: 4px; /* Minimal gap — the subtitle below provides most of the spacing */
 }
 
 .form-page-header h1 {
-  font-family: var(--font-serif);  /* Serif font for the prominent page title */
+  font-family: var(--font-serif); /* Serif font for the prominent page title */
   font-size: 2.4rem;
   color: var(--navy);
   margin-bottom: 4px;
 }
 
 /* Dark mode override: switches the title to the general text color */
-body.dark-mode .form-page-header h1 { color: var(--text); }
+body.dark-mode .form-page-header h1 {
+  color: var(--text);
+}
 
 .form-page-header .subtitle {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 24px;  /* Space below the subtitle before the form fields begin */
+  margin-bottom: 24px; /* Space below the subtitle before the form fields begin */
 }
-
 
 /* --------------------------------------------------------------------------
    CONFIRMATION / SUCCESS PAGE
@@ -45,25 +45,27 @@ body.dark-mode .form-page-header h1 { color: var(--text); }
    Displays a large checkmark emoji, a heading, and a short confirmation message.
    -------------------------------------------------------------------------- */
 .confirm-page {
-  flex: 1;               /* Takes up remaining vertical space in the flex body */
+  flex: 1; /* Takes up remaining vertical space in the flex body */
   display: flex;
   flex-direction: column;
-  align-items: center;   /* Centers content horizontally */
+  align-items: center; /* Centers content horizontally */
   justify-content: center; /* Centers content vertically in the available space */
   text-align: center;
-  padding: 80px 24px;    /* Generous padding so the content feels centered on screen */
+  padding: 80px 24px; /* Generous padding so the content feels centered on screen */
 }
 
 /* Large emoji or icon displayed at the top of the confirmation screen */
 .confirm-page h1 {
   font-family: var(--font-serif);
-  font-size: 2.9rem;     /* Very large — intended for a single emoji character */
+  font-size: 2.9rem; /* Very large — intended for a single emoji character */
   color: var(--navy);
   margin-bottom: 20px;
 }
 
 /* Dark mode override for the confirmation icon heading */
-body.dark-mode .confirm-page h1 { color: var(--text); }
+body.dark-mode .confirm-page h1 {
+  color: var(--text);
+}
 
 /* Main confirmation message heading (e.g. "You're Registered!") */
 .confirm-page h2 {
@@ -75,13 +77,15 @@ body.dark-mode .confirm-page h1 { color: var(--text); }
 }
 
 /* Dark mode override for the confirmation heading */
-body.dark-mode .confirm-page h2 { color: var(--text); }
+body.dark-mode .confirm-page h2 {
+  color: var(--text);
+}
 
 /* Supporting paragraph with next-steps or additional context */
 .confirm-page p {
-  font-size: 1.95rem;        /* Larger than body text for legibility in the centered layout */
+  font-size: 1.95rem; /* Larger than body text for legibility in the centered layout */
   color: var(--text-muted);
-  max-width: 440px;          /* Prevents the text from stretching too wide on large screens */
+  max-width: 440px; /* Prevents the text from stretching too wide on large screens */
 }
 
 /* ========================================================================== 

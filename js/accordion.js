@@ -15,45 +15,45 @@
  */
 (function () {
   function init() {
-    document.querySelectorAll('.accordion-item').forEach(item => {
-      const header = item.querySelector('.accordion-header');
-      const body = item.querySelector('.accordion-body');
-      if (!header || !body) return;  // Skip malformed items missing required elements
+    document.querySelectorAll(".accordion-item").forEach((item) => {
+      const header = item.querySelector(".accordion-header");
+      const body = item.querySelector(".accordion-body");
+      if (!header || !body) return; // Skip malformed items missing required elements
 
-      header.addEventListener('click', () => {
-        const isOpen = item.classList.contains('open');
+      header.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
 
         // Close all currently open accordion items before opening a new one
-        document.querySelectorAll('.accordion-item.open').forEach(el => {
-          el.classList.remove('open');
-          el.querySelector('.accordion-body').style.maxHeight = '0';
+        document.querySelectorAll(".accordion-item.open").forEach((el) => {
+          el.classList.remove("open");
+          el.querySelector(".accordion-body").style.maxHeight = "0";
         });
 
         // If the clicked item was closed, open it; if it was open, leave it closed
         if (!isOpen) {
-          item.classList.add('open');
-          body.style.maxHeight = body.scrollHeight + 'px';  // Exact content height for smooth animation
+          item.classList.add("open");
+          body.style.maxHeight = body.scrollHeight + "px"; // Exact content height for smooth animation
         }
       });
 
       // Initialize all bodies collapsed (max-height: 0 with smooth transition)
-      body.style.maxHeight = '0';
-      body.style.overflow = 'hidden';
-      body.style.transition = 'max-height 0.25s ease';
+      body.style.maxHeight = "0";
+      body.style.overflow = "hidden";
+      body.style.transition = "max-height 0.25s ease";
     });
 
     // Open the first accordion item by default so users see an example answer
-    const first = document.querySelector('.accordion-item');
+    const first = document.querySelector(".accordion-item");
     if (first) {
-      const body = first.querySelector('.accordion-body');
-      first.classList.add('open');
-      if (body) body.style.maxHeight = body.scrollHeight + 'px';
+      const body = first.querySelector(".accordion-body");
+      first.classList.add("open");
+      if (body) body.style.maxHeight = body.scrollHeight + "px";
     }
   }
 
   // Run init after the DOM is fully parsed; if already parsed, run immediately
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
