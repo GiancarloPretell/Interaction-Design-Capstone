@@ -22,15 +22,15 @@
 (function () {
   // Static list of searchable topics across the site
   const suggestions = [
-    "Application deadlines",
-    "Portfolio requirements",
+    "Application Deadlines",
+    "Portfolio Requirements",
     "Graphic Design MFA",
     "Painting & Printmaking MFA",
     "Sculpture MFA",
-    "Admission events",
-    "Campus visit",
+    "Admission Events",
+    "Campus Visit",
     "FAQ",
-    "Contact admissions",
+    "Contact Sdmissions",
     "News",
     "Programs",
     "Apply",
