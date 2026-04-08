@@ -1,30 +1,69 @@
-/* ============================================================
-   Yale School of Art — Global Stylesheet
-   ============================================================ */
+/* ==========================================================================
+   YALE SCHOOL OF ART — GLOBAL STYLESHEET
+   ==========================================================================
+   This is the foundational stylesheet shared across every page of the
+   Yale Art admissions website. It defines:
+   - CSS custom properties (design tokens) for colors, fonts, spacing, etc.
+   - Dark mode variable overrides
+   - A minimal CSS reset
+   - Site-wide layout components: navbar, mobile menu, main content, footer
+   - Reusable UI components: buttons, cards, form elements, page headers,
+     sidebar layouts, status badges
+   - Responsive breakpoints for tablet and mobile
 
-/* ---------- CSS Variables ---------- */
+   All other page-specific stylesheets (apply.css, contact.css, etc.) rely
+   on the custom properties defined here and should be loaded after this file.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+   --------------------------------------------------------------------------
+   Central source of truth for colors, typography, spacing, and effects.
+   Changing a value here updates it consistently across the entire site.
+   -------------------------------------------------------------------------- */
 :root {
-  --navy: #1B2A4A;
-  --blue: #1E5FAD;
-  --blue-hover: #174d91;
-  --bg: #E8F0F8;
-  --bg-card: #FFFFFF;
-  --border: #C8D8EC;
-  --text: #1a1a1a;
-  --text-muted: #555;
-  --text-light: #888;
-  --green: #22C55E;
-  --red: #DC2626;
-  --footer-bg: #1B2A4A;
+  /* Brand colors */
+  --navy: #1B2A4A;          /* Yale navy — used for headings and the navbar logo */
+  --blue: #1E5FAD;          /* Primary action color — buttons, links, focus rings */
+  --blue-hover: #174d91;    /* Darker blue for hover states on primary buttons */
+
+  /* Surface & border colors */
+  --bg: #E8F0F8;            /* Page background — a subtle cool blue-gray */
+  --bg-card: #FFFFFF;       /* Card and panel backgrounds */
+  --border: #C8D8EC;        /* Borders, dividers, and input outlines */
+
+  /* Text colors */
+  --text: #1a1a1a;          /* Primary body text */
+  --text-muted: #555;       /* Secondary / supporting text */
+  --text-light: #888;       /* Tertiary text: placeholders, labels, timestamps */
+
+  /* Semantic colors */
+  --green: #22C55E;         /* Success states (e.g. "Portal Open" badge) */
+  --red: #DC2626;           /* Error states, required-field indicators */
+
+  /* Footer */
+  --footer-bg: #1B2A4A;     /* Dark navy background matching the brand */
   --footer-text: #FFFFFF;
-  --font-serif: Georgia, 'Times New Roman', serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-  --radius: 8px;
-  --shadow: 0 1px 4px rgba(0,0,0,0.08);
-  --transition: 0.2s ease;
+
+  /* Typography */
+  --font-serif: Georgia, 'Times New Roman', serif;                                     /* Used for display headings */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; /* Used for body text and UI */
+
+  /* Shared decoration */
+  --radius: 8px;                         /* Standard border-radius for cards, inputs, buttons */
+  --shadow: 0 1px 4px rgba(0,0,0,0.08); /* Subtle elevation shadow for cards */
+  --transition: 0.2s ease;              /* Default transition speed for interactive elements */
 }
 
-/* ---------- Dark Mode Variables ---------- */
+
+/* --------------------------------------------------------------------------
+   DARK MODE VARIABLE OVERRIDES
+   --------------------------------------------------------------------------
+   When body.dark-mode is active (toggled by darkmode.js), these values
+   replace the light-mode tokens above. Only surface and text colors need
+   to change — brand colors (--navy, --blue) remain the same.
+   -------------------------------------------------------------------------- */
 body.dark-mode {
   --bg: #1a1a1a;
   --bg-card: #2a2a2a;
@@ -32,27 +71,33 @@ body.dark-mode {
   --text: #f0f0f0;
   --text-muted: #b0b0b0;
   --text-light: #787878;
-  --shadow: 0 1px 6px rgba(0,0,0,0.4);
+  --shadow: 0 1px 6px rgba(0,0,0,0.4);  /* Stronger shadow needed on dark backgrounds */
 }
 
-/* ---------- Reset ---------- */
+
+/* --------------------------------------------------------------------------
+   CSS RESET
+   --------------------------------------------------------------------------
+   A minimal reset to remove inconsistent browser defaults.
+   -------------------------------------------------------------------------- */
 *, *::before, *::after {
-  box-sizing: border-box;
+  box-sizing: border-box;  /* Include padding and border in element dimensions */
   margin: 0;
   padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
 }
 
+/* Hide the scrollbar on mobile without disabling scrolling itself */
 @media (max-width: 768px) {
-  /* Hide scrollbar for Chrome, Safari, Edge */
+  /* Chrome, Safari, Edge */
   ::-webkit-scrollbar {
     display: none;
   }
 
-  /* Hide scrollbar for Firefox and IE/old Edge*/
+  /* Firefox and IE / old Edge */
   html, body {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -64,13 +109,13 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  display: flex;
+  display: flex;              /* Enables sticky footer: content grows, footer stays at bottom */
   flex-direction: column;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition);  /* Smooth dark mode switch */
 }
 
 a {
-  color: inherit;
+  color: inherit;      /* Links inherit the surrounding text color by default */
   text-decoration: none;
 }
 
@@ -81,17 +126,23 @@ img {
   border-radius: var(--radius);
 }
 
-/* ---------- Navbar ---------- */
+
+/* --------------------------------------------------------------------------
+   NAVBAR
+   --------------------------------------------------------------------------
+   The sticky top navigation bar containing the Yale logo, nav links,
+   the dark mode toggle, and the hamburger button for mobile.
+   -------------------------------------------------------------------------- */
 .navbar {
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
-  position: sticky;
+  position: sticky;  /* Stays pinned to the top as the user scrolls */
   top: 0;
-  z-index: 100;
+  z-index: 100;      /* Sits above all page content but below the mobile menu (z: 200) */
   transition: background var(--transition);
 }
 
-/* Navbar container */
+/* Inner wrapper that constrains and aligns the navbar contents */
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -103,7 +154,7 @@ img {
   gap: 20px;
 }
 
-/* Yale logo group */
+/* Yale logo group: "Y | School of Art" */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -112,16 +163,17 @@ img {
   font-weight: 600;
   color: var(--navy);
   text-decoration: none;
-  white-space: nowrap;
+  white-space: nowrap;  /* Prevents the logo from wrapping onto two lines */
   flex-shrink: 0;
   line-height: 1;
 }
 
+/* Dark mode: logo switches to general text color */
 body.dark-mode .nav-logo {
   color: var(--text);
 }
 
-/* Yale "Y" */
+/* The "Y" character in the logo — styled with the serif font for distinction */
 .logo-y {
   font-family: var(--font-serif);
   font-size: 1.35rem;
@@ -129,41 +181,42 @@ body.dark-mode .nav-logo {
   color: var(--navy);
   line-height: 1;
   display: inline-block;
-  transform: translateY(-1px);
+  transform: translateY(-1px);  /* Optical alignment with the sans-serif text beside it */
 }
 
+/* Dark mode override for the "Y" */
 body.dark-mode .logo-y {
   color: var(--text);
 }
 
-/* Vertical separator */
+/* Vertical pipe separator between "Y" and "School of Art" */
 .logo-sep {
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1;
 }
 
-/* Site name */
+/* "School of Art" text beside the "Y" */
 .logo-name {
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1;
 }
 
-/* Navigation links area */
+/* Container for the desktop navigation links and toggle button */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: auto;
+  margin-left: auto;  /* Pushes links to the far right of the navbar */
 }
 
-/* Nav buttons */
+/* Individual nav link buttons (pill-shaped) */
 .nav-btn {
   display: inline-block;
   padding: 8px 16px;
   border: 1px solid var(--border);
-  border-radius: 999px;
+  border-radius: 999px;  /* Fully rounded pill */
   font-size: 0.95rem;
   font-family: var(--font-sans);
   color: var(--text);
@@ -180,6 +233,7 @@ body.dark-mode .logo-y {
   color: var(--navy);
 }
 
+/* Dark mode overrides for nav buttons */
 body.dark-mode .nav-btn {
   color: var(--text);
   border-color: var(--border);
@@ -189,7 +243,7 @@ body.dark-mode .nav-btn:hover {
   background: #555;
 }
 
-/* Dark mode toggle button */
+/* Circular dark/light mode toggle button (moon ☾ / sun ☀) */
 .dark-toggle {
   background: none;
   border: 1px solid var(--border);
@@ -201,17 +255,18 @@ body.dark-mode .nav-btn:hover {
   color: var(--text);
   transition: background var(--transition);
   margin-left: 4px;
-  padding: 0px 0px 3px 1px;
+  padding: 0px 0px 3px 1px;  /* Fine-tuned padding to visually center the icon */
   flex-shrink: 0;
 }
 
+/* Only show hover state on devices that support hover (not touch screens) */
 @media (hover: hover) {
   .dark-toggle:hover {
     background: var(--border);
   }
 }
 
-/* Hamburger menu (mobile only) */
+/* Hamburger icon button — hidden on desktop, shown on mobile */
 .hamburger {
   display: none;
   background: none;
@@ -220,25 +275,33 @@ body.dark-mode .nav-btn:hover {
   cursor: pointer;
   color: var(--text);
   padding: 4px 8px;
-  margin-left: auto;
+  margin-left: auto;  /* Pushes the hamburger to the far right on mobile */
 }
 
-/* ---------- Mobile Menu Overlay ---------- */
+
+/* --------------------------------------------------------------------------
+   MOBILE MENU OVERLAY
+   --------------------------------------------------------------------------
+   A full-screen panel that slides over the page on mobile, containing all
+   the navigation links. Controlled by mobile-menu.js via the .open class.
+   -------------------------------------------------------------------------- */
 .mobile-menu {
-  display: none;
+  display: none;        /* Hidden by default; shown via .open class */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 200;
+  z-index: 200;         /* Above the sticky navbar (z: 100) */
   background: var(--bg-card);
   flex-direction: column;
 }
 
+/* Adding .open switches display from none to flex (JS handles this) */
 .mobile-menu.open {
   display: flex;
 }
 
+/* Header row inside the mobile menu containing the close button */
 .mobile-menu-header {
   display: flex;
   justify-content: flex-end;
@@ -246,6 +309,7 @@ body.dark-mode .nav-btn:hover {
   border-bottom: 1px solid var(--border);
 }
 
+/* The "×" close button in the top-right of the mobile menu */
 .mobile-menu-close {
   background: none;
   border: none;
@@ -256,6 +320,7 @@ body.dark-mode .nav-btn:hover {
   margin-left: auto;
 }
 
+/* Individual nav links inside the mobile menu */
 .mobile-menu a {
   display: block;
   padding: 14px 24px;
@@ -270,38 +335,51 @@ body.dark-mode .nav-btn:hover {
   background: var(--border);
 }
 
-/* ---------- Main Content ---------- */
+
+/* --------------------------------------------------------------------------
+   MAIN CONTENT AREA
+   --------------------------------------------------------------------------
+   The primary content wrapper used on every page. Constrains width and
+   adds consistent padding. Zoomed up slightly on desktop for readability.
+   -------------------------------------------------------------------------- */
 .main-content {
-  flex: 1;
+  flex: 1;           /* Grows to fill the space between navbar and footer */
   max-width: 1200px;
   margin: 0 auto;
   padding: 32px 24px;
   width: 100%;
 }
 
-/* Desktop scaling */
+/* Apply a zoom on desktop so content feels more spacious on large screens */
 @media (min-width: 769px) {
   .main-content {
     zoom: 1.25;
   }
 }
 
-/* ---------- Footer ---------- */
+
+/* --------------------------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------------------------
+   A dark navy footer bar with the Yale logo, contact info, and footer links.
+   -------------------------------------------------------------------------- */
 .footer {
   background: var(--footer-bg);
   color: var(--footer-text);
   padding: 20px 24px;
 }
 
+/* Inner wrapper that aligns footer contents in a row */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 24px;
-  flex-wrap: wrap;
+  flex-wrap: wrap;  /* Wraps to multiple rows on very narrow screens */
 }
 
+/* Yale logo group in the footer (white version) */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -310,24 +388,28 @@ body.dark-mode .nav-btn:hover {
   white-space: nowrap;
 }
 
+/* White "Y" in the footer logo */
 .footer-logo .logo-y {
   color: #fff;
   font-size: 1.5rem;
-  transform: none;
+  transform: none;   /* No vertical nudge needed in the footer context */
 }
 
+/* Centered contact info (address, phone, email) */
 .footer-contact {
-  flex: 1;
+  flex: 1;           /* Takes available space between logo and footer links */
   text-align: center;
   font-size: 1.2rem;
   color: rgba(255,255,255,0.85);
 }
 
+/* Separator dots between contact details */
 .footer-contact span {
   margin: 0 8px;
   opacity: 0.5;
 }
 
+/* Right-aligned footer navigation links */
 .footer-links {
   display: flex;
   gap: 20px;
@@ -344,7 +426,16 @@ body.dark-mode .nav-btn:hover {
   color: #fff;
 }
 
-/* ---------- Buttons ---------- */
+
+/* --------------------------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------------------------
+   Two shared button styles used throughout the site: primary (filled blue)
+   and secondary (outlined / ghost). Both are defined here so they are
+   consistently available on every page without needing a separate import.
+   -------------------------------------------------------------------------- */
+
+/* Filled blue primary button — main calls to action */
 .btn-primary {
   display: inline-block;
   padding: 10px 22px;
@@ -363,6 +454,7 @@ body.dark-mode .nav-btn:hover {
   background: var(--blue-hover);
 }
 
+/* Outlined ghost button — secondary actions (e.g. "Learn More") */
 .btn-secondary {
   display: inline-block;
   padding: 10px 22px;
@@ -381,13 +473,20 @@ body.dark-mode .nav-btn:hover {
   background: var(--bg);
 }
 
+/* Dark mode: secondary button needs explicit styling to remain readable */
 body.dark-mode .btn-secondary {
   background: #555;
   color: #f0f0f0;
   border-color: #666;
 }
 
-/* ---------- Cards ---------- */
+
+/* --------------------------------------------------------------------------
+   CARDS
+   --------------------------------------------------------------------------
+   A generic card container used for content blocks across multiple pages.
+   Page-specific card variations extend this base with additional styles.
+   -------------------------------------------------------------------------- */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -397,11 +496,20 @@ body.dark-mode .btn-secondary {
   box-shadow: var(--shadow);
 }
 
-/* ---------- Form Elements ---------- */
+
+/* --------------------------------------------------------------------------
+   FORM ELEMENTS
+   --------------------------------------------------------------------------
+   Shared input, select, and textarea styles used on all forms site-wide
+   (contact, apply, event signup). Validation error states are also here.
+   -------------------------------------------------------------------------- */
+
+/* Wrapper for a label + field pair, providing consistent vertical spacing */
 .form-group {
   margin-bottom: 20px;
 }
 
+/* Field label displayed above the input */
 .form-label {
   display: block;
   font-size: 0.85rem;
@@ -410,11 +518,13 @@ body.dark-mode .btn-secondary {
   color: var(--text);
 }
 
+/* Red asterisk appended to labels for required fields */
 .form-label .required {
   color: var(--red);
   margin-left: 2px;
 }
 
+/* Shared base styles for text inputs, selects, and textareas */
 .form-input,
 .form-select,
 .form-textarea {
@@ -428,15 +538,17 @@ body.dark-mode .btn-secondary {
   background: var(--bg-card);
   outline: none;
   transition: border-color var(--transition), background var(--transition);
-  appearance: none;
+  appearance: none;           /* Remove native browser styling (especially on Safari) */
   -webkit-appearance: none;
 }
 
+/* Muted placeholder color for inputs */
 .form-input::placeholder,
 .form-select::placeholder {
   color: var(--text-light);
 }
 
+/* Blue border + subtle glow ring when a field is focused */
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
@@ -444,38 +556,49 @@ body.dark-mode .btn-secondary {
   box-shadow: 0 0 0 3px rgba(30,95,173,0.1);
 }
 
+/* Custom dropdown arrow icon for select elements (replaces native arrow) */
 .form-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
-  padding-right: 36px;
+  padding-right: 36px;  /* Extra right padding so text doesn't overlap the arrow */
   cursor: pointer;
 }
 
+/* Inline error message displayed below a field (hidden by default) */
 .error-msg {
   color: var(--red);
   font-size: 0.75rem;
   margin-top: 4px;
-  display: none;
+  display: none;  /* Shown by adding .field-error to the parent .form-group */
 }
 
+/* Red border on invalid fields — applied by form-validation.js */
 .field-error .form-input,
 .field-error .form-select {
   border-color: var(--red);
 }
 
+/* Reveals the .error-msg element when the group has a validation error */
 .field-error .error-msg {
   display: block;
 }
 
+/* Inline error message appended next to the label by form-validation.js */
 .label-error {
   color: var(--red);
   font-size: 0.75rem;
   margin-left: 6px;
-  font-weight: 400;
+  font-weight: 400;  /* Normal weight so it reads as a hint, not a heading */
 }
 
-/* ---------- Page Header ---------- */
+
+/* --------------------------------------------------------------------------
+   PAGE HEADER
+   --------------------------------------------------------------------------
+   A reusable section header used at the top of most content pages,
+   containing a serif h1 and an optional subtitle paragraph.
+   -------------------------------------------------------------------------- */
 .page-header {
   margin-bottom: 28px;
 }
@@ -487,6 +610,7 @@ body.dark-mode .btn-secondary {
   margin-bottom: 8px;
 }
 
+/* Dark mode override for page header headings */
 body.dark-mode .page-header h1 {
   color: var(--text);
 }
@@ -494,24 +618,37 @@ body.dark-mode .page-header h1 {
 .page-header p {
   font-size: 0.95rem;
   color: var(--text-muted);
-  max-width: 600px;
+  max-width: 600px;  /* Keeps subtitle text at a comfortable reading width */
 }
 
-/* ---------- Two-column layout ---------- */
+
+/* --------------------------------------------------------------------------
+   TWO-COLUMN LAYOUT
+   --------------------------------------------------------------------------
+   A reusable grid layout placing main content on the left and a narrow
+   sidebar on the right. Used on the Apply, Requirements, and similar pages.
+   -------------------------------------------------------------------------- */
 .two-col {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 300px;  /* Wide main area + fixed-width sidebar */
   gap: 28px;
   align-items: start;
 }
 
-/* ---------- Sidebar ---------- */
+
+/* --------------------------------------------------------------------------
+   SIDEBAR
+   --------------------------------------------------------------------------
+   A vertical stack of sidebar cards displayed in the right column of
+   the .two-col layout. Each card holds secondary info or quick links.
+   -------------------------------------------------------------------------- */
 .sidebar {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
+/* Individual sidebar card */
 .sidebar-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -520,6 +657,7 @@ body.dark-mode .page-header h1 {
   box-shadow: var(--shadow);
 }
 
+/* Sidebar card section heading */
 .sidebar-card h3 {
   font-size: 0.9rem;
   font-weight: 700;
@@ -527,15 +665,18 @@ body.dark-mode .page-header h1 {
   margin-bottom: 10px;
 }
 
+/* Dark mode override for sidebar card headings */
 body.dark-mode .sidebar-card h3 {
   color: var(--text);
 }
 
+/* Unstyled bullet list inside sidebar cards */
 .sidebar-card ul {
   list-style: none;
   padding: 0;
 }
 
+/* Individual list items with a custom blue bullet */
 .sidebar-card ul li {
   font-size: 0.85rem;
   padding: 3px 0;
@@ -544,6 +685,7 @@ body.dark-mode .sidebar-card h3 {
   position: relative;
 }
 
+/* Custom blue bullet using a CSS pseudo-element */
 .sidebar-card ul li::before {
   content: '•';
   position: absolute;
@@ -551,36 +693,53 @@ body.dark-mode .sidebar-card h3 {
   color: var(--blue);
 }
 
-/* ---------- Status Badge ---------- */
+
+/* --------------------------------------------------------------------------
+   STATUS BADGE
+   --------------------------------------------------------------------------
+   A small inline badge used to indicate the current status of something,
+   e.g. "Portal Open" on the Apply page.
+   -------------------------------------------------------------------------- */
 .status-portal-open {
   color: var(--green);
   font-weight: 600;
   font-size: 0.85rem;
 }
 
-/* ---------- Responsive ---------- */
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE — MOBILE (max 768px)
+   --------------------------------------------------------------------------
+   On mobile: hide the desktop nav links, show the hamburger button,
+   reduce padding, shrink the page heading, collapse two-column layouts,
+   and reflow the footer into a centered column.
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+  /* Hide desktop nav links — mobile menu overlay is used instead */
   .nav-links {
     display: none;
   }
 
+  /* Show the hamburger icon that opens the mobile menu overlay */
   .hamburger {
     display: block;
-    margin-left: -90px;
+    margin-left: -90px;  /* Fine-tuned offset to align with the right edge of the navbar */
   }
 
   .main-content {
-    padding: 20px 16px;
+    padding: 20px 16px;  /* Tighter horizontal padding on small screens */
   }
 
   .page-header h1 {
-    font-size: 1.6rem;
+    font-size: 1.6rem;   /* Smaller heading so it doesn't overflow on narrow screens */
   }
 
+  /* Stack the two-column layout into a single column */
   .two-col {
     grid-template-columns: 1fr;
   }
 
+  /* Reflow the footer into a centered single column */
   .footer-container {
     flex-direction: column;
     text-align: center;
@@ -588,10 +747,10 @@ body.dark-mode .sidebar-card h3 {
   }
 
   .footer-links {
-    margin-left: 0;
+    margin-left: 0;  /* Remove the auto left-margin used on desktop */
   }
 
   .footer-contact {
-    flex: none;
+    flex: none;  /* Don't allow the contact area to stretch on mobile */
   }
 }

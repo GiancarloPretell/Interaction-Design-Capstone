@@ -1,118 +1,192 @@
-/* ---------- Header ---------- */
+/* ==========================================================================
+   NEWS PAGE STYLES
+   ==========================================================================
+   This stylesheet handles all styling for the News page of the
+   Yale Art website, including:
+   - A centered page header with title and subtitle
+   - A 3-column responsive grid of news cards
+   - Individual card styles (image, body, hover/active states)
+   - An expandable "read more" content area revealed on card click
+
+   Note: Relies on CSS custom properties defined in global.css such as
+   --font-serif, --navy, --blue, --text-muted, --bg-card, --border, etc.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   NEWS PAGE HEADER
+   --------------------------------------------------------------------------
+   Centered header at the top of the page with the main title and a
+   brief description of the news section.
+   -------------------------------------------------------------------------- */
+
 .news-header {
-  text-align: center;
-  margin-bottom: 32px;
+  text-align: center;    /* Centers the heading and description */
+  margin-bottom: 32px;   /* Space between header and the card grid below */
 }
 
 .news-header h1 {
-  font-family: var(--font-serif);
-  font-size: 2.4rem;
-  color: var(--navy);
-  margin-bottom: 6px;
+  font-family: var(--font-serif);  /* Elegant serif font for the heading */
+  font-size: 2.4rem;               /* Large, prominent title */
+  color: var(--navy);              /* Yale navy blue */
+  margin-bottom: 6px;              /* Tight gap before the description */
 }
 
+/* Dark mode override for the news page title */
 body.dark-mode .news-header h1 {
   color: var(--text);
 }
 
+/* Short description below the heading */
 .news-header p {
   font-size: 0.9rem;
   color: var(--text-muted);
 }
 
-/* ---------- Grid ---------- */
+
+/* --------------------------------------------------------------------------
+   NEWS GRID
+   --------------------------------------------------------------------------
+   A 3-column grid layout for the news cards. Uses `align-items: start`
+   to prevent cards from stretching to match the tallest card in the row,
+   which would cause unwanted border stretching.
+   -------------------------------------------------------------------------- */
+
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);  /* 3 equal-width columns */
   gap: 20px;
 
-  /* 🔥 THIS FIXES THE BORDER STRETCH ISSUE */
+  /* align-items: start prevents cards from stretching vertically
+     to match tallest sibling — important for variable-height expandable cards */
   align-items: start;
 }
 
-/* ---------- Card ---------- */
+
+/* --------------------------------------------------------------------------
+   NEWS CARD
+   --------------------------------------------------------------------------
+   Each news item is a vertically-stacked card with an image on top,
+   followed by a text body. Cards are interactive: clicking expands
+   additional content via the .active class (toggled by news.js).
+   -------------------------------------------------------------------------- */
+
 .news-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  overflow: hidden;
+  overflow: hidden;        /* Clips the image to the card's border-radius */
   box-shadow: var(--shadow);
-  cursor: pointer;
+  cursor: pointer;         /* Indicates the card is clickable */
   display: flex;
-  flex-direction: column;
+  flex-direction: column;  /* Stacks image on top of card body text */
 
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-/* Hover */
+/* Slightly deeper shadow on hover for interactivity feedback */
 .news-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
-/* Active card */
+/* Active state: card scales up and gets a stronger shadow to indicate selection */
 .news-card.active {
   transform: scale(1.01);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
 
-/* ---------- Image ---------- */
+
+/* --------------------------------------------------------------------------
+   CARD IMAGE
+   --------------------------------------------------------------------------
+   The image at the top of each news card. Uses a fixed height with
+   object-fit: cover to display a consistent crop regardless of image ratio.
+   -------------------------------------------------------------------------- */
+
+/* Image tag inside the image wrapper */
 .news-card-image img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  height: 160px;        /* Fixed height for consistent card layout */
+  object-fit: cover;    /* Crops the image to fill the area without distorting */
 }
 
+/* Fallback placeholder shown when no image is available */
 .news-card-image {
   width: 100%;
   height: 160px;
-  background: #c8d8ec;
+  background: #c8d8ec;  /* Light blue placeholder background */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* ---------- Body ---------- */
+
+/* --------------------------------------------------------------------------
+   CARD BODY
+   --------------------------------------------------------------------------
+   The text content area below the image, containing the article title
+   and a short teaser paragraph.
+   -------------------------------------------------------------------------- */
+
 .news-card-body {
-  padding: 16px;
+  padding: 16px;  /* Inner padding around the text content */
 }
 
-/* Title */
+/* Article title */
 .news-card-body h3 {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 8px;
-  line-height: 1.3;
+  line-height: 1.3;   /* Tighter line height for multi-line titles */
 }
 
+/* Dark mode override for article titles */
 body.dark-mode .news-card-body h3 {
   color: var(--text);
 }
 
-/* Short text */
+/* Short teaser/excerpt text below the title */
 .news-card-body p {
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* ---------- Expandable Content ---------- */
+
+/* --------------------------------------------------------------------------
+   EXPANDABLE CONTENT
+   --------------------------------------------------------------------------
+   Additional content that appears below the card body when the card is
+   clicked (class .active added by news.js). Uses max-height animation
+   for a smooth expand/collapse transition.
+   -------------------------------------------------------------------------- */
+
+/* Hidden by default — zero height, invisible, no top margin */
 .news-extra {
   max-height: 0;
-  overflow: hidden;
+  overflow: hidden;  /* Hides content that exceeds the max-height */
   opacity: 0;
   margin-top: 0;
 
   transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
 }
 
+/* Revealed when card is active — animates to full height and full opacity */
 .news-card.active .news-extra {
-  max-height: 500px;
+  max-height: 500px;  /* Large enough to accommodate any article length */
   opacity: 1;
-  margin-top: 12px;
+  margin-top: 12px;   /* Space between teaser and expanded content */
 }
 
-/* ---------- Responsive ---------- */
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE / MOBILE STYLES
+   --------------------------------------------------------------------------
+   On screens 768px or narrower, the 3-column grid collapses to a single
+   column so cards stack vertically.
+   -------------------------------------------------------------------------- */
+
 @media (max-width: 768px) {
   .news-grid {
     grid-template-columns: 1fr;
