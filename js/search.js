@@ -42,18 +42,23 @@
   ];
 
   function init() {
-
-    const input    = document.getElementById('searchInput');
+    const input = document.getElementById('searchInput');
     const dropdown = document.getElementById('searchDropdown');
 
     // Exit early if the required elements aren't present on this page
     if (!input || !dropdown) return;
 
-    // Re-filter and re-render the dropdown on every keystroke
+    function showMessage(message) {
+      dropdown.innerHTML = '';
+      const item = document.createElement('div');
+      item.className = 'search-item empty-state';
+      item.textContent = message;
+      dropdown.appendChild(item);
+      dropdown.style.display = 'block';
+    }
+
     input.addEventListener('input', function () {
-
       const q = this.value.trim().toLowerCase();
-
       // Clear any previously rendered suggestion items
       dropdown.innerHTML = '';
 
@@ -63,20 +68,18 @@
         return;
       }
 
-      // Keep only suggestions that contain the query as a substring
       const matches = suggestions.filter(s =>
         s.toLowerCase().includes(q)
       );
 
-      // Hide the dropdown if nothing matched
+      // Hide the dropdown if nothing matched, or show a "no results" message if the input isn't empty but there are no matches
       if (!matches.length) {
-        dropdown.style.display = 'none';
+        showMessage('No results found');
         return;
       }
 
       // Build and append a clickable item for each matching suggestion
       matches.forEach(s => {
-
         const item = document.createElement('div');
         item.className = 'search-item';
         item.innerHTML = `<span class="search-icon">🔍</span>${s}`;
@@ -101,28 +104,25 @@
       }
     });
 
-    const searchBtn = document.getElementById('searchBtn');
-
-    if (searchBtn) {
-      searchBtn.addEventListener('click', () => {
-        const q = input.value.trim();
-        // Placeholder for future search logic (e.g. navigating to a results page)
-      });
-    }
-
     // Pressing Enter closes the dropdown; actual search submission is a future feature
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         dropdown.style.display = 'none';
       }
     });
+
+    // Optional button (future feature safe)
+    const searchBtn = document.getElementById('searchBtn');
+    if (searchBtn) {
+      searchBtn.addEventListener('click', () => {
+        dropdown.style.display = 'none';
+      });
+    }
   }
 
-  // Run init after the DOM is fully parsed; if already parsed, run immediately
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
 })();

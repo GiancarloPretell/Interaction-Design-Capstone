@@ -53,7 +53,7 @@
     // Attach click listener to all toggle buttons on the page
     document.querySelectorAll('.dark-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        const isDark  = document.body.classList.contains('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
         const newMode = !isDark;  // Toggle to the opposite mode
 
         localStorage.setItem(STORAGE_KEY, newMode);  // Persist the new preference

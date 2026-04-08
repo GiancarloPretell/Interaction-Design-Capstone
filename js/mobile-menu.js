@@ -13,9 +13,9 @@
  */
 (function () {
   function init() {
-    const hamburger  = document.getElementById('hamburgerBtn');
+    const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const closeBtn   = document.getElementById('mobileMenuClose');
+    const closeBtn = document.getElementById('mobileMenuClose');
 
     // Exit early if the required elements aren't present on this page
     if (!hamburger || !mobileMenu) return;

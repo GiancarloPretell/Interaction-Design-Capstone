@@ -131,6 +131,14 @@ body.dark-mode .home-hero h1 { color: var(--text); }
 /* Small magnifying-glass emoji/icon to the left of each suggestion */
 .search-icon { font-size: 0.8rem; color: var(--text-light); }
 
+/* Empty / no results state */
+.search-item.empty-state {
+  cursor: default;
+  opacity: 0.7;
+  padding: 10px;
+  font-style: italic;
+}
+
 
 /* --------------------------------------------------------------------------
    CALL-TO-ACTION BUTTONS

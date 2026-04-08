@@ -17,7 +17,7 @@
   function init() {
     document.querySelectorAll('.accordion-item').forEach(item => {
       const header = item.querySelector('.accordion-header');
-      const body   = item.querySelector('.accordion-body');
+      const body = item.querySelector('.accordion-body');
       if (!header || !body) return;  // Skip malformed items missing required elements
 
       header.addEventListener('click', () => {
@@ -37,8 +37,8 @@
       });
 
       // Initialize all bodies collapsed (max-height: 0 with smooth transition)
-      body.style.maxHeight  = '0';
-      body.style.overflow   = 'hidden';
+      body.style.maxHeight = '0';
+      body.style.overflow = 'hidden';
       body.style.transition = 'max-height 0.25s ease';
     });
 
