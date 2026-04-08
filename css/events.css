@@ -201,3 +201,53 @@ body.dark-mode .event-info h3 {
   left: 0;
   color: var(--blue);
 }
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE / MOBILE STYLES
+   --------------------------------------------------------------------------
+   Media query for screens 700px wide or smaller (tablets and phones).
+   -------------------------------------------------------------------------- */
+
+/* ── Mobile-only: clickable card, no Learn More button ── */
+@media (max-width: 768px) {
+  .event-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  /* Remove the card's own bottom margin since the link wrapper takes it */
+  .event-card-link .event-card {
+    margin-bottom: 0;
+  }
+
+  .event-card-link:hover .event-card,
+  .event-card-link:focus .event-card {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+    transform: translateY(-2px);
+  }
+
+  .event-card-link:active .event-card {
+    transform: translateY(0);
+    box-shadow: var(--shadow);
+  }
+
+  /* Hide the Learn More button on mobile */
+  .event-learn-more {
+    display: none;
+  }
+}
+
+/* ── Desktop: link wrapper is invisible; card lays out as-is ── */
+@media (min-width: 769px) {
+  .event-card-link {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+  }
+}
