@@ -62,6 +62,19 @@ body.dark-mode .apply-header h1 {
   margin-bottom: 28px; /* Space below before next section */
 }
 
+@media (max-width: 768px) {
+  .apply-actions {
+    flex-wrap: nowrap; /* keep buttons in one row */
+    justify-content: center; /* center them nicely */
+  }
+
+  .apply-actions a,
+  .apply-actions button {
+    flex: 1; /* equal width buttons */
+    text-align: center;
+  }
+}
+
 /* --------------------------------------------------------------------------
    APPLY INFO GRID
    --------------------------------------------------------------------------

@@ -431,6 +431,40 @@ body.dark-mode .nav-btn:hover {
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center; /* center everything horizontally */
+    text-align: center;
+    gap: 16px; /* slightly more breathing room */
+  }
+
+  .footer-logo {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-contact {
+    flex: none;
+    width: 100%; /* prevent weird shrinking */
+    line-height: 1.5; /* better readability */
+    font-size: 1rem; /* slightly smaller on mobile */
+  }
+
+  .footer-links {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; /* prevents overflow */
+    gap: 12px;
+  }
+
+  .footer-links a {
+    display: inline-block;
+    font-size: 1.1rem; /* slightly smaller on mobile */
+  }
+}
+
 /* --------------------------------------------------------------------------
    BUTTONS
    --------------------------------------------------------------------------

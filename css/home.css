@@ -161,6 +161,20 @@ body.dark-mode .home-hero h1 {
   flex-wrap: wrap; /* Wraps buttons to a second line on very narrow screens */
 }
 
+@media (max-width: 768px) {
+  .home-cta {
+    flex-wrap: nowrap; /* prevents buttons from stacking */
+    justify-content: center;
+    margin-bottom: 0px;
+  }
+
+  .home-cta a,
+  .home-cta button {
+    flex: 1; /* makes both buttons equal width */
+    text-align: center;
+  }
+}
+
 /* --------------------------------------------------------------------------
    QUICK LINKS GRID
    --------------------------------------------------------------------------
