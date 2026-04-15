@@ -202,6 +202,24 @@
     });
   }
 
+  document.querySelectorAll('input[type="file"]').forEach((input) => {
+    input.addEventListener("change", function () {
+      const file = this.files[0];
+      const group = this.closest(".form-group");
+
+      if (!group) return;
+
+      // Clear previous error if any
+      group.classList.remove("field-error");
+      group.querySelectorAll(".label-error").forEach((el) => el.remove());
+
+      if (file && file.size > 5 * 1024 * 1024) {
+        markError(this, "File must be under 5MB");
+        this.value = "";
+      }
+    });
+  });
+
   // Run init after the DOM is fully parsed; if already parsed, run immediately
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);

@@ -48,13 +48,18 @@
       </div>
 
       <div class="form-card">
-        <form data-validate data-redirect="ConfirmApplicationFormFrame.html">
+        <!-- ✅ IMPORTANT: enctype added -->
+        <form
+          data-validate
+          data-redirect="ConfirmApplicationFormFrame.html"
+          enctype="multipart/form-data"
+        >
           <div class="form-grid">
-            <!-- Left Column -->
+            <!-- Program -->
             <div class="form-group">
-              <label class="form-label"
-                >Program<span class="required">*</span></label
-              >
+              <label class="form-label">
+                Program<span class="required">*</span>
+              </label>
               <select class="form-select" required>
                 <option value="" disabled selected>
                   Please select your desired program
@@ -65,23 +70,24 @@
               </select>
             </div>
 
-            <!-- Right Column -->
+            <!-- Resume Upload -->
             <div class="form-group">
-              <label class="form-label"
-                >Resume<span class="required">*</span></label
-              >
-              <select class="form-select" required>
-                <option value="" disabled selected>
-                  Please upload your resume
-                </option>
-                <option>Resume Uploaded</option>
-              </select>
+              <label class="form-label">
+                Resume (PDF)<span class="required">*</span>
+              </label>
+              <input
+                type="file"
+                class="form-input"
+                accept=".pdf,application/pdf"
+                required
+              />
             </div>
 
+            <!-- Name -->
             <div class="form-group">
-              <label class="form-label"
-                >Full Legal Name<span class="required">*</span></label
-              >
+              <label class="form-label">
+                Full Legal Name<span class="required">*</span>
+              </label>
               <input
                 type="text"
                 class="form-input"
@@ -90,22 +96,24 @@
               />
             </div>
 
+            <!-- Portfolio Upload -->
             <div class="form-group">
-              <label class="form-label"
-                >Portfolio<span class="required">*</span></label
-              >
-              <select class="form-select" required>
-                <option value="" disabled selected>
-                  Please upload your portfolio
-                </option>
-                <option>Portfolio Uploaded</option>
-              </select>
+              <label class="form-label">
+                Portfolio (PDF)<span class="required">*</span>
+              </label>
+              <input
+                type="file"
+                class="form-input"
+                accept=".pdf,application/pdf"
+                required
+              />
             </div>
 
+            <!-- Phone -->
             <div class="form-group">
-              <label class="form-label"
-                >Phone Number<span class="required">*</span></label
-              >
+              <label class="form-label">
+                Phone Number<span class="required">*</span>
+              </label>
               <input
                 type="tel"
                 class="form-input"
@@ -114,10 +122,11 @@
               />
             </div>
 
+            <!-- Consent -->
             <div class="form-group">
-              <label class="form-label"
-                >Data Procession Consent<span class="required">*</span></label
-              >
+              <label class="form-label">
+                Data Processing Consent<span class="required">*</span>
+              </label>
               <select class="form-select" required>
                 <option value="" disabled selected>
                   Do you consent to your data being processed?
@@ -127,10 +136,11 @@
               </select>
             </div>
 
+            <!-- Email -->
             <div class="form-group">
-              <label class="form-label"
-                >Email<span class="required">*</span></label
-              >
+              <label class="form-label">
+                Email<span class="required">*</span>
+              </label>
               <input
                 type="email"
                 class="form-input"
