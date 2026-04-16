@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/programs.css" />
   </head>
-  <body>
+  <body class="inner-page">
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
     <nav class="navbar">
       <div class="nav-container">
         <a href="HomeFrame.html" class="nav-logo">
@@ -21,6 +22,30 @@
           <a href="EventsFrame.html" class="nav-btn">Events</a>
           <a href="NewsFrame.html" class="nav-btn">News</a>
           <a href="ContactFrame.html" class="nav-btn">Contact Us</a>
+        </div>
+        <div class="nav-search site-search compact-search" aria-label="Quick site search">
+          <div class="search-input-row">
+            <input
+              type="text"
+              data-role="search-input"
+              placeholder="Search site"
+              aria-label="Quick search"
+            />
+            <button type="button" data-role="search-btn" aria-label="Search the site" class="magnetic-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 0l0 0M15.2 15.2L20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="search-status nav-search-status" data-role="search-status" aria-live="polite"></div>
+          <div class="search-dropdown nav-search-dropdown" data-role="search-dropdown"></div>
         </div>
         <button class="dark-toggle" id="darkToggle">☾</button>
         <button class="hamburger" id="hamburgerBtn">&#9776;</button>
@@ -51,7 +76,7 @@
       <div class="programs-layout">
         <div>
           <div class="program-cards">
-            <div class="program-card">
+            <div class="program-card editorial-reveal">
               <div class="prog-icon">🎨</div>
               <h3>Painting &amp; Printmaking</h3>
               <p>
@@ -66,7 +91,7 @@
               >
             </div>
 
-            <div class="program-card">
+            <div class="program-card editorial-reveal">
               <div class="prog-icon">🗿</div>
               <h3>Sculpture (MFA)</h3>
               <p>
@@ -81,7 +106,7 @@
               >
             </div>
 
-            <div class="program-card">
+            <div class="program-card editorial-reveal">
               <div class="prog-icon">🖥️</div>
               <h3>Graphic Design (MFA)</h3>
               <p>
@@ -101,15 +126,15 @@
             <h2>Our Approach</h2>
             <p>An interdisciplinary and collaborative MFA experience</p>
             <div class="approach-grid">
-              <div class="approach-item">
-                <div class="approach-item-icon">🌐</div>
+              <div class="approach-item editorial-reveal">
+                <div class="approach-item-icon editorial-reveal">🌐</div>
                 <div>
                   <strong>Interdisciplinary Learning</strong>
                   <span>Engage with diverse mediums and approaches.</span>
                 </div>
               </div>
-              <div class="approach-item">
-                <div class="approach-item-icon">👥</div>
+              <div class="approach-item editorial-reveal">
+                <div class="approach-item-icon editorial-reveal">👥</div>
                 <div>
                   <strong>Creative Community</strong>
                   <span
@@ -123,9 +148,9 @@
         </div>
 
         <div class="sidebar">
-          <div class="support-card">
+          <div class="support-card editorial-reveal">
             <h3>Admissions Support</h3>
-            <div class="support-card-inner">
+            <div class="support-card-inner editorial-reveal">
               <div class="icon">✉️</div>
               <p>
                 Need help with applications or admissions? We're here to support
@@ -159,7 +184,9 @@
       </div>
     </footer>
 
+    <script src="../js/home-effects.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/mobile-menu.js"></script>
+      <script src="../js/search.js"></script>
   </body>
 </html>

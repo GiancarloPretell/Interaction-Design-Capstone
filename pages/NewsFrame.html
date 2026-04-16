@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../css/news.css" />
   </head>
 
-  <body>
+  <body class="inner-page">
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
     <nav class="navbar">
       <div class="nav-container">
         <a href="HomeFrame.html" class="nav-logo">
@@ -26,6 +27,30 @@
           <a href="ContactFrame.html" class="nav-btn">Contact Us</a>
         </div>
 
+        <div class="nav-search site-search compact-search" aria-label="Quick site search">
+          <div class="search-input-row">
+            <input
+              type="text"
+              data-role="search-input"
+              placeholder="Search site"
+              aria-label="Quick search"
+            />
+            <button type="button" data-role="search-btn" aria-label="Search the site" class="magnetic-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 0l0 0M15.2 15.2L20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="search-status nav-search-status" data-role="search-status" aria-live="polite"></div>
+          <div class="search-dropdown nav-search-dropdown" data-role="search-dropdown"></div>
+        </div>
         <button class="dark-toggle" id="darkToggle">☾</button>
         <button class="hamburger" id="hamburgerBtn">&#9776;</button>
       </div>
@@ -51,12 +76,12 @@
 
       <div class="news-grid">
         <!-- CARD 1 -->
-        <div class="news-card">
-          <div class="news-card-image">
+        <div class="news-card editorial-reveal">
+          <div class="news-card-image editorial-reveal">
             <img src="../images/new1.png" alt="Spring Exhibition" />
           </div>
 
-          <div class="news-card-body">
+          <div class="news-card-body editorial-reveal">
             <h3>Spring Exhibition Opens</h3>
             <p>A new collection of student and faculty work on display.</p>
 
@@ -77,12 +102,12 @@
         </div>
 
         <!-- CARD 2 -->
-        <div class="news-card">
-          <div class="news-card-image">
+        <div class="news-card editorial-reveal">
+          <div class="news-card-image editorial-reveal">
             <img src="../images/new2.png" alt="Student Showcase" />
           </div>
 
-          <div class="news-card-body">
+          <div class="news-card-body editorial-reveal">
             <h3>Student Showcase 2026</h3>
             <p>Featuring emerging artists across multiple disciplines.</p>
 
@@ -103,12 +128,12 @@
         </div>
 
         <!-- CARD 3 -->
-        <div class="news-card">
-          <div class="news-card-image">
+        <div class="news-card editorial-reveal">
+          <div class="news-card-image editorial-reveal">
             <img src="../images/new3.png" alt="Guest Lecture" />
           </div>
 
-          <div class="news-card-body">
+          <div class="news-card-body editorial-reveal">
             <h3>Guest Artist Lecture</h3>
             <p>Join visiting artists for an interactive session.</p>
 
@@ -146,8 +171,10 @@
       </div>
     </footer>
 
+    <script src="../js/home-effects.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/mobile-menu.js"></script>
     <script src="../js/news.js"></script>
+      <script src="../js/search.js"></script>
   </body>
 </html>

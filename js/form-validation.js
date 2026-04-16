@@ -1,147 +1,224 @@
 /**
- * form-validation.js — Client-Side Form Validation
+ * form-validation.js — Real-time form validation + helpful inline feedback
  *
- * Provides real-time and on-submit validation for forms that have the
- * data-validate attribute. Marks invalid fields with an error class and
- * displays inline error messages next to the field labels.
- *
- * Depends on:
- *   - <form data-validate data-redirect="url"> elements
- *   - .form-group > .form-label + input/select/textarea structure
- *   - CSS classes .field-error and .label-error defined in global.css
- *
- * Validation rules:
- *   - All fields with [required] must be non-empty
- *   - Fields with type="email" must match a valid email pattern
- *   - Fields with type="tel" must match a valid phone number pattern
- *   - Fields with type="text" used for name must contain a full name (2+ words)
- *
- * On success: shows a 4-second loading overlay, then redirects to the URL
- * specified in the form's data-redirect attribute
+ * Features:
+ * - Validates fields on input, change, and blur
+ * - Shows inline error messages next to the related label
+ * - Clears errors as soon as the field is corrected
+ * - Shows success feedback for valid fields
+ * - Prevents submit until all required fields are valid
+ * - Disables the submit button and shows a loading state on success
  */
 (function () {
-  /**
-   * Validates all required fields in a form.
-   * @param {HTMLFormElement} form
-   * @returns {boolean} true if all fields are valid, false if any fail
-   */
-  function validateForm(form) {
-    let valid = true;
-
-    // Clear any previous error state before re-validating
-    form
-      .querySelectorAll(".field-error")
-      .forEach((el) => el.classList.remove("field-error"));
-    form.querySelectorAll(".label-error").forEach((el) => el.remove());
-
-    form.querySelectorAll("[required]").forEach((field) => {
-      const val = field.value.trim();
-
-      if (!val) {
-        // Empty required field
-        markError(field);
-        valid = false;
-      } else if (field.type === "email" && !isValidEmail(val)) {
-        markError(field, "Please enter a valid email address");
-        valid = false;
-      } else if (field.type === "tel" && !isValidPhone(val)) {
-        markError(field, "Please enter a valid phone number");
-        valid = false;
-      } else if (
-        field.type === "text" &&
-        isNameField(field) &&
-        !isValidName(val)
-      ) {
-        markError(field, "Please enter your first and last name");
-        valid = false;
-      }
-    });
-
-    return valid;
+  function getFieldValue(field) {
+    return (field.value || "").trim();
   }
 
-  /**
-   * Marks a form field as invalid by adding .field-error to its group
-   * and appending an inline error message span next to its label.
-   * @param {HTMLElement} field - the invalid input/select/textarea element
-   * @param {string} [message] - custom error message; defaults to a generic prompt
-   */
-  function markError(field, message) {
-    const group = field.closest(".form-group");
-    if (!group) return;
-
-    group.classList.add("field-error"); // Triggers red border styling via global.css
-
-    // Add an inline error message next to the label (only once per field)
-    const label = group.querySelector(".form-label");
-    if (label && !label.querySelector(".label-error")) {
-      const errSpan = document.createElement("span");
-      errSpan.className = "label-error";
-      errSpan.textContent = message;
-      label.appendChild(errSpan);
-    }
+  function getGroup(field) {
+    return field.closest(".form-group");
   }
 
-  /**
-   * Tests whether a string is a valid email address.
-   * Requires characters before @, a domain, and a TLD.
-   * @param {string} email
-   * @returns {boolean}
-   */
+  function getLabel(field) {
+    const group = getGroup(field);
+    return group ? group.querySelector(".form-label") : null;
+  }
+
+  function getPlainLabelText(field) {
+    const label = getLabel(field);
+    if (!label) return "This field";
+    const clone = label.cloneNode(true);
+    clone.querySelectorAll(".label-error, .label-success, .required").forEach((el) =>
+      el.remove(),
+    );
+    return clone.textContent.replace(/\s+/g, " ").trim() || "This field";
+  }
+
+  function fieldTitle(field) {
+    return getPlainLabelText(field).replace(/[*:]/g, "").trim();
+  }
+
   function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
   }
 
-  /**
-   * Tests whether a string is a plausible phone number.
-   * Accepts formats like: (203) 432-2606, 203-432-2606, +12034322606, 2034322606
-   * Must contain 7–15 digits after stripping formatting characters.
-   * @param {string} phone
-   * @returns {boolean}
-   */
   function isValidPhone(phone) {
-    const digits = phone.replace(/[\s\-().+]/g, "");
-    return /^\d{7,15}$/.test(digits);
+    const digits = phone.replace(/[^\d]/g, "");
+    return /^\d{10,15}$/.test(digits);
   }
 
-  /**
-   * Detects whether a text input is a name field by checking its
-   * placeholder or the text content of its associated label.
-   * @param {HTMLElement} field
-   * @returns {boolean}
-   */
   function isNameField(field) {
-    const placeholder = (field.placeholder || "").toLowerCase();
-    const group = field.closest(".form-group");
-    const labelText = group
-      ? (group.querySelector(".form-label") || {}).textContent || ""
-      : "";
-    return (
-      placeholder.includes("name") || labelText.toLowerCase().includes("name")
-    );
+    const text = `${field.placeholder || ""} ${fieldTitle(field)}`.toLowerCase();
+    return text.includes("name");
   }
 
-  /**
-   * Tests whether a string looks like a full name.
-   * Requires at least two words made up of letters, hyphens, or apostrophes
-   * (handles names like O'Brien or Mary-Jane).
-   * @param {string} name
-   * @returns {boolean}
-   */
   function isValidName(name) {
     return /^[a-zA-Z'-]+(\s+[a-zA-Z'-]+)+$/.test(name);
   }
 
-  /**
-   * Shows the loading overlay and redirects after a 4-second delay.
-   * Looks for an existing .loading-overlay in the DOM; if none is found,
-   * it creates one dynamically so the feature works even without the HTML stub.
-   * @param {string} url - the redirect destination
-   */
-  function showLoadingAndRedirect(url) {
-    let overlay = document.querySelector(".loading-overlay");
+  function isSelectField(field) {
+    return field.tagName === "SELECT";
+  }
 
-    // Create the overlay on the fly if it isn't already in the HTML
+  function isConsentField(field) {
+    return fieldTitle(field).toLowerCase().includes("consent");
+  }
+
+  function getRequiredMessage(field) {
+    const title = fieldTitle(field);
+
+    if (field.type === "email") return "Please enter your email address.";
+    if (field.type === "tel")
+      return "Please enter your phone number, including area code.";
+    if (isSelectField(field)) {
+      if (/program/i.test(title)) return "Please select a program.";
+      if (/event/i.test(title)) return "Please select an event.";
+      if (/time slot/i.test(title)) return "Please select a time slot.";
+      if (/resume/i.test(title)) return "Please confirm your resume upload.";
+      if (/portfolio/i.test(title))
+        return "Please confirm your portfolio upload.";
+      if (/enrolled/i.test(title))
+        return "Please choose whether you are currently enrolled at Yale.";
+      if (isConsentField(field))
+        return "Please choose whether you consent to data processing.";
+      return `Please complete ${title.toLowerCase()}.`;
+    }
+    if (isNameField(field)) return "Please enter your first and last name.";
+    return `Please enter ${title.toLowerCase()}.`;
+  }
+
+  function getSuccessMessage(field) {
+    const title = fieldTitle(field);
+    if (field.type === "email") return "Email looks good.";
+    if (field.type === "tel") return "Phone number looks good.";
+    if (isNameField(field)) return "Full name looks good.";
+    if (isSelectField(field)) return `${title} selected.`;
+    return "Looks good.";
+  }
+
+  function validateField(field) {
+    const value = getFieldValue(field);
+
+    if (field.required && !value) {
+      return { valid: false, message: getRequiredMessage(field) };
+    }
+
+    if (!value) {
+      return { valid: true, message: "" };
+    }
+
+    if (field.type === "email" && !isValidEmail(value)) {
+      return {
+        valid: false,
+        message: "Enter a valid email address, like name@example.com.",
+      };
+    }
+
+    if (field.type === "tel" && !isValidPhone(value)) {
+      return {
+        valid: false,
+        message: "Enter a valid phone number with 10 to 15 digits.",
+      };
+    }
+
+    if (field.type === "text" && isNameField(field) && !isValidName(value)) {
+      return {
+        valid: false,
+        message: "Enter your first and last name.",
+      };
+    }
+
+    if (isConsentField(field) && value.toLowerCase() !== "yes") {
+      return {
+        valid: false,
+        message: "You must select Yes to continue with this submission.",
+      };
+    }
+
+    return { valid: true, message: getSuccessMessage(field) };
+  }
+
+  function removeStatus(label) {
+    if (!label) return;
+    label.querySelectorAll(".label-error, .label-success").forEach((el) => el.remove());
+  }
+
+  function setStatus(field, type, message) {
+    const group = getGroup(field);
+    const label = getLabel(field);
+    if (!group || !label) return;
+
+    removeStatus(label);
+    group.classList.remove("field-error", "field-success");
+    field.removeAttribute("aria-invalid");
+
+    if (!message) return;
+
+    const status = document.createElement("span");
+    status.className = type === "error" ? "label-error" : "label-success";
+    status.textContent = message;
+    label.appendChild(status);
+
+    if (type === "error") {
+      group.classList.add("field-error");
+      field.setAttribute("aria-invalid", "true");
+    } else {
+      group.classList.add("field-success");
+    }
+  }
+
+  function validateAndRenderField(field, options) {
+    const settings = options || {};
+    const result = validateField(field);
+    const value = getFieldValue(field);
+
+    if (!result.valid) {
+      setStatus(field, "error", result.message);
+      return false;
+    }
+
+    if (value && settings.showSuccess !== false) {
+      setStatus(field, "success", result.message);
+    } else {
+      const group = getGroup(field);
+      const label = getLabel(field);
+      if (group) group.classList.remove("field-error", "field-success");
+      if (label) removeStatus(label);
+      field.removeAttribute("aria-invalid");
+    }
+
+    return true;
+  }
+
+  function validateForm(form) {
+    let valid = true;
+    let firstInvalidField = null;
+
+    form.querySelectorAll("[required]").forEach((field) => {
+      const fieldValid = validateAndRenderField(field, { showSuccess: true });
+      if (!fieldValid) {
+        valid = false;
+        if (!firstInvalidField) firstInvalidField = field;
+      }
+    });
+
+    if (!valid && firstInvalidField) {
+      firstInvalidField.focus();
+    }
+
+    return valid;
+  }
+
+  function showLoadingAndRedirect(form, url) {
+    let overlay = document.querySelector(".loading-overlay");
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.textContent;
+      submitButton.textContent = "Submitting...";
+      submitButton.classList.add("is-loading");
+    }
+
     if (!overlay) {
       overlay = document.createElement("div");
       overlay.className = "loading-overlay";
@@ -149,78 +226,55 @@
       const spinner = document.createElement("div");
       spinner.className = "loader";
 
+      const text = document.createElement("p");
+      text.className = "loading-text";
+      text.textContent = "Submitting your form...";
+
       overlay.appendChild(spinner);
+      overlay.appendChild(text);
       document.body.appendChild(overlay);
     }
 
-    // Make sure it's visible (remove .hidden if present)
     overlay.classList.remove("hidden");
 
-    // Wait 4 seconds, then navigate
     setTimeout(function () {
       window.location.href = url;
-    }, 4000);
+    }, 1500);
+  }
+
+  function bindRealtimeValidation(form) {
+    form.querySelectorAll("[required]").forEach((field) => {
+      const handler = function () {
+        validateAndRenderField(field, { showSuccess: true });
+      };
+
+      field.addEventListener("blur", handler);
+
+      if (isSelectField(field)) {
+        field.addEventListener("change", handler);
+      } else {
+        field.addEventListener("input", handler);
+      }
+    });
   }
 
   function init() {
     document.querySelectorAll("form[data-validate]").forEach((form) => {
-      // On submit: validate the whole form; show loader then redirect on success
+      form.setAttribute("novalidate", "novalidate");
+      bindRealtimeValidation(form);
+
       form.addEventListener("submit", function (e) {
-        e.preventDefault(); // Always prevent native submission
-        if (validateForm(this)) {
-          const redirect = this.dataset.redirect;
+        e.preventDefault();
+        if (validateForm(form)) {
+          const redirect = form.dataset.redirect;
           if (redirect) {
-            showLoadingAndRedirect(redirect); // 4-second spinner before navigation
+            showLoadingAndRedirect(form, redirect);
           }
         }
-      });
-
-      // Live validation on blur: clears error state once a field is corrected
-      form.querySelectorAll("[required]").forEach((field) => {
-        field.addEventListener("blur", function () {
-          const group = this.closest(".form-group");
-          if (!group) return;
-
-          const val = this.value.trim();
-
-          if (!val) return; // Still empty — leave the error in place
-
-          let fieldValid = true;
-
-          if (this.type === "email" && !isValidEmail(val)) fieldValid = false;
-          if (this.type === "tel" && !isValidPhone(val)) fieldValid = false;
-          if (this.type === "text" && isNameField(this) && !isValidName(val))
-            fieldValid = false;
-
-          if (fieldValid) {
-            // Field is now correct — clear the error state
-            group.classList.remove("field-error");
-            group.querySelectorAll(".label-error").forEach((el) => el.remove());
-          }
-        });
       });
     });
   }
 
-  document.querySelectorAll('input[type="file"]').forEach((input) => {
-    input.addEventListener("change", function () {
-      const file = this.files[0];
-      const group = this.closest(".form-group");
-
-      if (!group) return;
-
-      // Clear previous error if any
-      group.classList.remove("field-error");
-      group.querySelectorAll(".label-error").forEach((el) => el.remove());
-
-      if (file && file.size > 5 * 1024 * 1024) {
-        markError(this, "File must be under 5MB");
-        this.value = "";
-      }
-    });
-  });
-
-  // Run init after the DOM is fully parsed; if already parsed, run immediately
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

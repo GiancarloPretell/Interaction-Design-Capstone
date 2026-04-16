@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/deadlines.css" />
   </head>
-  <body>
+  <body class="inner-page">
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
     <nav class="navbar">
       <div class="nav-container">
         <a href="HomeFrame.html" class="nav-logo">
@@ -21,6 +22,30 @@
           <a href="EventsFrame.html" class="nav-btn">Events</a>
           <a href="NewsFrame.html" class="nav-btn">News</a>
           <a href="ContactFrame.html" class="nav-btn">Contact Us</a>
+        </div>
+        <div class="nav-search site-search compact-search" aria-label="Quick site search">
+          <div class="search-input-row">
+            <input
+              type="text"
+              data-role="search-input"
+              placeholder="Search site"
+              aria-label="Quick search"
+            />
+            <button type="button" data-role="search-btn" aria-label="Search the site" class="magnetic-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10.5 4a6.5 6.5 0 1 0 0 13a6.5 6.5 0 0 0 0-13Zm0 0l0 0M15.2 15.2L20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="search-status nav-search-status" data-role="search-status" aria-live="polite"></div>
+          <div class="search-dropdown nav-search-dropdown" data-role="search-dropdown"></div>
         </div>
         <button class="dark-toggle" id="darkToggle">☾</button>
         <button class="hamburger" id="hamburgerBtn">&#9776;</button>
@@ -55,7 +80,7 @@
           <div class="key-dates-title">Key Dates</div>
 
           <ul class="timeline">
-            <li class="timeline-item">
+            <li class="timeline-item editorial-reveal">
               <div class="timeline-dot yellow"></div>
               <h3>Application Opens</h3>
               <div class="date">December 1, 2024</div>
@@ -63,13 +88,13 @@
                 Start your application and begin uploading materials.
               </div>
             </li>
-            <li class="timeline-item">
+            <li class="timeline-item editorial-reveal">
               <div class="timeline-dot blue"></div>
               <h3>Priority Deadline</h3>
               <div class="date">January 9, 2025</div>
               <div class="desc">Submit by this date for priority review.</div>
             </li>
-            <li class="timeline-item">
+            <li class="timeline-item editorial-reveal">
               <div class="timeline-dot gray"></div>
               <h3>Admissions Decisions</h3>
               <div class="date">Mid-February, 2025</div>
@@ -81,7 +106,7 @@
         </div>
 
         <div class="sidebar">
-          <div class="sidebar-card">
+          <div class="sidebar-card editorial-reveal">
             <h3>Deadline Summary</h3>
             <div class="deadline-summary">
               <table>
@@ -149,7 +174,9 @@
       </div>
     </footer>
 
+    <script src="../js/home-effects.js"></script>
     <script src="../js/darkmode.js"></script>
     <script src="../js/mobile-menu.js"></script>
+      <script src="../js/search.js"></script>
   </body>
 </html>
