@@ -1,0 +1,318 @@
+/* ==========================================================================
+   EVENT DETAIL PAGE STYLES
+   ==========================================================================
+   This stylesheet handles all styling for individual event detail pages
+   of the Yale Art website, including:
+   - Guest Lecture detail pages
+   - Open House detail pages
+   - Workshop detail pages
+
+   Layout: a two-column grid with the main content on the left and a
+   sticky info sidebar (date, time, location, RSVP button) on the right.
+
+   Note: This file relies on CSS custom properties (variables) defined
+   in global.css, such as --font-serif, --navy, --text, --bg-card, etc.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   MAIN TWO-COLUMN EVENT LAYOUT
+   --------------------------------------------------------------------------
+   A grid that places the event content (hero image, about text, detail
+   items) on the left and the info sidebar card on the right.
+   -------------------------------------------------------------------------- */
+.event-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 330px; /* Wide content column + fixed-width sidebar */
+  gap: 28px;
+  align-items: start; /* Sidebar stays at the top rather than stretching to full height */
+}
+
+/* --------------------------------------------------------------------------
+   EVENT HEADER SECTION
+   --------------------------------------------------------------------------
+   A flex row containing an emoji icon on the left and the event title +
+   subtitle text on the right.
+   -------------------------------------------------------------------------- */
+.event-detail-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+/* Emoji icon displayed to the left of the event title */
+.event-detail-icon {
+  font-size: 2rem;
+  flex-shrink: 0; /* Prevents the icon from shrinking when the title is long */
+  margin-top: 2px; /* Nudges icon down to align with the first line of text */
+}
+
+/* Main event title */
+.event-detail-header h1 {
+  font-family: var(--font-serif); /* Elegant serif for high-impact headings */
+  font-size: 2.1rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+  line-height: 1.05; /* Tight leading for large display text */
+}
+
+/* Dark mode override: use general text color instead of navy */
+body.dark-mode .event-detail-header h1 {
+  color: var(--text);
+}
+
+/* Short subtitle / description displayed below the event title */
+.event-detail-header p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   HERO IMAGE AREA
+   --------------------------------------------------------------------------
+   A full-width rounded image block displayed between the header and the
+   about section. The outer wrapper handles the border-radius and clip;
+   the inner img fills it at a fixed height.
+   -------------------------------------------------------------------------- */
+
+/* Rounded container that clips the image to curved corners */
+.event-detail-image {
+  width: 100%;
+  margin: 16px 0 22px;
+  border-radius: 28px;
+  overflow: hidden; /* Clips the square img corners to the wrapper's radius */
+  background: transparent;
+}
+
+/* The actual photo (or a placeholder element with the same class) */
+.event-detail-image img,
+.event-detail-photo {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* Crops to fill the fixed height without distortion */
+  display: block;
+  border-radius: 0; /* Inner radius is 0; clipping handled by the wrapper */
+}
+
+/* --------------------------------------------------------------------------
+   ABOUT SECTION
+   --------------------------------------------------------------------------
+   A short descriptive block below the hero image with a section heading
+   and one or more paragraphs of event details.
+   -------------------------------------------------------------------------- */
+.event-about h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+/* Dark mode override for the section heading */
+body.dark-mode .event-about h2 {
+  color: var(--text);
+}
+
+.event-about p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7; /* Generous line spacing for readability in body text */
+  margin-bottom: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   BOTTOM DETAIL ITEMS GRID
+   --------------------------------------------------------------------------
+   A 2-column grid of small detail items (e.g. Format, Capacity, Cost,
+   Prerequisites) displayed below the about section, each with an icon.
+   -------------------------------------------------------------------------- */
+.event-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns of detail items */
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* A single detail item: icon + label/value pair */
+.event-detail-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* Small emoji icon to the left of the label/value */
+.event-detail-item-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px; /* Aligns icon with the first line of the label text */
+}
+
+/* Label (e.g. "Format", "Cost") displayed above the value */
+.event-detail-item strong {
+  display: block; /* Forces the label onto its own line above the value */
+  font-size: 0.85rem;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+/* Dark mode override for detail item labels */
+body.dark-mode .event-detail-item strong {
+  color: var(--text);
+}
+
+/* Value text (e.g. "In-person", "Free") displayed below the label */
+.event-detail-item span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   SIDEBAR INFO CARD
+   --------------------------------------------------------------------------
+   A sticky card on the right column showing the event's date, time,
+   location, and an RSVP/reserve-seat button.
+   -------------------------------------------------------------------------- */
+.event-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* Sidebar section heading ("Event Information") */
+.event-info-card h3 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+/* Dark mode override for the sidebar heading */
+body.dark-mode .event-info-card h3 {
+  color: var(--text);
+}
+
+/* Pill badge showing the event category (e.g. "Workshop", "Lecture") */
+.event-type-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px; /* Fully rounded pill shape */
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   EVENT DETAILS TABLE
+   --------------------------------------------------------------------------
+   A two-column table inside the sidebar listing key event metadata:
+   Date, Time, and Location. Left column = labels, right column = values.
+   -------------------------------------------------------------------------- */
+.event-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 14px;
+}
+
+.event-info-table td {
+  padding: 7px 0;
+  font-size: 0.82rem;
+  vertical-align: top;
+}
+
+/* Left column: labels (Date, Time, Location) */
+.event-info-table td:first-child {
+  color: var(--text-light);
+  width: 90px; /* Fixed width keeps values aligned regardless of label length */
+  font-weight: 600;
+  white-space: nowrap; /* Prevents labels from wrapping to a second line */
+  padding-right: 16px;
+}
+
+/* Right column: actual values (e.g. "April 15, 2025") */
+.event-info-table td:last-child {
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Short description paragraph below the table, separated by a divider */
+.event-sidebar-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border); /* Visual separator above description */
+}
+
+/* Reserve / RSVP button — spans the full sidebar width */
+.event-info-card .btn-primary {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE — TABLET (max 900px)
+   --------------------------------------------------------------------------
+   Collapses the two-column layout to a single column and stacks the
+   sidebar below the main content. Detail items also drop to one column.
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .event-detail-layout {
+    grid-template-columns: 1fr; /* Stack content and sidebar vertically */
+  }
+
+  .event-details-grid {
+    grid-template-columns: 1fr; /* Stack detail items into a single column */
+  }
+
+  .event-detail-image img,
+  .event-detail-photo {
+    height: 280px; /* Slightly shorter hero image on tablet */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE — MOBILE (max 600px)
+   --------------------------------------------------------------------------
+   Further adjustments for small screens: icon stacks above the title,
+   heading font size reduces, and the hero image becomes shorter.
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .event-detail-header {
+    flex-direction: column; /* Stack icon above the title text on mobile */
+    gap: 10px;
+  }
+
+  .event-detail-header h1 {
+    font-size: 1.65rem; /* Smaller heading to fit narrow screens */
+  }
+
+  .event-detail-image {
+    border-radius: 20px; /* Slightly tighter corner radius on mobile */
+    margin: 16px 0 20px;
+  }
+
+  /* On mobile, let the image height feel more natural for portrait screens */
+  .event-detail-image img,
+  .event-detail-photo {
+    height: 220px;
+  }
+
+  .event-info-card {
+    padding: 18px; /* Slightly reduced padding inside the sidebar card */
+  }
+
+  .event-info-table td:first-child {
+    width: 80px; /* Narrower label column on small screens */
+    padding-right: 12px;
+  }
+}

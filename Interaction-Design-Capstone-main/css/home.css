@@ -1,0 +1,273 @@
+/* ==========================================================================
+   HOME PAGE STYLES
+   ==========================================================================
+   This stylesheet handles all styling for the Home page of the Yale Art
+   admissions website, including:
+   - The centered hero section (heading, tagline, search bar, CTA buttons)
+   - The autocomplete search dropdown
+   - The 2-column quick-links grid below the hero
+
+   Note: This file relies on CSS custom properties (variables) defined
+   in global.css, such as --font-serif, --navy, --text, --bg-card, etc.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   HOME HERO SECTION
+   --------------------------------------------------------------------------
+   A centered block at the top of the page containing the main heading,
+   a tagline paragraph, the search bar, and primary CTA buttons.
+   -------------------------------------------------------------------------- */
+.home-hero {
+  text-align: center;
+  padding: 48px 24px 32px; /* Extra top padding for a generous above-the-fold feel */
+}
+
+/* Main display heading — the largest text on the page */
+.home-hero h1 {
+  font-family: var(--font-serif); /* Serif for high-impact display heading */
+  font-size: 2.6rem;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+/* Dark mode override for the hero heading */
+body.dark-mode .home-hero h1 {
+  color: var(--text);
+}
+
+/* Tagline / subtitle paragraph beneath the heading */
+.home-hero p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto 24px; /* Centers the paragraph and adds space before the search bar */
+}
+
+/* --------------------------------------------------------------------------
+   SEARCH BAR
+   --------------------------------------------------------------------------
+   A pill-shaped input row with a blue search button on the right. The
+   outer .search-wrapper is position: relative to anchor the dropdown.
+   -------------------------------------------------------------------------- */
+
+/* Outer wrapper anchors the absolutely-positioned dropdown */
+.search-wrapper {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto 24px; /* Centers the bar and adds space below before CTA buttons */
+}
+
+/* The visible input + button row */
+.search-input-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden; /* Clips the button's background to the row's border-radius */
+}
+
+/* Text input field inside the search bar */
+.search-input-row input {
+  flex: 1; /* Fills remaining width left after the button */
+  min-width: 0; /* Prevents flex overflow on narrow containers */
+  border: none;
+  outline: none;
+  padding: 10px 14px;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text);
+  text-overflow: ellipsis; /* Truncates overflowing text with "…" */
+}
+
+.search-input-row input::placeholder {
+  color: var(--text-light);
+}
+.search-input-row input:focus::placeholder {
+  color: transparent;
+} /* Hide placeholder while typing */
+
+/* Blue search/submit button on the right of the input */
+.search-input-row button {
+  background: var(--blue);
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   SEARCH AUTOCOMPLETE DROPDOWN
+   --------------------------------------------------------------------------
+   An absolutely-positioned list of suggestion items that appears below
+   the search bar as the user types. Controlled by search.js.
+   -------------------------------------------------------------------------- */
+.search-dropdown {
+  position: absolute;
+  top: 100%; /* Positioned directly below the search bar */
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: none; /* No top border — merges visually with the input */
+  border-radius: 0 0 8px 8px; /* Only round the bottom corners */
+  z-index: 50;
+  display: none; /* Hidden by default; shown via JS when suggestions exist */
+}
+
+/* A single suggestion row in the dropdown */
+.search-item {
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+}
+
+.search-item:hover {
+  background: var(--bg);
+} /* Subtle highlight on hover */
+
+/* Small magnifying-glass emoji/icon to the left of each suggestion */
+.search-icon {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+/* Empty / no results state */
+.search-item.empty-state {
+  cursor: default;
+  opacity: 0.7;
+  padding: 10px;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   CALL-TO-ACTION BUTTONS
+   --------------------------------------------------------------------------
+   A row of primary and secondary buttons below the search bar
+   (e.g. "Apply Now" and "Explore Programs").
+   -------------------------------------------------------------------------- */
+.home-cta {
+  display: flex;
+  gap: 12px;
+  justify-content: center; /* Centers the button row horizontally */
+  margin-bottom: 36px;
+  flex-wrap: wrap; /* Wraps buttons to a second line on very narrow screens */
+}
+
+@media (max-width: 768px) {
+  .home-cta {
+    flex-wrap: nowrap; /* prevents buttons from stacking */
+    justify-content: center;
+    margin-bottom: 0px;
+  }
+
+  .home-cta a,
+  .home-cta button {
+    flex: 1; /* makes both buttons equal width */
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   QUICK LINKS GRID
+   --------------------------------------------------------------------------
+   A 2-column grid of icon+text cards below the hero, each linking to a
+   key section of the site (Programs, Events, Requirements, etc.).
+   -------------------------------------------------------------------------- */
+.quick-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 12px;
+  max-width: 860px;
+  margin: 0 auto; /* Centers the grid on the page */
+}
+
+/* Individual quick-link card */
+.quick-link-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.quick-link-card:hover {
+  background: var(--bg);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Elevated shadow on hover for lift effect */
+}
+
+/* Square icon container to the left of the card text */
+.quick-link-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Prevents the icon from shrinking when the title wraps */
+}
+
+/* Text block (title + subtitle) to the right of the icon */
+.quick-link-text {
+  flex: 1;
+}
+
+/* Card title — displayed in bold above the subtitle */
+.quick-link-text strong {
+  display: block; /* Forces the title onto its own line above the subtitle */
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+  color: var(--navy);
+}
+
+/* Dark mode override for card titles */
+body.dark-mode .quick-link-text strong {
+  color: var(--text);
+}
+
+/* Card subtitle — short description below the title */
+.quick-link-text span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Right-facing arrow at the far right of each card */
+.quick-link-arrow {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE — MOBILE (max 600px)
+   --------------------------------------------------------------------------
+   Reduces the hero heading size and collapses the quick-links grid to
+   a single column so cards stack vertically on small screens.
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .home-hero h1 {
+    font-size: 1.8rem;
+  }
+  .quick-links {
+    grid-template-columns: 1fr;
+  } /* Single-column layout on mobile */
+}
