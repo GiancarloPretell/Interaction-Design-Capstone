@@ -60,9 +60,9 @@
     if (!normalized) return null;
 
     return (
-      routes.find((item) => item.label.toLowerCase() === normalized) ||
-      routes.find((item) => item.label.toLowerCase().startsWith(normalized)) ||
-      routes.find((item) => item.label.toLowerCase().includes(normalized))
+      routes.find((i) => i.label.toLowerCase() === normalized) ||
+      routes.find((i) => i.label.toLowerCase().startsWith(normalized)) ||
+      routes.find((i) => i.label.toLowerCase().includes(normalized))
     );
   }
 
@@ -70,21 +70,45 @@
     const input =
       wrapper.querySelector('[data-role="search-input"]') ||
       wrapper.querySelector("#searchInput");
+
     const dropdown =
       wrapper.querySelector('[data-role="search-dropdown"]') ||
       wrapper.querySelector("#searchDropdown");
+
     const status =
       wrapper.querySelector('[data-role="search-status"]') ||
       wrapper.querySelector("#searchStatus");
+
     const searchBtn =
       wrapper.querySelector('[data-role="search-btn"]') ||
       wrapper.querySelector("#searchBtn");
+
     const loader =
       wrapper.querySelector('[data-role="search-loader"]') ||
       wrapper.querySelector("#searchLoader");
+
     if (!input || !dropdown) return;
 
+    // 🔥 MOVE DROPDOWN OUTSIDE HERO/NAV (ONLY ONCE)
+    if (!dropdown.dataset.moved) {
+      document.body.appendChild(dropdown);
+      dropdown.dataset.moved = "true";
+      dropdown.classList.add("search-dropdown-floating");
+    }
+
     let searchDelay;
+
+    function positionDropdown() {
+      if (!input) return;
+
+      const rect = input.getBoundingClientRect();
+
+      dropdown.style.position = "absolute";
+      dropdown.style.top = `${rect.bottom + window.scrollY + 8}px`;
+      dropdown.style.left = `${rect.left + window.scrollX}px`;
+      dropdown.style.width = `${rect.width}px`;
+      dropdown.style.zIndex = "999999";
+    }
 
     function clearDropdown() {
       dropdown.innerHTML = "";
@@ -95,30 +119,37 @@
       if (status) status.textContent = message || "";
     }
 
-    function showLoading(message, keepDropdown) {
-      setStatus(message || "Searching the site...");
-      if (loader) {
-        loader.classList.add("is-visible");
-        loader.setAttribute("aria-hidden", "false");
-      }
-      if (keepDropdown) {
-        dropdown.innerHTML =
-          '<div class="search-item loading-state"><span class="loader-dot"></span>Searching the site…</div>';
-        dropdown.style.display = "block";
-      }
-      if (searchBtn) searchBtn.classList.add("is-loading");
-    }
-
     function stopLoading() {
       if (searchBtn) searchBtn.classList.remove("is-loading");
+
       if (loader) {
         loader.classList.remove("is-visible");
         loader.setAttribute("aria-hidden", "true");
       }
     }
 
+    function showLoading(message, keepDropdown) {
+      setStatus(message || "Searching the site...");
+
+      if (loader) {
+        loader.classList.add("is-visible");
+        loader.setAttribute("aria-hidden", "false");
+      }
+
+      if (keepDropdown) {
+        dropdown.innerHTML =
+          '<div class="search-item loading-state"><span class="loader-dot"></span>Searching the site…</div>';
+
+        dropdown.style.display = "block";
+        positionDropdown();
+      }
+
+      if (searchBtn) searchBtn.classList.add("is-loading");
+    }
+
     function goToResult(item) {
       showLoading(`Opening ${item.label}...`, true);
+
       window.setTimeout(
         () => {
           window.location.href = item.url;
@@ -133,7 +164,9 @@
       if (!matches.length) {
         dropdown.innerHTML =
           '<div class="search-item empty-state">No results found. Try programs, events, deadlines, or portfolio.</div>';
+
         dropdown.style.display = "block";
+        positionDropdown();
         setStatus("No direct matches found.");
         return;
       }
@@ -142,6 +175,7 @@
         const node = document.createElement("button");
         node.type = "button";
         node.className = "search-item search-result-btn";
+
         node.innerHTML = `
           <span class="search-icon">⌕</span>
           <span class="search-copy">
@@ -149,21 +183,30 @@
             <small>${item.category}</small>
           </span>
         `;
+
         node.addEventListener("click", () => {
           input.value = item.label;
           goToResult(item);
         });
+
         dropdown.appendChild(node);
       });
 
       dropdown.style.display = "block";
+      positionDropdown();
+
       setStatus(
         `${matches.length} result${matches.length === 1 ? "" : "s"} ready.`,
       );
     }
 
+    // 🔥 ONE-TIME GLOBAL LISTENERS (NOT INSIDE FUNCTIONS)
+    window.addEventListener("resize", positionDropdown);
+    window.addEventListener("scroll", positionDropdown, true);
+
     input.addEventListener("input", function () {
       const query = this.value.trim().toLowerCase();
+
       window.clearTimeout(searchDelay);
       stopLoading();
 
@@ -174,6 +217,7 @@
       }
 
       showLoading("Searching the site...", true);
+
       searchDelay = window.setTimeout(
         () => {
           renderResults(getMatches(query));
@@ -188,6 +232,7 @@
       e.preventDefault();
 
       const match = getBestMatch(input.value);
+
       if (match) {
         goToResult(match);
       } else {
@@ -198,18 +243,21 @@
     if (searchBtn) {
       searchBtn.addEventListener("click", () => {
         const match = getBestMatch(input.value);
+
         if (match) {
           goToResult(match);
           return;
         }
 
         const query = input.value.trim().toLowerCase();
+
         if (!query) {
           setStatus("Type a keyword to search the site.");
           return;
         }
 
         showLoading("Searching the site...", true);
+
         window.setTimeout(
           () => {
             renderResults(getMatches(query));
@@ -230,10 +278,8 @@
   }
 
   function init() {
-    const wrappers = Array.from(
-      document.querySelectorAll(".site-search, .search-wrapper"),
-    );
-    if (!wrappers.length) return;
+    const wrappers = document.querySelectorAll(".site-search, .search-wrapper");
+
     wrappers.forEach(initSearch);
   }
 
