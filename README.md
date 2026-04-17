@@ -1,40 +1,70 @@
-# Assignment 11: Interactive Search & Micro-Interactions
+# Interaction Design Capstone
 
 ## Project Overview
 
 This project is a responsive implementation of our Figma prototype for the Interaction Design Capstone. The goal was to recreate the design using HTML, CSS, and JavaScript while keeping it as close as possible to the original prototype.
 
-This assignment builds on the responsive foundation from Assignment 10 by adding interactive search with real-time suggestions, loading indicators on form submissions, and polished micro-interactions throughout the interface.
+Each assignment has progressively built on the last — starting with a responsive layout, adding interactivity and search, and now incorporating real-time form validation with helpful user feedback.
 
 ---
 
 ## How to Run the Project Locally
 
-1. Download or clone the repository:
+1. **Download or clone the repository:**
+
+   ```
    git clone https://github.com/GiancarloPretell/Interaction-Design-Capstone.git
+   ```
 
-2. Open the project folder:
+2. **Open the project folder:**
+
+   ```
    cd Interaction-Design-Capstone
+   ```
 
-3. Run the project:
-   - Open `index.html` in your browser (Chrome recommended)
-     OR
+3. **Run the project:**
+   - Open `index.html` in your browser (Chrome recommended), **OR**
    - Use VS Code:
-     - Install "Live Server"
+     - Install the **Live Server** extension
      - Right-click `index.html`
-     - Click "Open with Live Server"
+     - Click **"Open with Live Server"**
 
 ---
 
 ## Live Website (GitHub Pages)
 
 You can also view the deployed version here:
-
 👉 https://giancarlopretell.github.io/Interaction-Design-Capstone/
 
 ---
 
-## Assignment 11 Features
+## Assignment 12 Features — Form Validation & User Feedback
+
+### Real-Time Input Validation
+
+- Validation triggers as the user types and when moving between fields (on `input` and `blur` events)
+- Required fields, format checks, and length constraints are all caught before submission
+- Errors are never batched and shown only on submit — feedback is immediate
+
+### Inline Error Messages
+
+- Every error message appears directly next to the relevant field, not in an alert box or at the top of the page
+- Messages are specific and actionable — for example, _"Enter a valid phone number with 10 to 15 digits"_ rather than just _"Invalid"_
+- Errors automatically clear as soon as the user corrects the input
+
+### Success States
+
+- Fields that pass validation display a visible confirmation state (e.g., green border or checkmark icon) so users know their input is accepted
+- Users are never left guessing whether a field is valid
+
+### Forms Implemented
+
+- **Event Sign Up** — validates name, email format, phone number, and if all other required options are selected
+- **Application to Enlist into Yale School of Art** — validates name, email format, phone number, resume and portfolio upload (size and format) and if all other required options are selected
+
+---
+
+## Assignment 11 Features — Interactive Search & Micro-Interactions
 
 ### Client-Side Search with Suggestions
 
@@ -80,31 +110,35 @@ You can also view the deployed version here:
 
 - HTML5
 - CSS3 (Flexbox, Media Queries, CSS Transitions & Animations)
-- JavaScript (search filtering, loading states, micro-interactions, menu toggle)
+- JavaScript (form validation, search filtering, loading states, micro-interactions, menu toggle)
 
 ---
 
 ## Folder Structure
 
+```
 /Interaction-Design-Capstone
 │
 ├── css/
-│ └── Styling files for layout, responsiveness, and animations
+│   └── Styling files for layout, responsiveness, animations, and form validation states
 │
 ├── images/
-│ └── All images and visual assets used in the website
+│   └── All images and visual assets used in the website
 │
 ├── js/
-│ └── JavaScript files for search, loading states, animations, and menu toggle
+│   └── JavaScript files for form validation, search, loading states, animations, and menu toggle
 │
 ├── pages/
-│ └── Additional HTML pages linked from the navigation
+│   └── Additional HTML pages linked from the navigation
 │
 ├── index.html
-│ └── Main landing page of the website
+│   └── Main landing page of the website
 │
 └── README.md
-└── Project documentation and setup instructions
+    └── Project documentation and setup instructions
+```
+
+---
 
 ## Design Notes
 
@@ -112,6 +146,7 @@ You can also view the deployed version here:
 - Consistent fonts, colors, and spacing across all screen sizes
 - Responsive behavior keeps the design unified between mobile and desktop
 - Animations are intentional and tied to user actions, not purely decorative
+- Form validation feedback is designed to guide users, not punish them — errors are clear, specific, and disappear once resolved
 
 ---
 

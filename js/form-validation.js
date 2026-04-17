@@ -6,10 +6,13 @@
  * - Shows inline error messages next to the related label
  * - Clears errors as soon as the field is corrected
  * - Shows success feedback for valid fields
+ * - File inputs: enforces PDF-only and 10 MB max, validates on change
  * - Prevents submit until all required fields are valid
  * - Disables the submit button and shows a loading state on success
  */
 (function () {
+  var MAX_FILE_BYTES = 10 * 1024 * 1024; // 10 MB
+
   function getFieldValue(field) {
     return (field.value || "").trim();
   }
@@ -19,17 +22,19 @@
   }
 
   function getLabel(field) {
-    const group = getGroup(field);
+    var group = getGroup(field);
     return group ? group.querySelector(".form-label") : null;
   }
 
   function getPlainLabelText(field) {
-    const label = getLabel(field);
+    var label = getLabel(field);
     if (!label) return "This field";
-    const clone = label.cloneNode(true);
+    var clone = label.cloneNode(true);
     clone
       .querySelectorAll(".label-error, .label-success, .required")
-      .forEach((el) => el.remove());
+      .forEach(function (el) {
+        el.remove();
+      });
     return clone.textContent.replace(/\s+/g, " ").trim() || "This field";
   }
 
@@ -42,13 +47,16 @@
   }
 
   function isValidPhone(phone) {
-    const digits = phone.replace(/[^\d]/g, "");
+    var digits = phone.replace(/[^\d]/g, "");
     return /^\d{10,15}$/.test(digits);
   }
 
   function isNameField(field) {
-    const text =
-      `${field.placeholder || ""} ${fieldTitle(field)}`.toLowerCase();
+    var text = (
+      (field.placeholder || "") +
+      " " +
+      fieldTitle(field)
+    ).toLowerCase();
     return text.includes("name");
   }
 
@@ -60,12 +68,73 @@
     return field.tagName === "SELECT";
   }
 
+  function isFileField(field) {
+    return field.type === "file";
+  }
+
   function isConsentField(field) {
     return fieldTitle(field).toLowerCase().includes("consent");
   }
 
+  // -------------------------------------------------------------------------
+  //  File validation — PDF type + 10 MB cap
+  // -------------------------------------------------------------------------
+  function validateFileField(field) {
+    var title = fieldTitle(field);
+
+    // No file chosen yet
+    if (!field.files || field.files.length === 0) {
+      if (field.required) {
+        return {
+          valid: false,
+          message: "Please upload your " + title.toLowerCase() + " as a PDF.",
+        };
+      }
+      return { valid: true, message: "" };
+    }
+
+    var file = field.files[0];
+
+    // Type check — accept attribute alone can be bypassed, so we verify here too
+    var isPdf =
+      file.type === "application/pdf" ||
+      file.name.toLowerCase().endsWith(".pdf");
+
+    if (!isPdf) {
+      return {
+        valid: false,
+        message:
+          "Only PDF files are accepted. Please choose a .pdf file for your " +
+          title.toLowerCase() +
+          ".",
+      };
+    }
+
+    // Size check
+    if (file.size > MAX_FILE_BYTES) {
+      var sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+      return {
+        valid: false,
+        message:
+          "Your file is " +
+          sizeMB +
+          " MB — the maximum allowed size is 10 MB. Please compress or re-export your " +
+          title.toLowerCase() +
+          ".",
+      };
+    }
+
+    return {
+      valid: true,
+      message: title + " uploaded successfully.",
+    };
+  }
+
+  // -------------------------------------------------------------------------
+  //  General field validation dispatcher
+  // -------------------------------------------------------------------------
   function getRequiredMessage(field) {
-    const title = fieldTitle(field);
+    var title = fieldTitle(field);
 
     if (field.type === "email") return "Please enter your email address.";
     if (field.type === "tel")
@@ -74,30 +143,30 @@
       if (/program/i.test(title)) return "Please select a program.";
       if (/event/i.test(title)) return "Please select an event.";
       if (/time slot/i.test(title)) return "Please select a time slot.";
-      if (/resume/i.test(title)) return "Please confirm your resume upload.";
-      if (/portfolio/i.test(title))
-        return "Please confirm your portfolio upload.";
-      if (/enrolled/i.test(title))
-        return "Please choose whether you are currently enrolled at Yale.";
       if (isConsentField(field))
         return "Please choose whether you consent to data processing.";
-      return `Please complete ${title.toLowerCase()}.`;
+      return "Please complete " + title.toLowerCase() + ".";
     }
     if (isNameField(field)) return "Please enter your first and last name.";
-    return `Please enter ${title.toLowerCase()}.`;
+    return "Please enter " + title.toLowerCase() + ".";
   }
 
   function getSuccessMessage(field) {
-    const title = fieldTitle(field);
+    var title = fieldTitle(field);
     if (field.type === "email") return "Email looks good.";
     if (field.type === "tel") return "Phone number looks good.";
     if (isNameField(field)) return "Full name looks good.";
-    if (isSelectField(field)) return `${title} selected.`;
+    if (isSelectField(field)) return title + " selected.";
     return "Looks good.";
   }
 
   function validateField(field) {
-    const value = getFieldValue(field);
+    // Delegate file fields to their own validator
+    if (isFileField(field)) {
+      return validateFileField(field);
+    }
+
+    var value = getFieldValue(field);
 
     if (field.required && !value) {
       return { valid: false, message: getRequiredMessage(field) };
@@ -138,16 +207,21 @@
     return { valid: true, message: getSuccessMessage(field) };
   }
 
+  // -------------------------------------------------------------------------
+  //  Status rendering
+  // -------------------------------------------------------------------------
   function removeStatus(label) {
     if (!label) return;
     label
       .querySelectorAll(".label-error, .label-success")
-      .forEach((el) => el.remove());
+      .forEach(function (el) {
+        el.remove();
+      });
   }
 
   function setStatus(field, type, message) {
-    const group = getGroup(field);
-    const label = getLabel(field);
+    var group = getGroup(field);
+    var label = getLabel(field);
     if (!group || !label) return;
 
     removeStatus(label);
@@ -156,7 +230,7 @@
 
     if (!message) return;
 
-    const status = document.createElement("span");
+    var status = document.createElement("span");
     status.className = type === "error" ? "label-error" : "label-success";
     status.textContent = message;
     label.appendChild(status);
@@ -170,20 +244,24 @@
   }
 
   function validateAndRenderField(field, options) {
-    const settings = options || {};
-    const result = validateField(field);
-    const value = getFieldValue(field);
+    var settings = options || {};
+    var result = validateField(field);
+
+    // For file fields, treat "has a file" as having a value
+    var hasValue = isFileField(field)
+      ? field.files && field.files.length > 0
+      : !!getFieldValue(field);
 
     if (!result.valid) {
       setStatus(field, "error", result.message);
       return false;
     }
 
-    if (value && settings.showSuccess !== false) {
+    if (hasValue && settings.showSuccess !== false) {
       setStatus(field, "success", result.message);
     } else {
-      const group = getGroup(field);
-      const label = getLabel(field);
+      var group = getGroup(field);
+      var label = getLabel(field);
       if (group) group.classList.remove("field-error", "field-success");
       if (label) removeStatus(label);
       field.removeAttribute("aria-invalid");
@@ -193,11 +271,11 @@
   }
 
   function validateForm(form) {
-    let valid = true;
-    let firstInvalidField = null;
+    var valid = true;
+    var firstInvalidField = null;
 
-    form.querySelectorAll("[required]").forEach((field) => {
-      const fieldValid = validateAndRenderField(field, { showSuccess: true });
+    form.querySelectorAll("[required]").forEach(function (field) {
+      var fieldValid = validateAndRenderField(field, { showSuccess: true });
       if (!fieldValid) {
         valid = false;
         if (!firstInvalidField) firstInvalidField = field;
@@ -211,9 +289,12 @@
     return valid;
   }
 
+  // -------------------------------------------------------------------------
+  //  Loading overlay + redirect
+  // -------------------------------------------------------------------------
   function showLoadingAndRedirect(form, url) {
-    let overlay = document.querySelector(".loading-overlay");
-    const submitButton = form.querySelector('button[type="submit"]');
+    var overlay = document.querySelector(".loading-overlay");
+    var submitButton = form.querySelector('button[type="submit"]');
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -226,10 +307,10 @@
       overlay = document.createElement("div");
       overlay.className = "loading-overlay";
 
-      const spinner = document.createElement("div");
+      var spinner = document.createElement("div");
       spinner.className = "loader";
 
-      const text = document.createElement("p");
+      var text = document.createElement("p");
       text.className = "loading-text";
       text.textContent = "Submitting your form...";
 
@@ -245,15 +326,22 @@
     }, 1500);
   }
 
+  // -------------------------------------------------------------------------
+  //  Real-time event binding
+  // -------------------------------------------------------------------------
   function bindRealtimeValidation(form) {
-    form.querySelectorAll("[required]").forEach((field) => {
-      const handler = function () {
+    form.querySelectorAll("[required]").forEach(function (field) {
+      var handler = function () {
         validateAndRenderField(field, { showSuccess: true });
       };
 
+      // All fields validate on blur
       field.addEventListener("blur", handler);
 
-      if (isSelectField(field)) {
+      if (isFileField(field)) {
+        // File inputs only fire a meaningful event on change
+        field.addEventListener("change", handler);
+      } else if (isSelectField(field)) {
         field.addEventListener("change", handler);
       } else {
         field.addEventListener("input", handler);
@@ -261,15 +349,18 @@
     });
   }
 
+  // -------------------------------------------------------------------------
+  //  Init
+  // -------------------------------------------------------------------------
   function init() {
-    document.querySelectorAll("form[data-validate]").forEach((form) => {
+    document.querySelectorAll("form[data-validate]").forEach(function (form) {
       form.setAttribute("novalidate", "novalidate");
       bindRealtimeValidation(form);
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (validateForm(form)) {
-          const redirect = form.dataset.redirect;
+          var redirect = form.dataset.redirect;
           if (redirect) {
             showLoadingAndRedirect(form, redirect);
           }

@@ -183,3 +183,57 @@ body.dark-mode .btn-secondary {
   color: var(--text);
   border-color: var(--border);
 }
+
+/* ==========================================================================
+   FILE INPUT STYLES
+   Add these rules to the bottom of apply.css
+   ========================================================================== */
+
+/* Base file input — matches the look of .form-input text fields */
+.file-input {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.875rem;
+  color: var(--text);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.file-input:hover {
+  border-color: var(--navy);
+}
+
+.file-input:focus {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+/* Dark mode */
+body.dark-mode .file-input {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Hint text shown below the file input ("PDF only · Max 10 MB") */
+.field-hint {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Error state — red border on the file input */
+.field-error .file-input {
+  border-color: #c0392b;
+}
+
+/* Success state — green border on the file input */
+.field-success .file-input {
+  border-color: #27ae60;
+}
