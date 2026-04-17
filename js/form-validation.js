@@ -27,9 +27,9 @@
     const label = getLabel(field);
     if (!label) return "This field";
     const clone = label.cloneNode(true);
-    clone.querySelectorAll(".label-error, .label-success, .required").forEach((el) =>
-      el.remove(),
-    );
+    clone
+      .querySelectorAll(".label-error, .label-success, .required")
+      .forEach((el) => el.remove());
     return clone.textContent.replace(/\s+/g, " ").trim() || "This field";
   }
 
@@ -47,7 +47,8 @@
   }
 
   function isNameField(field) {
-    const text = `${field.placeholder || ""} ${fieldTitle(field)}`.toLowerCase();
+    const text =
+      `${field.placeholder || ""} ${fieldTitle(field)}`.toLowerCase();
     return text.includes("name");
   }
 
@@ -139,7 +140,9 @@
 
   function removeStatus(label) {
     if (!label) return;
-    label.querySelectorAll(".label-error, .label-success").forEach((el) => el.remove());
+    label
+      .querySelectorAll(".label-error, .label-success")
+      .forEach((el) => el.remove());
   }
 
   function setStatus(field, type, message) {

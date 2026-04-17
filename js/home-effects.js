@@ -1,17 +1,29 @@
 (function () {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const glow = document.getElementById('cursorGlow');
-  const parallaxNodes = Array.from(document.querySelectorAll('[data-parallax]'));
-  const magneticNodes = Array.from(document.querySelectorAll('.magnetic-card, .magnetic-btn'));
-  const revealNodes = Array.from(document.querySelectorAll('.reveal-card, .editorial-reveal'));
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const glow = document.getElementById("cursorGlow");
+  const parallaxNodes = Array.from(
+    document.querySelectorAll("[data-parallax]"),
+  );
+  const magneticNodes = Array.from(
+    document.querySelectorAll(".magnetic-card, .magnetic-btn"),
+  );
+  const revealNodes = Array.from(
+    document.querySelectorAll(".reveal-card, .editorial-reveal"),
+  );
 
-  document.querySelectorAll('.btn-primary, .btn-secondary, .event-card, .program-card, .news-card, .contact-card, .apply-info-card, .sidebar-card, .accordion-item, .req-item, .timeline-item, .form-card, .program-details-card, .support-card').forEach((node) => {
-    node.classList.add('magnetic-card');
-  });
+  document
+    .querySelectorAll(
+      ".btn-primary, .btn-secondary, .event-card, .program-card, .news-card, .contact-card, .apply-info-card, .sidebar-card, .accordion-item, .req-item, .timeline-item, .form-card, .program-details-card, .support-card",
+    )
+    .forEach((node) => {
+      node.classList.add("magnetic-card");
+    });
 
   if (!prefersReduced && glow) {
-    window.addEventListener('pointermove', (event) => {
-      glow.style.opacity = '1';
+    window.addEventListener("pointermove", (event) => {
+      glow.style.opacity = "1";
       glow.style.left = `${event.clientX}px`;
       glow.style.top = `${event.clientY}px`;
 
@@ -25,16 +37,16 @@
       });
     });
 
-    window.addEventListener('pointerleave', () => {
-      glow.style.opacity = '0';
+    window.addEventListener("pointerleave", () => {
+      glow.style.opacity = "0";
       parallaxNodes.forEach((node) => {
-        node.style.transform = '';
+        node.style.transform = "";
       });
     });
   }
 
   magneticNodes.forEach((node) => {
-    node.addEventListener('pointermove', (event) => {
+    node.addEventListener("pointermove", (event) => {
       if (prefersReduced) return;
       const rect = node.getBoundingClientRect();
       const offsetX = event.clientX - (rect.left + rect.width / 2);
@@ -42,26 +54,29 @@
       node.style.transform = `translate(${offsetX * 0.05}px, ${offsetY * 0.05}px)`;
     });
 
-    node.addEventListener('pointerleave', () => {
-      node.style.transform = '';
+    node.addEventListener("pointerleave", () => {
+      node.style.transform = "";
     });
   });
 
   if (!prefersReduced && revealNodes.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.14 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 },
+    );
 
     revealNodes.forEach((node, index) => {
       node.style.transitionDelay = `${Math.min(index * 55, 280)}ms`;
       observer.observe(node);
     });
   } else {
-    revealNodes.forEach((node) => node.classList.add('is-visible'));
+    revealNodes.forEach((node) => node.classList.add("is-visible"));
   }
 })();
