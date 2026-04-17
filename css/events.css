@@ -251,3 +251,29 @@ body.dark-mode .event-info h3 {
     color: inherit;
   }
 }
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .events-header {
+  background: var(--bg);
+}
+
+body.dark-mode .event-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .sidebar-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

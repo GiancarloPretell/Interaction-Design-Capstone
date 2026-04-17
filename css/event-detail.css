@@ -316,3 +316,21 @@ body.dark-mode .event-info-card h3 {
     padding-right: 12px;
   }
 }
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .event-detail-header {
+  background: var(--bg);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

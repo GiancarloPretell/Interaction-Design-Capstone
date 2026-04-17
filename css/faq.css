@@ -185,3 +185,37 @@ body.dark-mode .faq-sidebar-section h4 {
   line-height: 1.5;
   margin-bottom: 10px;
 }
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .faq-header {
+  background: var(--bg);
+}
+
+body.dark-mode .faq-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .sidebar-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .accordion-body {
+  background: var(--bg-card);
+}
+
+body.dark-mode .accordion-header {
+  background: var(--bg-card);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

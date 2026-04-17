@@ -204,3 +204,33 @@ body.dark-mode .deadline-banner h3 {
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .req-header {
+  background: var(--bg);
+}
+
+body.dark-mode .req-item {
+  background: var(--bg-card);
+}
+
+body.dark-mode .sidebar-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .deadline-banner {
+  background: var(--bg-card);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

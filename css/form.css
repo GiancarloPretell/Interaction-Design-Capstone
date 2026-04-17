@@ -152,3 +152,33 @@ body.dark-mode .confirm-page h2 {
     line-height: 1.4;
   }
 }
+
+/* ========================================================================== 
+   DARK MODE FIXES (CLEAN + CONSISTENT)
+   ========================================================================== */
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+/* Main content area */
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode .form-card,
+body.dark-mode .form-card.editorial-reveal,
+body.dark-mode .form-card.magnetic-card,
+body.dark-mode .form-card.editorial-reveal.magnetic-card,
+body.dark-mode .form-page-header,
+body.dark-mode .form-card.editorial-reveal.magnetic-card.is-visible {
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+/* Button fix */
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

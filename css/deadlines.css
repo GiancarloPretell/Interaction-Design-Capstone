@@ -98,6 +98,7 @@ body.dark-mode .key-dates-title {
 .timeline-item {
   position: relative; /* Needed for absolute positioning of the dot */
   margin-bottom: 28px; /* Vertical space between timeline events */
+  padding: 20px; /* Vertical padding for better spacing of text */
 }
 
 /* Circular dot indicator positioned on the timeline line */
@@ -204,4 +205,38 @@ body.dark-mode .timeline-item h3 {
 /* Dark mode override for the next-step heading */
 body.dark-mode .next-step-box strong {
   color: var(--text);
+}
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .deadlines-header {
+  background: var(--bg);
+}
+
+body.dark-mode .timeline-item {
+  background: var(--bg-card);
+}
+
+body.dark-mode .sidebar-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .accordion-body {
+  background: var(--bg-card);
+}
+
+body.dark-mode .accordion-header {
+  background: var(--bg-card);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
 }

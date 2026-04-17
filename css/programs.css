@@ -112,6 +112,7 @@ body.dark-mode .program-card h3 {
    and a 2-column grid of approach items (icon + label + short description).
    -------------------------------------------------------------------------- */
 .approach-section {
+  padding: 20px;
   margin-top: 32px;
 }
 
@@ -121,6 +122,10 @@ body.dark-mode .program-card h3 {
   font-weight: 700;
   color: var(--navy);
   margin-bottom: 6px;
+}
+
+body.dark-mode .approach-section {
+  background: var(--bg-card);
 }
 
 /* Dark mode override for the section heading */
@@ -344,6 +349,10 @@ body.dark-mode .program-detail-header h1 {
    A descriptive text section below the hero image with a section heading
    and one or more body paragraphs about the program.
    -------------------------------------------------------------------------- */
+.program-overview {
+  padding: 20px;
+}
+
 .program-overview h2 {
   font-size: 1.05rem;
   font-weight: 700;
@@ -580,4 +589,110 @@ body.dark-mode .program-details-card h3 {
     width: 85px; /* Narrower label column on mobile */
     padding-right: 12px;
   }
+}
+
+/* ======================================================================
+   PROGRAM PAGE — DARK MODE OVERRIDES (HOMEPAGE STYLE SYSTEM)
+   ====================================================================== */
+
+/* Program Cards */
+body.dark-mode .program-card {
+  background: #2a2a2a;
+  border-color: #3d3d3d;
+}
+
+body.dark-mode .program-card p {
+  color: var(--text-muted);
+}
+
+/* Our Approach Section */
+body.dark-mode .approach-section {
+  background: #2a2a2a;
+  border-radius: 12px;
+}
+
+body.dark-mode .approach-section h2 {
+  color: var(--text);
+}
+
+/* Approach Items */
+body.dark-mode .approach-item strong {
+  color: var(--text);
+}
+
+/* Sidebar Support Card */
+body.dark-mode .support-card {
+  background: #2a2a2a;
+  border-color: #3d3d3d;
+}
+
+body.dark-mode .support-card h3 {
+  color: var(--text);
+}
+
+body.dark-mode .support-card-inner p {
+  color: var(--text-muted);
+}
+
+/* Program Detail Page Cards */
+body.dark-mode .program-details-card {
+  background: #2a2a2a;
+  border-color: #3d3d3d;
+}
+
+body.dark-mode .program-details-card h3 {
+  color: var(--text);
+}
+
+body.dark-mode .program-overview {
+  background: var(--bg-card);
+}
+
+/* Program Detail Text Blocks */
+body.dark-mode .program-overview h2 {
+  color: var(--text);
+}
+
+body.dark-mode .program-overview p {
+  color: var(--text-muted);
+}
+
+body.dark-mode .program-detail-header {
+  background: var(--bg);
+}
+
+/* Features */
+body.dark-mode .program-feature strong {
+  color: var(--text);
+}
+
+body.dark-mode .program-feature span {
+  color: var(--text-muted);
+}
+
+/* Tables */
+body.dark-mode .program-details-table td:first-child {
+  color: var(--text-light);
+}
+
+body.dark-mode .program-details-table td:last-child {
+  color: var(--text-muted);
+}
+
+/* Cross-disciplinary note */
+body.dark-mode .program-cross-disc {
+  color: var(--text-muted);
+  border-top-color: #3d3d3d;
+}
+
+body.dark-mode .programs-header {
+  background: var(--bg);
+}
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
 }

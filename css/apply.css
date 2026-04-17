@@ -286,3 +286,55 @@ body.dark-mode .apply-footer-link h4 {
     font-size: 1.8rem;
   }
 }
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .apply-header {
+  background: var(--bg);
+}
+
+body.dark-mode .apply-info-card {
+  background: var(--bg-card);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* ========================================================================== 
+   DARK MODE FIXES (CLEAN + CONSISTENT)
+   ========================================================================== */
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+/* Main content area */
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode .form-card,
+body.dark-mode .form-card.editorial-reveal,
+body.dark-mode .form-card.magnetic-card,
+body.dark-mode .form-card.editorial-reveal.magnetic-card,
+body.dark-mode .form-page-header,
+body.dark-mode .form-card.editorial-reveal.magnetic-card.is-visible {
+  background: var(--bg-card);
+  color: var(--text);
+}
+
+/* Button fix */
+body.dark-mode .btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border-color: var(--border);
+}

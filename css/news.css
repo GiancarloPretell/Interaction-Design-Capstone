@@ -101,21 +101,31 @@ body.dark-mode .news-header h1 {
    object-fit: cover to display a consistent crop regardless of image ratio.
    -------------------------------------------------------------------------- */
 
-/* Image tag inside the image wrapper */
-.news-card-image img {
+.news-card-image {
+  height: 160px;
   width: 100%;
-  height: 160px; /* Fixed height for consistent card layout */
-  object-fit: cover; /* Crops the image to fill the area without distorting */
+  background: #c8d8ec;
+
+  border-radius: 12px;
+  overflow: hidden;
+
+  /* KEY FIXES */
+  position: relative;
+  isolation: isolate;
+  transform: translateZ(0);
 }
 
-/* Fallback placeholder shown when no image is available */
-.news-card-image {
-  width: 100%;
-  height: 160px;
-  background: #c8d8ec; /* Light blue placeholder background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.news-card-image img {
+  width: 101%;
+  height: 101%;
+  object-fit: cover;
+  display: block;
+
+  /* KEY FIXES */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.01);
 }
 
 /* --------------------------------------------------------------------------
@@ -189,4 +199,20 @@ body.dark-mode .news-card-body h3 {
   .news-grid {
     grid-template-columns: 1fr;
   }
+}
+
+body.dark-mode .main-content {
+  background: var(--bg);
+}
+
+body.dark-mode {
+  background: var(--bg);
+}
+
+body.dark-mode .news-header {
+  background: var(--bg);
+}
+
+body.dark-mode .news-card {
+  background: var(--bg-card);
 }

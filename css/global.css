@@ -67,7 +67,7 @@
 body.dark-mode {
   --bg: #1a1a1a;
   --bg-card: #2a2a2a;
-  --border: #3d3d3d;
+  --border: #7b7b7b;
   --text: #f0f0f0;
   --text-muted: #b0b0b0;
   --text-light: #787878;
@@ -365,7 +365,7 @@ body.dark-mode .nav-btn:hover {
 /* Apply a zoom on desktop so content feels more spacious on large screens */
 @media (min-width: 769px) {
   .main-content {
-    zoom: 1.25;
+    zoom: 1.1;
   }
 }
 
