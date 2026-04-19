@@ -1530,3 +1530,34 @@ body.dark-mode .search-input-row {
     opacity: 0.85;
   }
 }
+
+/* global.css */
+.cursor-glow {
+  position: fixed;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    circle,
+    rgba(93, 129, 255, 0.16),
+    rgba(93, 129, 255, 0.04) 45%,
+    rgba(93, 129, 255, 0) 70%
+  );
+  mix-blend-mode: multiply;
+  filter: blur(8px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+body.dark-mode .cursor-glow {
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle,
+    rgba(93, 129, 255, 0.18),
+    rgba(93, 129, 255, 0.05) 45%,
+    rgba(93, 129, 255, 0) 70%
+  );
+}
