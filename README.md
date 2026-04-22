@@ -4,7 +4,7 @@
 
 This project is a responsive implementation of our Figma prototype for the Interaction Design Capstone. The goal was to recreate the design using HTML, CSS, and JavaScript while keeping it as close as possible to the original prototype.
 
-Each assignment has progressively built on the last — starting with a responsive layout, adding interactivity and search, and now incorporating real-time form validation with helpful user feedback.
+Each assignment has progressively built on the last — starting with a responsive layout, adding interactivity and search, incorporating real-time form validation, and now implementing accessibility improvements and a functional dark mode.
 
 ---
 
@@ -35,6 +35,36 @@ Each assignment has progressively built on the last — starting with a responsi
 
 You can also view the deployed version here:
 👉 https://giancarlopretell.github.io/Interaction-Design-Capstone/
+
+---
+
+## Assignment 13 Features — Accessibility & Dark Mode
+
+### Dark Mode Toggle
+
+- A toggle is available site-wide and easy to locate in the navigation
+- The toggle clearly indicates which mode is currently active
+- Dark mode applies consistently across every page and component — not just one section
+- Colors were chosen specifically for dark backgrounds rather than simply inverting the light palette
+- The user's theme preference persists across page reloads using `localStorage`
+
+### Color Contrast
+
+- All text-background combinations were verified against WCAG AA standards using a contrast checker
+- Small text meets a minimum 4.5:1 contrast ratio; large text meets at least 3:1
+- Contrast requirements are met in both light and dark modes
+- Placeholder text, borders, and icon colors were also reviewed and updated where needed
+
+### Text Readability & Zoom
+
+- Typography uses relative units (`rem`, `em`, `%`) throughout — no hardcoded `px` font sizes
+- Layout remains intact and readable when the browser is zoomed to 200%
+- No content overflows, overlaps, or becomes clipped at increased zoom levels
+
+### Focus & Interactive States
+
+- All interactive elements have visible focus indicators
+- Buttons, links, and inputs are distinguishable in both themes
 
 ---
 
@@ -109,8 +139,8 @@ You can also view the deployed version here:
 ## Technologies Used
 
 - HTML5
-- CSS3 (Flexbox, Media Queries, CSS Transitions & Animations)
-- JavaScript (form validation, search filtering, loading states, micro-interactions, menu toggle)
+- CSS3 (Flexbox, Media Queries, CSS Transitions & Animations, CSS Custom Properties for theming)
+- JavaScript (dark mode toggle, localStorage persistence, form validation, search filtering, loading states, micro-interactions, menu toggle)
 
 ---
 
@@ -120,13 +150,13 @@ You can also view the deployed version here:
 /Interaction-Design-Capstone
 │
 ├── css/
-│   └── Styling files for layout, responsiveness, animations, and form validation states
+│   └── Styling files for layout, responsiveness, animations, form validation states, and dark mode theming
 │
 ├── images/
 │   └── All images and visual assets used in the website
 │
 ├── js/
-│   └── JavaScript files for form validation, search, loading states, animations, and menu toggle
+│   └── JavaScript files for dark mode toggle, form validation, search, loading states, animations, and menu toggle
 │
 ├── pages/
 │   └── Additional HTML pages linked from the navigation
@@ -145,6 +175,7 @@ You can also view the deployed version here:
 - Layout closely follows the Figma design
 - Consistent fonts, colors, and spacing across all screen sizes
 - Responsive behavior keeps the design unified between mobile and desktop
+- Dark mode uses a purposefully designed palette — not an inversion — to keep the interface visually coherent
 - Animations are intentional and tied to user actions, not purely decorative
 - Form validation feedback is designed to guide users, not punish them — errors are clear, specific, and disappear once resolved
 
