@@ -24,7 +24,7 @@
 :root {
   /* Brand colors */
   --navy: #1b2a4a; /* Yale navy — used for headings and the navbar logo */
-  --blue: #2572d0; /* Primary action color — buttons, links, focus rings */
+  --blue: #236dc7; /* Primary action color — buttons, links, focus rings */
   --blue-hover: #174d91; /* Darker blue for hover states on primary buttons */
 
   /* Surface & border colors */
