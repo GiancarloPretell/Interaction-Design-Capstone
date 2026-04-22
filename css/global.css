@@ -35,10 +35,10 @@
   /* Text colors */
   --text: #1a1a1a; /* Primary body text */
   --text-muted: #555; /* Secondary / supporting text */
-  --text-light: #888; /* Tertiary text: placeholders, labels, timestamps */
+  --text-light: #666; /* Tertiary text: placeholders, labels, timestamps */
 
   /* Semantic colors */
-  --green: #22c55e; /* Success states (e.g. "Portal Open" badge) */
+  --green: #15803d; /* Success states (e.g. "Portal Open" badge) */
   --red: #dc2626; /* Error states, required-field indicators */
 
   /* Footer */
@@ -70,8 +70,10 @@ body.dark-mode {
   --border: #7b7b7b;
   --text: #f0f0f0;
   --text-muted: #b0b0b0;
-  --text-light: #787878;
-  --shadow: 0 1px 6px rgba(0, 0, 0, 0.4); /* Stronger shadow needed on dark backgrounds */
+  --text-light: #9e9e9e;
+  --red: #f87171;
+  --green: #25a75b;
+  --shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* --------------------------------------------------------------------------
@@ -277,6 +279,10 @@ body.dark-mode .nav-btn:hover {
 @media (hover: hover) {
   .dark-toggle:hover {
     background: var(--border);
+  }
+
+  body.dark-mode .dark-toggle:hover {
+    background: #444;
   }
 }
 
@@ -638,7 +644,7 @@ body.dark-mode .btn-secondary {
 
 .field-success .form-input,
 .field-success .form-select {
-  border-color: #1f8b4c;
+  border-color: var(--green);
 }
 
 .form-input[aria-invalid="true"],
@@ -647,7 +653,7 @@ body.dark-mode .btn-secondary {
 }
 
 .label-success {
-  color: #1f8b4c;
+  color: var(--green);
   font-size: 0.75rem;
   margin-left: 6px;
   font-weight: 400;
@@ -1560,4 +1566,58 @@ body.dark-mode .cursor-glow {
     rgba(93, 129, 255, 0.05) 45%,
     rgba(93, 129, 255, 0) 70%
   );
+}
+
+/* Dark mode overrides for inner-page glassmorphism cards */
+body.dark-mode.inner-page {
+  background: #1a1a1a;
+}
+
+body.dark-mode.inner-page .program-card,
+body.dark-mode.inner-page .news-card,
+body.dark-mode.inner-page .contact-card,
+body.dark-mode.inner-page .apply-info-card,
+body.dark-mode.inner-page .sidebar-card,
+body.dark-mode.inner-page .support-card,
+body.dark-mode.inner-page .form-card,
+body.dark-mode.inner-page .accordion-item,
+body.dark-mode.inner-page .req-item,
+body.dark-mode.inner-page .timeline-item,
+body.dark-mode.inner-page .event-card,
+body.dark-mode.inner-page .program-details-card,
+body.dark-mode.inner-page .program-overview,
+body.dark-mode.inner-page .approach-section,
+body.dark-mode.inner-page .program-detail-image,
+body.dark-mode.inner-page .deadline-banner,
+body.dark-mode.inner-page .confirm-page {
+  background: linear-gradient(
+    180deg,
+    rgba(50, 50, 55, 0.95),
+    rgba(40, 40, 45, 0.92)
+  );
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode.inner-page .programs-header,
+body.dark-mode.inner-page .events-header,
+body.dark-mode.inner-page .news-header,
+body.dark-mode.inner-page .contact-header,
+body.dark-mode.inner-page .apply-header,
+body.dark-mode.inner-page .deadlines-header,
+body.dark-mode.inner-page .faq-header,
+body.dark-mode.inner-page .req-header,
+body.dark-mode.inner-page .event-detail-header,
+body.dark-mode.inner-page .program-detail-header,
+body.dark-mode.inner-page .form-page-header {
+  background: linear-gradient(
+    135deg,
+    rgba(40, 40, 50, 0.96),
+    rgba(30, 30, 40, 0.92)
+  );
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode.inner-page .btn-secondary {
+  background: rgba(60, 60, 65, 0.9);
+  border-color: rgba(255, 255, 255, 0.12);
 }
