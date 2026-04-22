@@ -238,7 +238,7 @@ body.dark-mode .apply-info-card h3 {
 .apply-footer-link h4 {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--blue);
   margin-bottom: 4px; /* Small gap before the link */
 }
 
