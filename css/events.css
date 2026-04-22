@@ -84,7 +84,7 @@ body.dark-mode .upcoming-events-title {
 
 /* Active state: filled blue background with white text */
 .filter-tab.active {
-  background: var(--blue);
+  background: #226dc9;
   color: #fff;
   border-color: var(--blue);
 }
@@ -120,7 +120,7 @@ body.dark-mode .upcoming-events-title {
   flex-direction: column; /* Month on top, day number below */
   align-items: center;
   min-width: 52px; /* Fixed width to keep all badges the same size */
-  background: var(--blue);
+  background: #226dc9;
   color: #fff;
   border-radius: 8px;
   padding: 8px 10px;
