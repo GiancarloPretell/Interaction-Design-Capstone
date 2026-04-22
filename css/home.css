@@ -117,6 +117,7 @@ body.dark-mode .trip-card h3 {
   justify-content: center;
   margin-bottom: 8px;
   flex-wrap: wrap;
+  color: var(--blue);
 }
 
 .section-shell {
