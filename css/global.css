@@ -24,7 +24,7 @@
 :root {
   /* Brand colors */
   --navy: #1b2a4a; /* Yale navy — used for headings and the navbar logo */
-  --blue: #1e5fad; /* Primary action color — buttons, links, focus rings */
+  --blue: #2572d0; /* Primary action color — buttons, links, focus rings */
   --blue-hover: #174d91; /* Darker blue for hover states on primary buttons */
 
   /* Surface & border colors */
@@ -70,7 +70,7 @@ body.dark-mode {
   --border: #7b7b7b;
   --text: #f0f0f0;
   --text-muted: #b0b0b0;
-  --text-light: #9e9e9e;
+  --text-light: #a6a6a6;
   --red: #f87171;
   --green: #25a75b;
   --shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
@@ -407,7 +407,7 @@ body.dark-mode .nav-btn:hover {
 
 /* White "Y" in the footer logo */
 .footer-logo .logo-y {
-  color: #fff;
+  color: var(--footer-text);
   font-size: 1.5rem;
   transform: none; /* No vertical nudge needed in the footer context */
 }
@@ -417,7 +417,7 @@ body.dark-mode .nav-btn:hover {
   flex: 1; /* Takes available space between logo and footer links */
   text-align: center;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--footer-text);
 }
 
 /* Separator dots between contact details */
@@ -431,11 +431,12 @@ body.dark-mode .nav-btn:hover {
   display: flex;
   gap: 20px;
   margin-left: auto;
+  color: var(--footer-text);
 }
 
 .footer-links a {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--footer-text);
   text-decoration: none;
 }
 
