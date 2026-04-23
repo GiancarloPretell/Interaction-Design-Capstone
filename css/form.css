@@ -237,3 +237,7 @@ body.dark-mode .file-input {
 .field-success .file-input {
   border-color: #27ae60;
 }
+
+body.dark-mode .confirm-page h1 {
+  color: var(--green);
+}

@@ -1113,6 +1113,7 @@ body.inner-page .confirm-page {
 body.inner-page .confirm-page h1 {
   max-width: none;
   margin-bottom: 18px;
+  color: var(--green);
 }
 
 body.inner-page .confirm-page p {
